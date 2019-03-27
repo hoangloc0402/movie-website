@@ -114,7 +114,7 @@ body {
 	border-radius: 50%;
 	opacity: 0;
 }
-.movie-thumnail-wrapper:hover > .movie-play-button {
+.movie-thumnail-wrapper:hover .movie-play-button {
 	opacity: 0.85;
 }
 
