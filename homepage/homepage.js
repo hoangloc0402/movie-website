@@ -356,21 +356,3 @@ var img_movie_rendered = false;
     ); 
 
 })(jQuery, ResponsiveBootstrapToolkit);
-
-
-// function re_render() {
-	// 	var width = $( window ).width();
-	// 	const height_per_row = "7em";
-	// 	const width_per_col = width / col_per_row;
-	// 	console.log(height_per_row);
-	// 	console.log(width_per_col);
-	// 	for (var i = 0; i < list_top_movies.length; i ++) {
-	// 		var id = `img_${i}`;
-	// 		$(`#${id}`).width(width_per_col);
-	// 		$(`#${id}`).height(height_per_row);
-	// 		if (i == 0) {
-	// 			console.log(id);
-	// 			console.log($(`#${id}`).width(width_per_col))
-	// 		}
-	// 	}
-	// }
