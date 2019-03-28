@@ -55,4 +55,39 @@
   border-bottom: None;
   text-align: right;
 }
+.tag_cloud p{
+  color: #333333;
+  padding: 10px 10px 0px 10px;
+  text-align: right;
+  font-size: 15px;
+}
+
+@media only screen and (max-width : 768px) {
+  .tag_cloud{
+    display: none;
+  }
+  .my_nav_list{
+    padding: 0px 5px 0px 5px;
+  }
+  .my_nav_item{
+    text-align: center;
+    border-left: 1px solid  rgb(231, 224, 224);
+  }
+  .my_nav_item:hover{
+    transition-duration: 0.2s;
+    border-right: 2px solid crimson;
+    border-left: 2px solid crimson;
+    color: crimson;
+    text-emphasis-color: red;
+    box-shadow: 0 2px 5px 0 rgba(46, 45, 45, 0.24), 0 5px 10px 0 rgba(15, 13, 13, 0.19);
+  }
+  .my_nav_item:hover a{
+    font-weight: bold;
+    transition-duration: 0.2s;
+    color: crimson;
+  }
+  .my_nav_item i{
+    display: none;
+  }
+}
 

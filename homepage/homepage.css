@@ -14,6 +14,10 @@ body {
    	background-size: cover;
 	display: inline-block; 
 	transition: 0.2s;
+	cursor: pointer;
+}
+.header a {
+	width: 10%!important;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -81,6 +85,7 @@ body {
 }
 
 .movie-thumnail {
+	cursor: pointer;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
