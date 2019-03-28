@@ -16,6 +16,9 @@ body {
 	transition: 0.2s;
 	cursor: pointer;
 }
+.header a {
+	width: 10%!important;
+}
 
 @media only screen and (min-width: 1200px) {
 	.header .movie {
