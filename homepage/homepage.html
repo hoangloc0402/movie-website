@@ -1,169 +1,188 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="homepage.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="header.css" rel="stylesheet" type="text/css">
-    <link href="menu.css" rel="stylesheet" type="text/css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Home page</title>
-  </head>
-  <body>
-    <div class="header-with-search">
-        <div class="container">
-            <div class="row my_header">   
-              <div class="col-2" id="logo"></div>
-              <div class="d-none d-md-block col-md-5 col-lg-6">
-                  <span class="my_search_bar_icon">
-                      <i class="material-icons">search</i>
-                  </span>
-                  <input type="search" class="my_search_bar_input" placeholder="Search Movies, Drama and Anime..." />
-              </div>
-              <div class="my_header_button_group col-10 col-md-5 col-lg-4 p-0">
-                  <button class="my_header_button col-4">
-                          <i class="material-icons">face</i>
-                          User
-                  </button>
-                  <button class="my_header_button col-4">
-                          <i class="material-icons">account_box</i>
-                          Sign In 
-                  </button>
-                  <button class="my_header_button col-4">
-                      <i class="material-icons">assignment</i>
-                      Register 
-                  </button> 
-              </div>
-            </div>
-          </div>
-    </div>
+  <link rel="stylesheet" href="homepage.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="header.css" rel="stylesheet" type="text/css">
+  <link href="menu.css" rel="stylesheet" type="text/css">
 
-    <div class="header">
-      <div id="homepage_popular_movies" class="carousel slide" data-ride="carousel">
-        <div id="homepage_popular_movies_inner" class="carousel-inner">
+  <title>Home page</title>
+</head>
+
+<body>
+  <div class="header-with-search">
+    <div class="container">
+      <div class="row my_header">
+        <div class="col-2" id="logo"></div>
+        <div class="d-none d-md-block col-md-5 col-lg-6">
+          <span class="my_search_bar_icon">
+            <i class="material-icons">search</i>
+          </span>
+          <input type="search" class="my_search_bar_input" placeholder="Search Movies, Drama and Anime..." />
         </div>
-        <a class="carousel-control-prev" href="#homepage_popular_movies" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#homepage_popular_movies" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </div>
-    
-    <div class="container-fluid">
-        <div class="row flex-xl-nowrap">
-        <div class="col-12 col-md-3 col-xl-3 p-0 px-md-3">
-          <form class="bd-search d-flex align-items-center">
-            <input type="search" class="d-md-none form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" data-docs-version="4.3">
-            <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg></button>
-          </form>
-
-          <nav class="bd-links collapse show" id="bd-docs-nav">
-              <div class="bd-toc-item active">
-                  <a class="bd-toc-link active" href=""></a>              
-                  <ul class="my_nav_list">
-                      <li class="my_nav_item">
-                          <a href="">Home
-                              <i class="material-icons">home</i>
-                          </a>
-                      </li>
-                      <li class="my_nav_item">
-                          <a href="">My Show
-                              <i class="material-icons">play_circle_filled</i>
-                          </a>
-                      </li>
-                      <li class="my_nav_item">
-                          <a href="">Popular Movie
-                              <i class="material-icons">thumb_up</i>
-                          </a>
-                      </li>
-                      <li class="my_nav_item">
-                          <a href="">All Movies
-                              <i class="material-icons">video_library</i>
-                          </a>
-                      </li>
-                      <li class="my_nav_item">
-                          <a href="">Watch Series
-                              <i class="material-icons">theaters</i>
-                          </a>
-                      </li>
-                      <li class="my_nav_item">
-                          <a href="">Watch Animes
-                              <i class="material-icons">view_carousel</i>
-                          </a>
-                      </li>
-                      <li class="my_nav_item">
-                          <a href="">Contact Us
-                              <i class="material-icons">email</i>
-                          </a>
-                      </li>
-                      <li class="my_nav_item tag_cloud">
-                              <a href="">Tag cloud</a>
-                          </li>
-                      <li class="tag_cloud">
-                          <button class="my_nav_tag">#fmovie</button>
-                          <button class="my_nav_tag">#lover</button>
-                          <button class="my_nav_tag">#123movie</button>
-                          <button class="my_nav_tag">#onwatch</button>
-                          <button class="my_nav_tag">#series</button>
-                          <button class="my_nav_tag">#dramacool</button>
-                          <button class="my_nav_tag">#dramanice</button>
-                          <button class="my_nav_tag">#asian</button>
-                          <button class="my_nav_tag">#box</button>
-                          <button class="my_nav_tag">#animetv</button>
-                          <button class="my_nav_tag">#planet</button>
-                      </li>
-                  </ul>
-              </div>
-          </nav>
-        </div>
-        <div class="col-12 col-md-9 col-xl-8" id="movies_content">
-          <div class="big-block">Recently Added Episodes</div>
-          <div id="gallery"></div>
-          <div class="navigation">
-            <span class="page-numbers">
-              <a href="#">« Previous Page</a>
-            </span>
-            <span class="page-numbers">
-              <a href="#">Next Page »</a>
-            </span>
-          </div>
-          <div class="footer row">
-            <div class="col-12 col-md-2">
-              <a href="#">About Us</a><br>
-              <span>Information about us</span>
-            </div>
-            <div class="col-12 col-md-3">
-              <a href="#">Terms & Conditions</a><br>
-              <span>What you can do and what not to do</span>
-            </div>
-            <div class="col-12 col-md-2">
-              <a href="#">Contact Us</a><br>
-              <span>Get in touch with us</span>
-            </div>
-            <div class="col-12 col-md-5 ">
-              <a href="#">LOGO</a><br>
-              <span>All your favorite TV Shows & Movies in one place</span>
-            </div>
-          </div>
+        <div class="my_header_button_group col-10 col-md-5 col-lg-4 p-0">
+          <button class="my_header_button col-4">
+            <i class="material-icons">face</i>
+            User
+          </button>
+          <button class="my_header_button col-4">
+            <i class="material-icons">account_box</i>
+            Sign In
+          </button>
+          <button class="my_header_button col-4">
+            <i class="material-icons">assignment</i>
+            Register
+          </button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="header">
+    <div id="homepage_popular_movies" class="carousel slide" data-ride="carousel">
+      <div id="homepage_popular_movies_inner" class="carousel-inner">
+      </div>
+      <a class="carousel-control-prev" href="#homepage_popular_movies" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#homepage_popular_movies" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+      <div class="col-12 col-md-3 col-xl-3 p-0 px-md-3">
+        <form class="bd-search d-flex align-items-center">
+          <input type="search" class="d-md-none form-control" id="search-input" placeholder="Search..."
+            aria-label="Search for..." autocomplete="off" data-docs-version="4.3">
+          <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse"
+            data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false"
+            aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+              viewBox="0 0 30 30" role="img" focusable="false">
+              <title>Menu</title>
+              <path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
+                d="M4 7h22M4 15h22M4 23h22" />
+            </svg></button>
+        </form>
+
+        <nav class="bd-links collapse show" id="bd-docs-nav">
+          <div class="bd-toc-item active">
+            <a class="bd-toc-link active" href=""></a>
+            <ul class="my_nav_list">
+              <li class="my_nav_item">
+                <a href="">Home
+                  <i class="material-icons">home</i>
+                </a>
+              </li>
+              <li class="my_nav_item">
+                <a href="">My Show
+                  <i class="material-icons">play_circle_filled</i>
+                </a>
+              </li>
+              <li class="my_nav_item">
+                <a href="">Popular Movie
+                  <i class="material-icons">thumb_up</i>
+                </a>
+              </li>
+              <li class="my_nav_item">
+                <a href="">All Movies
+                  <i class="material-icons">video_library</i>
+                </a>
+              </li>
+              <li class="my_nav_item">
+                <a href="">Watch Series
+                  <i class="material-icons">theaters</i>
+                </a>
+              </li>
+              <li class="my_nav_item">
+                <a href="">Watch Animes
+                  <i class="material-icons">view_carousel</i>
+                </a>
+              </li>
+              <li class="my_nav_item">
+                <a href="">Contact Us
+                  <i class="material-icons">email</i>
+                </a>
+              </li>
+              <li class="my_nav_item tag_cloud">
+                <a href="">Tag cloud</a>
+              </li>
+              <li class="tag_cloud">
+                <button class="my_nav_tag">#fmovie</button>
+                <button class="my_nav_tag">#lover</button>
+                <button class="my_nav_tag">#123movie</button>
+                <button class="my_nav_tag">#onwatch</button>
+                <button class="my_nav_tag">#series</button>
+                <button class="my_nav_tag">#dramacool</button>
+                <button class="my_nav_tag">#dramanice</button>
+                <button class="my_nav_tag">#asian</button>
+                <button class="my_nav_tag">#box</button>
+                <button class="my_nav_tag">#animetv</button>
+                <button class="my_nav_tag">#planet</button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="col-12 col-md-9 col-xl-8" id="movies_content">
+        <div class="big-block">Recently Added Episodes</div>
+        <div id="gallery"></div>
+        <div class="navigation">
+          <span class="page-numbers">
+            <a href="#">« Previous Page</a>
+          </span>
+          <span class="page-numbers">
+            <a href="#">Next Page »</a>
+          </span>
+        </div>
+        <div class="footer row">
+          <div class="col-12 col-md-2">
+            <a href="#">About Us</a><br>
+            <span>Information about us</span>
+          </div>
+          <div class="col-12 col-md-3">
+            <a href="#">Terms & Conditions</a><br>
+            <span>What you can do and what not to do</span>
+          </div>
+          <div class="col-12 col-md-2">
+            <a href="#">Contact Us</a><br>
+            <span>Get in touch with us</span>
+          </div>
+          <div class="col-12 col-md-5 ">
+            <a href="#">LOGO</a><br>
+            <span>All your favorite TV Shows & Movies in one place</span>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://rawgit.com/maciej-gurban/responsive-bootstrap-toolkit/master/dist/bootstrap-toolkit.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://rawgit.com/maciej-gurban/responsive-bootstrap-toolkit/master/dist/bootstrap-toolkit.min.js"></script>
 
     <script type="text/javascript" src="homepage.js"></script>
-  </body>
+</body>
+
 </html>
