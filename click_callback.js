@@ -11,6 +11,6 @@ function direct2Login(){
 	return false
 }
 function direct2Signup(){     
-	window.open("../signuppage/signuppage.html","_self")
+	window.open("../registerpage/registerpage.html","_self")
 	return false
 }
