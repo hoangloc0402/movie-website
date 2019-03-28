@@ -12,8 +12,8 @@
 
   <link rel="stylesheet" href="searchpage.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link href="header.css" rel="stylesheet" type="text/css">
-  <link href="menu.css" rel="stylesheet" type="text/css">
+  <link href="../header.css" rel="stylesheet" type="text/css">
+  <link href="../menu.css" rel="stylesheet" type="text/css">
 
   <title>Search page</title>
 </head>
@@ -22,23 +22,25 @@
   <div class="header-with-search">
     <div class="container">
       <div class="row my_header">
-        <div class="col-2  ml-3 ml-md-0 p-0" id="logo"></div>
+        <div class="col-2 ml-3 ml-md-0 p-0" id="logo" onclick="return direct2Home()"></div>
         <div class="d-none d-md-block col-md-5 col-lg-6">
           <span class="my_search_bar_icon">
             <i class="material-icons">search</i>
           </span>
-          <input type="search" class="my_search_bar_input" placeholder="Search Movies, Drama and Anime..." />
+          <form onsubmit="return direct2SearchPage()" class="my_form_search_bar">
+            <input type="text" class="my_search_bar_input" placeholder="Search Movies, Drama and Anime..." />
+          </form>
         </div>
         <div class="my_header_button_group col-9 col-md-5 col-lg-4 p-0">
-          <button class="my_header_button col-4">
+          <button class="my_header_button col-4" onclick="return direct2Login()">
             <i class="material-icons">face</i>
             User
           </button>
-          <button class="my_header_button col-4">
+          <button class="my_header_button col-4" onclick="return direct2Login()">
             <i class="material-icons">account_box</i>
             Sign In
           </button>
-          <button class="my_header_button col-4">
+          <button class="my_header_button col-4" onclick="return direct2Signup()">
             <i class="material-icons">assignment</i>
             Register
           </button>
@@ -166,6 +168,7 @@
       src="https://rawgit.com/maciej-gurban/responsive-bootstrap-toolkit/master/dist/bootstrap-toolkit.min.js"></script>
 
     <script type="text/javascript" src="searchpage.js"></script>
+    <script type="text/javascript" src="../click_callback.js"></script>
 </body>
 
 </html>
