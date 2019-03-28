@@ -98,7 +98,7 @@
   height: 100%;
 }
 
-@media only screen and (max-width : 370px) {
+@media only screen and (max-width : 400px) {
   .my_header_button i{
     display: none;
   }
