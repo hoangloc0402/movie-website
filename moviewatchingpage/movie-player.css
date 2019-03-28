@@ -165,3 +165,11 @@ body {
     margin: 0px;
     padding: 0px;
 }
+
+.next-video {
+    padding:0px; color: #DB4A4A;
+}
+
+.main-container-margin {
+    margin-bottom: 1%;
+}
