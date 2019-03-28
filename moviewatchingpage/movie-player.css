@@ -173,3 +173,35 @@ body {
 .main-container-margin {
     margin-bottom: 1%;
 }
+
+.footer {
+	padding: 3em 0 3em 0 !important;
+
+}
+
+.footer span {
+	font-size: smaller;
+	color: #000;
+	font-weight: 100;
+}
+
+.footer a {
+	font-size: 20px;
+	color: #000;
+	font-weight: 100;
+}
+
+.footer a:hover {
+	color: #db4a3f;
+}
+
+.footer div:nth-last-child(1) {
+	text-align: right;
+}
+
+@media only screen and (max-width: 767.98px){
+	.footer div {
+		text-align: center;
+	}
+
+}

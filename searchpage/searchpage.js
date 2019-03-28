@@ -1,75 +1,76 @@
+const search_key = "Grey"
 const list_movies = [
 	{
 		src: "images/1.png",
-		name: "Those Who Can't - Season 1",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "The Small Woman in Grey",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/2.png",
-		name: "Absentia - Season 2",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey Gardens",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/3.png",
-		name: "American Housewife - Season 4",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Fifty Shades Of Grey",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/4.png",
-		name: "Bar Rescue - Season 3",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey's Anatomy - Season 8",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/5.png",
-		name: "Dateline: Secrets Uncovered",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey's Anatomy - Season 7",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/6.png",
-		name: "The Tonight Show Starring Jimmy Fallon",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey's Anatomy - Season 6",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/7.png",
-		name: "Deadliest Catch",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey's Anatomy - Season 5",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/8.png",
-		name: "Deadliest Catch",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey's Anatomy - Season 4",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/9.png",
-		name: "Derry Girls",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey's Anatomy - Season 3",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/10.png",
-		name: "The Great British Sewing Bee",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey's Anatomy - Season 2",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/11.png",
-		name: "East Enders",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey's Anatomy - Season 1",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/12.png",
-		name: "Law & Order",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey's Anatomy - Season 15",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/13.png",
-		name: "Five Feet Apart",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey's Anatomy - Season 11",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/14.png",
-		name: "Go!",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Greystoke Tarzan",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/15.png",
-		name: "Good Trouble",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "The Grey",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/16.png",
-		name: "Haunted Case Files",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Good Witch Secrects of Grey House",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/17.png",
-		name: "The Rookie",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey Agenda",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/18.png",
-		name: "Holby City",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey Lady",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/19.png",
@@ -77,24 +78,12 @@ const list_movies = [
 	},
 	{
 		src: "images/20.png",
-		name: "Ice Cold Blood",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+		name: "Grey's Anatomy - Season 14",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/21.png",
-		name: "Kim's Convenience",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/22.png",
-		name: "The Late Show With Stephen Colbert",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/23.png",
-		name: "MasterChef: Kids",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/24.png",
-		name: "MasterChef",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
+		name: "Grey's Anatomy - Season 13",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	}
 ];
 
 
@@ -174,6 +163,7 @@ var img_movie_rendered = false;
 	// 
 	// Execute only after document has fully loaded
 	$(document).ready(function () {
+		$("#search-result").append(` for "${search_key}"`)
 		render_slide();
 		// console.log($('#gallery'))
 	});
