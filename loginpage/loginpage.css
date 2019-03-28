@@ -1,7 +1,6 @@
 @charset "utf-8";
 *{margin: 0;padding: 0;outline: 0;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;-mos-box-sizing: border-box;}
 body{font-family: 'Raleway', sans-serif;}
-a {text-decoration: none;transition: all 0.3s linear 0s; /* Firefox*/webkit-transition: all 0.3s linear 0s; /* Chrom*/moz-transition: all 0.3s linear 0s; /* IE*/o-transition: all 0.3s linear 0s;color: #FFF;font-size: 100%;}
 ul{margin: 0;padding: 0;}
 ul li{list-style: none;}
 h1, h2, h3, h4, h5, h6{padding: 0;margin: 0;font-size: 14px;color: #db4a3f;}
