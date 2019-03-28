@@ -27,7 +27,9 @@
           <span class="my_search_bar_icon">
             <i class="material-icons">search</i>
           </span>
-          <input type="search" class="my_search_bar_input" placeholder="Search Movies, Drama and Anime..." />
+          <form onsubmit="return direct2SearchPage()" class="my_form_search_bar">
+            <input type="text" class="my_search_bar_input" placeholder="Search Movies, Drama and Anime..." />
+          </form>
         </div>
         <div class="my_header_button_group col-9 col-md-5 col-lg-4 p-0">
           <button class="my_header_button col-4">
@@ -76,7 +78,7 @@
               <path stroke="#db4a3f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
                 d="M4 7h22M4 15h22M4 23h22" />
             </svg></button>
-        </form>
+        </form> 
 
         <nav class="bd-links collapse show" id="bd-docs-nav">
           <div class="bd-toc-item active">
@@ -181,6 +183,12 @@
       src="https://rawgit.com/maciej-gurban/responsive-bootstrap-toolkit/master/dist/bootstrap-toolkit.min.js"></script>
 
     <script type="text/javascript" src="homepage.js"></script>
+    <script>
+      function direct2SearchPage(){     
+        window.open("../searchpage/searchpage.html","_self")
+        return false
+      }
+    </script>
 </body>
 
 </html>
