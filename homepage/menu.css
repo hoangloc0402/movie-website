@@ -73,15 +73,16 @@
     text-align: center;
   }
   .my_nav_item:hover{
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
     border-right: 2px solid crimson;
+    border-left: 2px solid crimson;
     color: crimson;
     text-emphasis-color: red;
     box-shadow: 0 2px 5px 0 rgba(46, 45, 45, 0.24), 0 5px 10px 0 rgba(15, 13, 13, 0.19);
   }
   .my_nav_item:hover a{
     font-weight: bold;
-    transition-duration: 0.6s;
+    transition-duration: 0.2s;
     color: crimson;
   }
   .my_nav_item i{
