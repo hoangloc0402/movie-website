@@ -272,3 +272,9 @@ body {
 	margin-top: 35px;
 	opacity: 0.85;
 }
+
+#movies_name_gallery {
+	font-weight: 300;
+	color: #db4a3f;
+	margin-bottom: 25px;
+}
