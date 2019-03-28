@@ -1,206 +1,206 @@
 const list_top_movies = [
 	{
 		src: "images/1.png",
-		name: "Alia: Battle Angle", "href": "#", "ep": "Episode 01"
+		name: "Alia: Battle Angle", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/2.png",
-		name: "A Madea Family Funeral", "href": "#", "ep": "Episode 01"
+		name: "A Madea Family Funeral", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/3.png",
-		name: "Aquaman", "href": "#", "ep": "Episode 01"
+		name: "Aquaman", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/4.png",
-		name: "Bumblebee", "href": "#", "ep": "Episode 01"
+		name: "Bumblebee", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/5.png",
-		name: "Captain Marvel", "href": "#", "ep": "Episode 01"
+		name: "Captain Marvel", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/6.png",
-		name: "Captive State", "href": "#", "ep": "Episode 01"
+		name: "Captive State", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/7.png",
-		name: "Dragged Across Concrete", "href": "#", "ep": "Episode 01"
+		name: "Dragged Across Concrete", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/8.png",
-		name: "Fantastic Beasts: The Crimes of Grindelwald", "href": "#", "ep": "Episode 01"
+		name: "Fantastic Beasts: The Crimes of Grindelwald", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/9.png",
-		name: "Holmes and Watson", "href": "#", "ep": "Episode 01"
+		name: "Holmes and Watson", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/10.png",
-		name: "How to Train Your Dragon: The Hidden World", "href": "#", "ep": "Episode 01"
+		name: "How to Train Your Dragon: The Hidden World", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/11.png",
-		name: "Leaving Neverland", "href": "#", "ep": "Episode 01"
+		name: "Leaving Neverland", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/12.png",
-		name: "Mary Poppins Returns", "href": "#", "ep": "Episode 01"
+		name: "Mary Poppins Returns", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/13.png",
-		name: "Marriage", "href": "#", "ep": "Episode 01"
+		name: "Marriage", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/14.png",
-		name: "The Hard Way", "href": "#", "ep": "Episode 01"
+		name: "The Hard Way", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/15.png",
-		name: "The Kid Who Would Be King", "href": "#", "ep": "Episode 01"
+		name: "The Kid Who Would Be King", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/16.png",
-		name: "The Lego Movie 2: The Second Part The Lego Movie 2: The Second Part", "href": "#", "ep": "Episode 01"
+		name: "The Lego Movie 2: The Second Part The Lego Movie 2: The Second Part", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/17.png",
-		name: "The Mule", "href": "#", "ep": "Episode 01"
+		name: "The Mule", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/18.png",
-		name: "Triple Frontier", "href": "#", "ep": "Episode 01"
+		name: "Triple Frontier", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/19.png",
-		name: "Us", "href": "#", "ep": "Episode 01"
+		name: "Us", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/20.png",
-		name: "Walk. Ride. Rodeo.", "href": "#", "ep": "Episode 01"
+		name: "Walk. Ride. Rodeo.", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	}
 ];
 
 const list_movies = [
 	{
 		src: "images/0_1.png",
-		name: "Those Who Can't - Season 1", "href": "#", "ep": "Episode 01"
+		name: "Those Who Can't - Season 1", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_2.png",
-		name: "Absentia - Season 2", "href": "#", "ep": "Episode 01"
+		name: "Absentia - Season 2", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_3.png",
-		name: "American Housewife - Season 4", "href": "#", "ep": "Episode 01"
+		name: "American Housewife - Season 4", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_4.png",
-		name: "Bar Rescue - Season 3", "href": "#", "ep": "Episode 01"
+		name: "Bar Rescue - Season 3", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_5.png",
-		name: "Dateline: Secrets Uncovered", "href": "#", "ep": "Episode 01"
+		name: "Dateline: Secrets Uncovered", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_6.png",
-		name: "The Tonight Show Starring Jimmy Fallon", "href": "#", "ep": "Episode 01"
+		name: "The Tonight Show Starring Jimmy Fallon", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_7.png",
-		name: "Deadliest Catch", "href": "#", "ep": "Episode 01"
+		name: "Deadliest Catch", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_8.png",
-		name: "Deadliest Catch", "href": "#", "ep": "Episode 01"
+		name: "Deadliest Catch", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_9.png",
-		name: "Derry Girls", "href": "#", "ep": "Episode 01"
+		name: "Derry Girls", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_10.png",
-		name: "The Great British Sewing Bee", "href": "#", "ep": "Episode 01"
+		name: "The Great British Sewing Bee", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_11.png",
-		name: "East Enders", "href": "#", "ep": "Episode 01"
+		name: "East Enders", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_12.png",
-		name: "Law & Order", "href": "#", "ep": "Episode 01"
+		name: "Law & Order", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_13.png",
-		name: "Five Feet Apart", "href": "#", "ep": "Episode 01"
+		name: "Five Feet Apart", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_14.png",
-		name: "Go!", "href": "#", "ep": "Episode 01"
+		name: "Go!", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_15.png",
-		name: "Good Trouble", "href": "#", "ep": "Episode 01"
+		name: "Good Trouble", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_16.png",
-		name: "Haunted Case Files", "href": "#", "ep": "Episode 01"
+		name: "Haunted Case Files", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_17.png",
-		name: "The Rookie", "href": "#", "ep": "Episode 01"
+		name: "The Rookie", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_18.png",
-		name: "Holby City", "href": "#", "ep": "Episode 01"
+		name: "Holby City", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_19.png",
-		name: "Indecent", "href": "#", "ep": "Episode 01"
+		name: "Indecent", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_20.png",
-		name: "Ice Cold Blood", "href": "#", "ep": "Episode 01"
+		name: "Ice Cold Blood", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_21.png",
-		name: "Kim's Convenience", "href": "#", "ep": "Episode 01"
+		name: "Kim's Convenience", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_22.png",
-		name: "The Late Show With Stephen Colbert", "href": "#", "ep": "Episode 01"
+		name: "The Late Show With Stephen Colbert", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_23.png",
-		name: "MasterChef: Kids", "href": "#", "ep": "Episode 01"
+		name: "MasterChef: Kids", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_24.png",
-		name: "MasterChef", "href": "#", "ep": "Episode 01"
+		name: "MasterChef", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_25.png",
-		name: "PC game", "href": "#", "ep": "Episode 01"
+		name: "PC game", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_26.png",
-		name: "Muiafukaz", "href": "#", "ep": "Episode 01"
+		name: "Muiafukaz", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_27.png",
-		name: "NCIS", "href": "#", "ep": "Episode 01"
+		name: "NCIS", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_28.png",
-		name: "Schitt$ Creek", "href": "#", "ep": "Episode 01"
+		name: "Schitt$ Creek", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_29.png",
-		name: "THe Story Of God", "href": "#", "ep": "Episode 01"
+		name: "THe Story Of God", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
 	},
 	{
 		src: "images/0_30.png",
-		name: "The Village", "href": "#", "ep": "Episode 01 Episode 01 Episode 01"
+		name: "The Village", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01 Episode 01 Episode 01"
 	}
 ];
 
@@ -306,6 +306,7 @@ var img_movie_rendered = false;
 						$(`<div class="header-play-button"></div>`),
 					)
 					div.attr('id', `img_${counter}`)
+					$(div).click(()=>{window.location.href = list_top_movies[counter].href;});
 					row.append(div);
 					counter++;
 				}
@@ -333,6 +334,7 @@ var img_movie_rendered = false;
 					`<span class="movie-play-button"></span>`,
 					`<span class="movie-ep">${list_movies[i].ep}</span>`,
 				)
+				$(div).click(()=>{window.location.href = list_movies[counter].href;});
 				$(div).width(card_width);
 				$("#gallery").append(div);
 			}
