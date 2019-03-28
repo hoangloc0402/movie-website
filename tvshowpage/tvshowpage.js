@@ -175,23 +175,28 @@ var img_movie_rendered = false;
 	function render_slide() {
 		var op = false;
 		if( viewport.is('xs') ) {
+			if ($("#bd-docs-nav").hasClass("show") === true) $("#bd-docs-nav").removeClass("show");
 			gallery_col = 2;
 			gallery_margin = 5;
 		}
 		if( viewport.is('>=sm') ) {
+			if ($("#bd-docs-nav").hasClass("show") === true) $("#bd-docs-nav").removeClass("show");
 			gallery_col = 2;
 			gallery_margin = 5;
 		}
 		if( viewport.is('>=md') ) {
+			if ($("#bd-docs-nav").hasClass("show") === false) $("#bd-docs-nav").addClass("show");
 			gallery_col = 2;
 			gallery_margin = 10;
 		}
 		if( viewport.is('>=lg') ) {
+			if ($("#bd-docs-nav").hasClass("show") === false) $("#bd-docs-nav").addClass("show");
 			gallery_col = 3;
 			gallery_margin = 10;
 		}
 
 		if( viewport.is('>=xl') ) {
+			if ($("#bd-docs-nav").hasClass("show") === false) $("#bd-docs-nav").addClass("show");
 			gallery_col = 3;
 			gallery_margin = 10;
 			op = true;
