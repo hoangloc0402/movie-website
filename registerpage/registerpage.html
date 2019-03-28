@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" itemscope itemtype="http://schema.org/WebPage">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Register</title>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      <link rel="stylesheet" type="text/css" href="registerpage.css" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      <link href="header.css" rel="stylesheet" type="text/css">
-      <link href="menu.css" rel="stylesheet" type="text/css">
-   </head>
-   <body>
-      <div class="header-with-search">
-         <div class="container">
-            <div class="row my_header">
-               <div class="col-2  ml-3 ml-md-0 p-0" id="logo"></div>
-               <div class="d-none d-md-block col-md-5 col-lg-6">
-                  <span class="my_search_bar_icon">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>Register</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" type="text/css" href="registerpage.css" />
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link href="../header.css" rel="stylesheet" type="text/css">
+   <link href="../menu.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+   <div class="header-with-search">
+      <div class="container">
+         <div class="row my_header">
+            <div class="col-2 ml-3 ml-md-0 p-0" id="logo" onclick="return direct2Home()"></div>
+            <div class="d-none d-md-block col-md-5 col-lg-6">
+               <span class="my_search_bar_icon">
                   <i class="material-icons">search</i>
-                  </span>
-                  <input type="search" class="my_search_bar_input" placeholder="Search Movies, Drama and Anime..." />
-               </div>
-               <div class="my_header_button_group col-9 col-md-5 col-lg-4 p-0">
-                  <button class="my_header_button col-4">
+               </span>
+               <form onsubmit="return direct2SearchPage()" class="my_form_search_bar">
+                  <input type="text" class="my_search_bar_input" placeholder="Search Movies, Drama and Anime..." />
+               </form>
+            </div>
+            <div class="my_header_button_group col-9 col-md-5 col-lg-4 p-0">
+               <button class="my_header_button col-4" onclick="return direct2Login()">
                   <i class="material-icons">face</i>
                   User
-                  </button>
-                  <button class="my_header_button col-4">
+               </button>
+               <button class="my_header_button col-4" onclick="return direct2Login()">
                   <i class="material-icons">account_box</i>
                   Sign In
-                  </button>
-                  <button class="my_header_button col-4">
+               </button>
+               <button class="my_header_button col-4" onclick="return direct2Signup()">
                   <i class="material-icons">assignment</i>
                   Register
-                  </button>
-               </div>
+               </button>
             </div>
          </div>
       </div>
-      <div class="container-fluid">
+   </div>
+   <div class="container-fluid">
       <div class="row flex-xl-nowrap">
          <div class="col-12 col-md-3 col-xl-3 p-0 px-md-3">
             <form class="bd-search d-flex align-items-center">
@@ -47,52 +51,51 @@
                   aria-label="Search for..." autocomplete="off" data-docs-version="4.3">
                <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button"
                   data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false"
-                  aria-label="Toggle docs navigation">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                  aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                      viewBox="0 0 30 30" role="img" focusable="false">
                      <title>Menu</title>
                      <path stroke="#db4a3f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
                         d="M4 7h22M4 15h22M4 23h22" />
-                  </svg>
-               </button>
+                  </svg></button>
             </form>
+
             <nav class="bd-links collapse show" id="bd-docs-nav">
                <div class="bd-toc-item active">
                   <a class="bd-toc-link active" href=""></a>
                   <ul class="my_nav_list">
                      <li class="my_nav_item">
                         <a href="">Home
-                        <i class="material-icons">home</i>
+                           <i class="material-icons">home</i>
                         </a>
                      </li>
                      <li class="my_nav_item">
                         <a href="">My Show
-                        <i class="material-icons">play_circle_filled</i>
+                           <i class="material-icons">play_circle_filled</i>
                         </a>
                      </li>
                      <li class="my_nav_item">
                         <a href="">Popular Movie
-                        <i class="material-icons">thumb_up</i>
+                           <i class="material-icons">thumb_up</i>
                         </a>
                      </li>
                      <li class="my_nav_item">
                         <a href="">All Movies
-                        <i class="material-icons">video_library</i>
+                           <i class="material-icons">video_library</i>
                         </a>
                      </li>
                      <li class="my_nav_item">
                         <a href="">Watch Series
-                        <i class="material-icons">theaters</i>
+                           <i class="material-icons">theaters</i>
                         </a>
                      </li>
                      <li class="my_nav_item">
                         <a href="">Watch Animes
-                        <i class="material-icons">view_carousel</i>
+                           <i class="material-icons">view_carousel</i>
                         </a>
                      </li>
                      <li class="my_nav_item">
                         <a href="">Contact Us
-                        <i class="material-icons">email</i>
+                           <i class="material-icons">email</i>
                         </a>
                      </li>
                      <li class="tag_cloud">
@@ -129,10 +132,10 @@
                                              <div class="form-login ilogin">
                                                 <h1>Register to MovieWatch</h1>
                                                 <a href="#" class="btn-google">
-                                                <span>
-                                                <img src="images/google.png" alt="google" />
-                                                </span>
-                                                Continue with Google
+                                                   <span>
+                                                      <img src="images/google.png" alt="google" />
+                                                   </span>
+                                                   Continue with Google
                                                 </a>
                                                 <form method="post">
                                                    <input type="hidden" name="_csrf" value="5c9c7434993d6">
@@ -140,16 +143,25 @@
                                                    <input type="text" name="name" placeholder="Display name" value="">
                                                    <input type="email" name="email" placeholder="Email" value="">
                                                    <input type="password" name="password" placeholder="Password">
-                                                   <input type="password" name="cf_password" placeholder="Retype password">
+                                                   <input type="password" name="cf_password"
+                                                      placeholder="Retype password">
                                                    <label>Are you human?</label>
-                                                   <div class="g-recaptcha" data-sitekey="6Lc5cSYUAAAAAOGfpnUv9W5ZFjLXpB6bMThaM1g-">
+                                                   <div class="g-recaptcha"
+                                                      data-sitekey="6Lc5cSYUAAAAAOGfpnUv9W5ZFjLXpB6bMThaM1g-">
                                                       <div style="width: 304px; height: 78px;">
-                                                         <div><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Lc5cSYUAAAAAOGfpnUv9W5ZFjLXpB6bMThaM1g-&amp;co=aHR0cDovL3dhdGNoLXNlcmllcy5saXZlOjgw&amp;hl=en&amp;v=v1552285980763&amp;size=normal&amp;cb=6n32yiu4ys7m" width="304" height="78" role="presentation" name="a-ff5tk0i6fo3t" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div>
-                                                         <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+                                                         <div><iframe
+                                                               src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Lc5cSYUAAAAAOGfpnUv9W5ZFjLXpB6bMThaM1g-&amp;co=aHR0cDovL3dhdGNoLXNlcmllcy5saXZlOjgw&amp;hl=en&amp;v=v1552285980763&amp;size=normal&amp;cb=6n32yiu4ys7m"
+                                                               width="304" height="78" role="presentation"
+                                                               name="a-ff5tk0i6fo3t" frameborder="0" scrolling="no"
+                                                               sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
+                                                         </div>
+                                                         <textarea id="g-recaptcha-response" name="g-recaptcha-response"
+                                                            class="g-recaptcha-response"
+                                                            style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
                                                       </div>
                                                    </div>
                                                    <div class="clr v-lg"></div>
-                                                   <input type="submit" value="Sign up"> 
+                                                   <input type="submit" value="Sign up">
                                                 </form>
                                                 <a class="link-forget" href="#">Forgot password?</a>
                                                 <a class="link-sign" href="../loginpage/loginpage.html">Login</a>
@@ -167,5 +179,24 @@
             </div>
          </div>
       </div>
-   </body>
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+         crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+         crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+         crossorigin="anonymous"></script>
+      <script
+         src="https://rawgit.com/maciej-gurban/responsive-bootstrap-toolkit/master/dist/bootstrap-toolkit.min.js"></script>
+
+      <script type="text/javascript" src="registerpage.js"></script>
+
+      <script type="text/javascript" src="../click_callback.js"></script>
+</body>
+
 </html>
