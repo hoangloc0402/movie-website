@@ -83,19 +83,7 @@ const list_movies = [
 	{
 		src: "images/21.png",
 		name: "Grey's Anatomy - Season 13",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/22.png",
-		name: "Grey's Anatomy - Season 12",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/23.png",
-		name: "Greys",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/24.png",
-		name: "Greysss",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
+	}
 ];
 
 
