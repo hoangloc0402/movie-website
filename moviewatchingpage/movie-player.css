@@ -205,3 +205,13 @@ body {
 	}
 
 }
+
+.comment-panel {
+    width: 100%;
+}
+
+.comment-panel iframe {
+    width: 100%;
+    height: 425px;
+    border: 0px;
+}
