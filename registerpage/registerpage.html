@@ -4,31 +4,31 @@
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="../import/bootstrap.min.css">
    <link rel="stylesheet" type="text/css" href="../loginpage/loginpage.css" />
    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-   <link href="../header.css" rel="stylesheet" type="text/css">
-   <link href="../menu.css" rel="stylesheet" type="text/css">
+   <link href="../import/header.css" rel="stylesheet" type="text/css">
+   <link href="../import/menu.css" rel="stylesheet" type="text/css">
    <title>MovieWatch - Sign Up</title>
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="57x57" href="../favicon../favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-    <link rel="manifest" href="../favicon/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="../favicon/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+   <!-- Favicon -->
+   <link rel="apple-touch-icon" sizes="57x57" href="../favicon../favicon/apple-icon-57x57.png">
+   <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+   <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+   <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+   <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+   <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+   <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+   <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+   <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+   <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+   <link rel="manifest" href="../favicon/manifest.json">
+   <meta name="msapplication-TileColor" content="#ffffff">
+   <meta name="msapplication-TileImage" content="../favicon/ms-icon-144x144.png">
+   <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -66,122 +66,114 @@
          <div class="col-12 col-md-3 col-xl-3 p-0 px-md-3">
             <form class="bd-search d-flex align-items-center" onsubmit="return direct2SearchPage()">
                <input type="search" class="d-md-none form-control" id="search-input" placeholder="Search..."
-               aria-label="Search for..." autocomplete="off" data-docs-version="4.3">
+                  aria-label="Search for..." autocomplete="off" data-docs-version="4.3">
                <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button"
-               data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false"
-               aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-               viewBox="0 0 30 30" role="img" focusable="false">
-               <title>Menu</title>
-               <path stroke="#db4a3f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
-               d="M4 7h22M4 15h22M4 23h22" />
-            </svg></button>
-         </form>
+                  data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false"
+                  aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                     viewBox="0 0 30 30" role="img" focusable="false">
+                     <title>Menu</title>
+                     <path stroke="#db4a3f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
+                        d="M4 7h22M4 15h22M4 23h22" />
+                  </svg></button>
+            </form>
 
-         <nav class="bd-links collapse show" id="bd-docs-nav">
-            <div class="bd-toc-item active">
-               <a class="bd-toc-link active" href=""></a>
-               <ul class="my_nav_list">
-                  <li class="my_nav_item">
-                     <a href="">Home
-                        <i class="material-icons">home</i>
-                     </a>
-                  </li>
-                  <li class="my_nav_item">
-                     <a href="">My Show
-                        <i class="material-icons">play_circle_filled</i>
-                     </a>
-                  </li>
-                  <li class="my_nav_item">
-                     <a href="">Popular Movie
-                        <i class="material-icons">thumb_up</i>
-                     </a>
-                  </li>
-                  <li class="my_nav_item">
-                     <a href="">All Movies
-                        <i class="material-icons">video_library</i>
-                     </a>
-                  </li>
-                  <li class="my_nav_item">
-                     <a href="">Watch Series
-                        <i class="material-icons">theaters</i>
-                     </a>
-                  </li>
-                  <li class="my_nav_item">
-                     <a href="">Watch Animes
-                        <i class="material-icons">view_carousel</i>
-                     </a>
-                  </li>
-                  <li class="my_nav_item">
-                     <a href="">Contact Us
-                        <i class="material-icons">email</i>
-                     </a>
-                  </li>
-                  <li class="tag_cloud">
-                     <p>Tag Cloud</p>
-                     <button class="my_nav_tag">#fmovie</button>
-                     <button class="my_nav_tag">#lover</button>
-                     <button class="my_nav_tag">#123movie</button>
-                     <button class="my_nav_tag">#onwatch</button>
-                     <button class="my_nav_tag">#series</button>
-                     <button class="my_nav_tag">#dramacool</button>
-                     <button class="my_nav_tag">#dramanice</button>
-                     <button class="my_nav_tag">#asian</button>
-                     <button class="my_nav_tag">#box</button>
-                     <button class="my_nav_tag">#animetv</button>
-                     <button class="my_nav_tag">#planet</button>
-                  </li>
-               </ul>
-            </div>
-         </nav>
-      </div>
-      <div class="col-12 col-md-9 col-xl-8">
-         <div id="wrapper_bg" class="">
-            <section id="wrapper" class="wrapper">
-               <div id="main_bg" class="main">
-                  <h1>Register</h1>
-                  <div class="form-login ilogin">
-                     <h1>Register to MovieWatch</h1>
-                     <a href="#" class="btn-google">
-                        <span>
-                           <img src="images/google.png" alt="google" />
-                        </span>
-                        Continue with Google
-                     </a>
-                     <form method="post">
-                        <input type="hidden" name="_csrf" value="5c9c7434993d6">
-                        <input type="hidden" name="refer" value="">
-                        <input type="text" name="name" placeholder="Display name" value="">
-                        <input type="email" name="email" placeholder="Email" value="">
-                        <input type="password" name="password" placeholder="Password">
-                        <input type="password" name="cf_password"
-                        placeholder="Retype password">
-                        <input type="submit" value="Sign up">
-                     </form>
-                     <a class="link-forget" href="#">Forgot password?</a>
-                     <a class="link-sign" href="../loginpage/loginpage.html">Login</a>
-                  </div>
+            <nav class="bd-links collapse show" id="bd-docs-nav">
+               <div class="bd-toc-item active">
+                  <a class="bd-toc-link active" href=""></a>
+                  <ul class="my_nav_list">
+                     <li class="my_nav_item">
+                        <a href="">Home
+                           <i class="material-icons">home</i>
+                        </a>
+                     </li>
+                     <li class="my_nav_item">
+                        <a href="">My Show
+                           <i class="material-icons">play_circle_filled</i>
+                        </a>
+                     </li>
+                     <li class="my_nav_item">
+                        <a href="">Popular Movie
+                           <i class="material-icons">thumb_up</i>
+                        </a>
+                     </li>
+                     <li class="my_nav_item">
+                        <a href="">All Movies
+                           <i class="material-icons">video_library</i>
+                        </a>
+                     </li>
+                     <li class="my_nav_item">
+                        <a href="">Watch Series
+                           <i class="material-icons">theaters</i>
+                        </a>
+                     </li>
+                     <li class="my_nav_item">
+                        <a href="">Watch Animes
+                           <i class="material-icons">view_carousel</i>
+                        </a>
+                     </li>
+                     <li class="my_nav_item">
+                        <a href="">Contact Us
+                           <i class="material-icons">email</i>
+                        </a>
+                     </li>
+                     <li class="tag_cloud">
+                        <p>Tag Cloud</p>
+                        <button class="my_nav_tag">#fmovie</button>
+                        <button class="my_nav_tag">#lover</button>
+                        <button class="my_nav_tag">#123movie</button>
+                        <button class="my_nav_tag">#onwatch</button>
+                        <button class="my_nav_tag">#series</button>
+                        <button class="my_nav_tag">#dramacool</button>
+                        <button class="my_nav_tag">#dramanice</button>
+                        <button class="my_nav_tag">#asian</button>
+                        <button class="my_nav_tag">#box</button>
+                        <button class="my_nav_tag">#animetv</button>
+                        <button class="my_nav_tag">#planet</button>
+                     </li>
+                  </ul>
                </div>
-            </section>
+            </nav>
+         </div>
+         <div class="col-12 col-md-9 col-xl-8">
+            <div id="wrapper_bg" class="">
+               <section id="wrapper" class="wrapper">
+                  <div id="main_bg" class="main">
+                     <h1>Register</h1>
+                     <div class="form-login ilogin">
+                        <h1>Register to MovieWatch</h1>
+                        <a href="#" class="btn-google">
+                           <span>
+                              <img src="images/google.png" alt="google" />
+                           </span>
+                           Continue with Google
+                        </a>
+                        <form method="post">
+                           <input type="hidden" name="_csrf" value="5c9c7434993d6">
+                           <input type="hidden" name="refer" value="">
+                           <input type="text" name="name" placeholder="Display name" value="">
+                           <input type="email" name="email" placeholder="Email" value="">
+                           <input type="password" name="password" placeholder="Password">
+                           <input type="password" name="cf_password" placeholder="Retype password">
+                           <input type="submit" value="Sign up">
+                        </form>
+                        <a class="link-forget" href="#">Forgot password?</a>
+                        <a class="link-sign" href="../loginpage/loginpage.html">Login</a>
+                     </div>
+                  </div>
+               </section>
+            </div>
          </div>
       </div>
    </div>
-</div>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-crossorigin="anonymous"></script>
-<script
-src="https://rawgit.com/maciej-gurban/responsive-bootstrap-toolkit/master/dist/bootstrap-toolkit.min.js"></script>
+   <!-- Optional JavaScript -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="../import/jquery-3.1.1.slim.min.js"></script>
+   <script src="../import/popper.min.js"></script>
+   <script src="../import/bootstrap.min.js"></script>
+   <script src="../import/bootstrap-toolkit.min.js"></script>
 
-<script src="registerpage.js"></script>
-<script src="../click_callback.js"></script>
+   <script src="registerpage.js"></script>
+   <script src="../import/click_callback.js"></script>
 </body>
 
 </html>
