@@ -1,4 +1,4 @@
-const list_top_movies = [
+var list_top_movies = [
 	{
 		src: "images/1.png",
 		name: "Alia: Battle Angle", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
@@ -81,7 +81,7 @@ const list_top_movies = [
 	}
 ];
 
-const list_movies = [
+var list_movies = [
 	{
 		src: "images/0_1.png",
 		name: "Those Who Can't - Season 1", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
@@ -278,8 +278,8 @@ var img_movie_rendered = false;
 		var height = $(window).height();
 		document.documentElement.clientHeight;
 
-		const height_per_row = height / 5;
-		const width_per_col = width / col_per_row;
+		var height_per_row = height / 5;
+		var width_per_col = width / col_per_row;
 
 		console.log(width, width_per_col)
 		console.log(height, height_per_row)
