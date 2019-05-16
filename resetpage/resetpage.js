@@ -43,20 +43,24 @@
 		var newpassword = form["newpassword"].value;
 		var res = true;
 		if (code == "") {
+			$("#inform")["0"].innerHTML = "Input your OTP"
 			$('#code').css("background", "rgba(233, 30, 99, .2)");
 			res = false;
-		}
+		}else
 		if (!validatePassword(password)) {
+			$("#inform")["0"].innerHTML = "Password length must be longer than 6"
 			$('#password').css("background", "rgba(233, 30, 99, .2)");
 			alert("Password length must be longer than 6")
 			res = false;
-		}
+		}else
 		if (!validatePassword(newpassword)) {
+			$("#inform")["0"].innerHTML = "Password length must be longer than 6"
 			$('#newpassword').css("background", "rgba(233, 30, 99, .2)");
 			alert("Password length must be longer than 6")
 			res = false;
-		}
+		}else
 		if(password!=newpassword){
+			$("#inform")["0"].innerHTML = "Password not match"
 			res = false;
 		}
 		return res;
@@ -96,15 +100,16 @@
 					success: function (data) {
 						data = JSON.parse(data)
 						if (data["is_success"]) {
+							alert(data['message'])
 							window.location = "../loginpage/loginpage.html";
 						}
 						else{
-							alert(data['message'])
+							$("#inform")["0"].innerHTML = data['message']
 						}
 					},
 					error: function (e) {
-						console.log("error" + JSON.stringify(e));
-						alert("Bad request!")
+						e = JSON.parse(e.responseText)
+						$("#inform")["0"].innerHTML = e["message"]
 					}
 				});
 			}

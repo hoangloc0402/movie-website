@@ -1,3 +1,7 @@
+const user_id = getCookie("user_id");
+const is_admin = isAdmin();
+const is_log_in = isLoggedIn();
+
 (function ($, viewport) {
 	// Bootstrap 4 Divs
 	var bootstrapDivs = {
@@ -13,6 +17,7 @@
 	var hasPrev = false;
 	var page = 0;
 	var per_page = 3;
+	var isRoot = false;
 
 	var getUrlParameter = function getUrlParameter(sParam) {
 		var sPageURL = window.location.search.substring(1),
@@ -28,7 +33,6 @@
 			}
 		}
 	};
-
 
 	function getData(page, per_page) {
 		$.ajax({
@@ -58,8 +62,6 @@
 	}
 
 	function updateData(jsonString) {
-		console.log(jsonString);
-
 		$.ajax({
 			type: "POST",
 			url: "/api/user.php",
@@ -82,25 +84,45 @@
 				row.append($("<td/>").text(r[i]));
 			}
 			var inHtml = "";
-			switch (r[4]) {
-				case "root":
-					inHtml = "<td><select class='form-control' id='sel" + rowIndex + "' name='sellist1' disabled><option selected='selected'>root</option><option>admin</option><option>user</option></select></td>";
-					break;
-				case "admin":
-					inHtml = "<td><select class='form-control' id='sel" + rowIndex + "' name='sellist1' disabled><option>root</option><option selected='selected'>admin</option><option>user</option></select></td>";
-					break;
-				case "user":
-					inHtml = "<td><select class='form-control' id='sel" + rowIndex + "' name='sellist1' disabled><option>root</option><option>admin</option><option selected='selected'>user</option></select></td>";
-					break;
-				default: break;
+			if (isRoot) {
+				switch (r[4]) {
+					case "root":
+						inHtml = "<td><select class='form-control' id='sel" + rowIndex + "' name='sellist1' disabled><option selected='selected'>root</option><option>admin</option><option>user</option></select></td>";
+						break;
+					case "admin":
+						inHtml = "<td><select class='form-control' id='sel" + rowIndex + "' name='sellist1' disabled><option>root</option><option selected='selected'>admin</option><option>user</option></select></td>";
+						break;
+					case "user":
+						inHtml = "<td><select class='form-control' id='sel" + rowIndex + "' name='sellist1' disabled><option>root</option><option>admin</option><option selected='selected'>user</option></select></td>";
+						break;
+					default: break;
+				}
 			}
+			else {
+				switch (r[4]) {
+					case "root":
+						inHtml = "<td><select class='form-control' id='sel" + rowIndex + "' name='sellist1' disabled><option selected='selected' diasbled>root</option><option>admin</option><option>user</option></select></td>";
+						break;
+					case "admin":
+						inHtml = "<td><select class='form-control' id='sel" + rowIndex + "' name='sellist1' disabled><option disabled>root</option><option selected='selected'>admin</option><option>user</option></select></td>";
+						break;
+					case "user":
+						inHtml = "<td><select class='form-control' id='sel" + rowIndex + "' name='sellist1' disabled><option disabled>root</option><option>admin</option><option selected='selected'>user</option></select></td>";
+						break;
+					default: break;
+				}
+			}
+
 			row.append(inHtml);
 			if (r[5] == 1) {
 				inHtml = "<td><input type='checkbox' id='check" + rowIndex + "'  value='' checked disabled></td>"
 			}
 			else inHtml = "<td><input type='checkbox' id='check" + rowIndex + "'  value='' disabled></td>"
 			row.append(inHtml);
-			row.append("<td><button type='button' style='background-color: #db4a3f;' uid='" + r[0] + "' class='btn btn-success edit-button'>Edit</button></td>");
+			if (!isRoot && (r[4] == "root"))
+				row.append("<td><button type='button' style='background-color: #db4a3f;' uid='" + r[0] + "' class='btn btn-success edit-button' disabled>Edit</button></td>");
+			else row.append("<td><button type='button' style='background-color: #db4a3f;' uid='" + r[0] + "' class='btn btn-success edit-button' >Edit</button></td>");
+
 			$('#user-table-body').append(row);
 		});
 		$('.edit-button').each((idx, button) =>
@@ -152,6 +174,18 @@
 	})
 
 	function init() {
+		if (!is_log_in || !is_admin) window.location.href = "/";
+		$.ajax({
+			type: "GET",
+			url: "/api/user.php?user_id=" + user_id,
+			success: function (response) {
+				if (JSON.parse(response).data.user_type == "root")
+					isRoot = true;
+			},
+			error: function (response) {
+				console.log("error");
+			}
+		});
 		getData(page, per_page);
 		$('#prev-button').attr('disabled', true);
 		if (!hasNext) $('next-button').attr('disabled', true);
