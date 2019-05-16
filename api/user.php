@@ -88,13 +88,13 @@
 
     switch ($_SERVER['REQUEST_METHOD']){
         case 'GET': 
-            $user_id = $_GET["user_id"];
-            if (is_null($user_id)){
+            if (!isset($_GET["user_id"])){
                 $page = $_GET["page"] ? $_GET["page"] : 0;
                 $per_page = $_GET["per_page"] ? $_GET["per_page"] : 15;
                 echo get_all_user($page, $per_page);
             }
             else {
+                $user_id = $_GET["user_id"];
                 echo get_user($user_id);
             }
             break;
