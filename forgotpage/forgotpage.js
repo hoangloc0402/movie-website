@@ -54,20 +54,20 @@
 			e.preventDefault();
 			if (validateForgotForm()) {
 				$.ajax({
-					type: "POST",
+					type: "PUT",
 					url: '../api/login_register.php',
 					datatype: 'json',
 					data: JSON.stringify({
-						'type': 'forgot',
 						'email': $("#email").val()
 					}),
 					success: function (data) {
 						data = JSON.parse(data)
 						if (data["is_success"]) {
-							window.location = "../homepage/homepage.html";
+							window.location = "../resetpage/resetpage.html";
 						}
 					},
 					error: function (e) {
+						window.location = "../resetpage/resetpage.html";
 						console.log("error" + JSON.stringify(e));
 					}
 				});
