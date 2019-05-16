@@ -69,7 +69,7 @@
         }
         else {
             http_response_code(400);
-            return json_encode(array('is_success' => true, 'message' => 'No information is changed!'));
+            return json_encode(array('is_success' => false, 'message' => 'No information is changed!'));
         }
     }
 
@@ -88,7 +88,37 @@
         }
         else {
             http_response_code(400);
-            return json_encode(array('is_success' => true, 'message' => 'No information is changed!'));
+            return json_encode(array('is_success' => false, 'message' => 'No information is changed!'));
+        }
+    }
+
+    function check_password($password){
+        $len = strlen($password);
+        if ($len>=6 && $len <=255){
+            return "ok";
+        }
+        else return "Password length must be between 6 and 255";
+    }
+
+    function update_password($user_id, $password){
+        global $table_user, $db_connection;
+        $mess = check_password($password);
+        if ($mess!="ok"){
+            http_response_code(400);
+            return json_encode(array('is_success' => false, 'message' => $mess));
+        }
+        $success = execute("UPDATE $table_user SET password = \"$password\" WHERE user_id = \"$user_id\"");
+        if (!$success){
+            http_response_code(500);
+            return json_encode(array('is_success' => false, 'message' => 'Error occured while setting!'));
+        }
+        if (mysqli_affected_rows($db_connection) == 1) {
+            http_response_code(200);
+            return json_encode(array('is_success' => true, 'message' => 'Password has been updated!'));
+        }
+        else {
+            http_response_code(400);
+            return json_encode(array('is_success' => false, 'message' => 'No information is changed!'));
         }
     }
 
@@ -112,9 +142,14 @@
             break;
         case 'PUT':
             $param = json_decode(file_get_contents("php://input"));
-            if ($param->user_id && $param->user_profile_image){
-                echo update_user_info($param->user_id, $param->user_profile_image);
-            }
+            if (isset($param->user_id)){
+                if (isset($param->password)){
+                    echo update_password($param->user_id, $param->password);
+                }
+                else if (isset($param->user_profile_image)){
+                    echo update_user_info($param->user_id, $param->user_profile_image);
+                }
+            } 
             break;
         case 'DELETE':
             
