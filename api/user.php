@@ -19,7 +19,7 @@
     function get_all_user($page, $per_page){
         global $table_user;
         $page = $page*$per_page;
-        $query_result = execute("SELECT * FROM $table_user WHERE user_is_active=true LIMIT $page, $per_page");
+        $query_result = execute("SELECT * FROM $table_user LIMIT $page, $per_page");
         if (mysqli_num_rows($query_result) > 0) {
             $return_data = array();
             while($row = mysqli_fetch_assoc($query_result)) {
@@ -27,7 +27,7 @@
             }
             $has_next = false;
             $page = $page +1;
-            if (mysqli_num_rows(execute("SELECT * FROM $table_user WHERE user_is_active=true LIMIT $page, $per_page")) > 0){
+            if (mysqli_num_rows(execute("SELECT * FROM $table_user LIMIT $page, $per_page")) > 0){
                 $has_next = true;
             }
             http_response_code(200);
@@ -105,7 +105,10 @@
             }
             break;
         case 'POST':
-
+            $param = json_decode(file_get_contents("php://input"));
+            if ($param->user_id && $param->user_is_active && $param->user_type){
+                echo set_active_and_role($param->user_id, $param->user_is_active, $param->user_type);
+            }
             break;
         case 'PUT':
             $param = json_decode(file_get_contents("php://input"));
@@ -114,11 +117,7 @@
             }
             break;
         case 'DELETE':
-            $param = json_decode(file_get_contents("php://input"));
-            if ($param->user_id && $param->user_is_active && $param->user_type){
-                echo set_active_and_role($param->user_id, $param->user_is_active, $param->user_type);
-            }
-            break;
+            
 
         default: echo "404 NOT FOUND!";
     }

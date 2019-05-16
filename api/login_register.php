@@ -125,11 +125,9 @@
 
     switch ($_SERVER['REQUEST_METHOD']){
         case 'GET': 
-            $param = json_decode(file_get_contents("php://input"));
-            if ($param->email && $param->password){
-                echo login($param->email, $param->password); 
+            if (isset($_GET["email"]) && isset($_GET["password"])){
+                echo login($_GET["email"], $_GET["password"]);
             }
-            
             break;
         case 'POST':
             $param = json_decode(file_get_contents("php://input"));
