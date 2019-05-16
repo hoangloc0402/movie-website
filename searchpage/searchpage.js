@@ -1,5 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
-const search_key = (urlParams.get('q')) ? parseInt(urlParams.get('q')): 0 ;
+const search_key = (urlParams.get('q')) ? urlParams.get('q'): "";
+const page = (urlParams.get('page') && parseInt(urlParams.get('page'))) ? parseInt(urlParams.get('page')): 0 ;
+const per_page = 4;
 const list_movies = [
 	// {
 	// 	src: "images/1.png",
