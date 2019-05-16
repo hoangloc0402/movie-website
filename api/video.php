@@ -151,9 +151,9 @@ function insertVideo($data)
     }
     $video_name = "'{$data->video_name}'";
     $video_series_id = $data->video_series_id;
-    $video_thumbnail = array_key_exists("video_thumbnail", $data) ? "'{$data->video_thumbnail}'" : NULL;
+    $video_thumbnail = array_key_exists("video_thumbnail", $data) ? "'{$data->video_thumbnail}'" : "NULL";
     $video_source = "'{$data->video_source}'";
-    $video_episode = array_key_exists("video_episode", $data) ? $data->video_episode : NULL;
+    $video_episode = array_key_exists("video_episode", $data) ? $data->video_episode : "NULL";
     $video_uploader_id = $data->video_uploader_id;
 
     $sql_command = "INSERT INTO  $videotable 
@@ -176,7 +176,7 @@ function insertVideo($data)
                     CURRENT_TIMESTAMP,
                     $video_episode,
                     '1');";
-
+    echo $sql_command;
     $result = mysqli_query($dbhandle, $sql_command);
 
     if (!$result) {

@@ -136,13 +136,13 @@ function insertVideo($data)
     }
     $series_name = "\"{$data->series_name}\"";
     $series_uploader_id = $data->series_uploader_id;
-    $series_thumbnail = array_key_exists("series_thumbnail", $data) ? "\"{$data->series_thumbnail}\"" : NULL;
-    $series_tags = array_key_exists("series_tags", $data) ? "\"" . addslashes(json_encode($data->series_tags)) . "\"" : NULL;
-    $is_series = array_key_exists("is_series", $data) ? $data->is_series : NULL;
-    $series_expected_ep_count = array_key_exists("series_expected_ep_count", $data) ? $data->series_expected_ep_count : NULL;
-    $series_rating = array_key_exists("series_rating", $data) ? $data->series_rating : NULL;
-    $series_description = array_key_exists("series_description", $data) ? "\"{$data->series_description}\"" : NULL;
-    $series_year = array_key_exists("series_year", $data) ? $data->series_year : NULL;
+    $series_thumbnail = array_key_exists("series_thumbnail", $data) ? "\"{$data->series_thumbnail}\"" : "NULL";
+    $series_tags = array_key_exists("series_tags", $data) ? "\"" . addslashes(json_encode($data->series_tags)) . "\"" : "NULL";
+    $is_series = array_key_exists("is_series", $data) ? $data->is_series : "NULL";
+    $series_expected_ep_count = array_key_exists("series_expected_ep_count", $data) ? $data->series_expected_ep_count : "NULL";
+    $series_rating = array_key_exists("series_rating", $data) ? $data->series_rating : "NULL";
+    $series_description = array_key_exists("series_description", $data) ? "\"{$data->series_description}\"" : "NULL";
+    $series_year = array_key_exists("series_year", $data) ? $data->series_year : "NULL";
 
 
     $sql_command = "INSERT INTO  $seriestable 
@@ -171,7 +171,6 @@ function insertVideo($data)
                     $series_tags,
                     '1',
                     $series_thumbnail);";
-
     $result = mysqli_query($dbhandle, $sql_command);
 
     if (!$result) {

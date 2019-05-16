@@ -80,7 +80,7 @@
                         <div class="row m-0">
                             <div class="col-6 p-0 pr-1">
                                 <div class="input-group mb-3">
-                                    <div class="col-sm-8 col-lg-8 col-xl-6 input-group-prepend form-label">
+                                    <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
                                         <span class="input-group-text">Type</span>
                                     </div>
                                     <select class="custom-select" id="is_series">
@@ -91,10 +91,10 @@
                             </div>
                             <div class="col-6 p-0">
                                 <div class="input-group mb-3">
-                                    <div class="col-sm-8 col-lg-8 col-xl-6 input-group-prepend form-label">
+                                    <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
                                         <span class="input-group-text">Rating</span>
                                     </div>
-                                    <input type="number" min="0" max="100" id="series-rating"
+                                    <input type="number" min="0" max="100" id="series_rating"
                                         class="col-sm-8 col-lg-8 col-xl-9 form-control">
                                     <div class="input-group-append">
                                         <span class="input-group-text">/100</span>
@@ -105,19 +105,19 @@
                         <div class="row m-0">
                             <div class="col-6 p-0 pr-1">
                                 <div class="input-group mb-3">
-                                    <div class="col-sm-8 col-lg-8 col-xl-6 input-group-prepend form-label">
+                                    <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
                                         <span class="input-group-text">Year</span>
                                     </div>
-                                    <input type="number" id="series-year" min="1990" max="2020"
+                                    <input type="number" id="series_year" min="1990" max="2020"
                                         class="col-sm-8 col-lg-8 col-xl-9 form-control">
                                 </div>
                             </div>
                             <div class="col-6 p-0">
                                 <div class="input-group mb-3">
-                                    <div class="col-sm-8 col-lg-8 col-xl-6 input-group-prepend form-label">
+                                    <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
                                         <span class="input-group-text">Tags</span>
                                     </div>
-                                    <select class="custom-select" id="series-tag">
+                                    <select class="custom-select" id="series_tags">
                                         <option selected>Choose...</option>
                                         <option value="drama">Drama</option>
                                         <option value="romance">Romance</option>
@@ -136,14 +136,14 @@
                             <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
                                 <span class="input-group-text">Description</span>
                             </div>
-                            <textarea type="text" id="series-description"
+                            <textarea type="text" id="series_description"
                                 class="col-sm-8 col-lg-8 col-xl-9 form-control"></textarea>
                         </div>
                         <div class="input-group mb-3">
                             <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
                                 <span class="input-group-text">Series thumbnail</span>
                             </div>
-                            <input type="text" id="thumbnail-upload-label"
+                            <input type="text" id="series_thumbnail"
                                 class="col-sm-8 col-lg-8 col-xl-9 form-control">
                             <div class="input-group-append">
                                 <input type="file" id="series-thumbnail-upload" style="display:none" />
@@ -229,7 +229,6 @@
 
 
     <script src="../import/click_callback.js"></script>
-
     <script src="movie-upload.js"></script>
     <script src="../import/search_helper.js"></script>
 </body>

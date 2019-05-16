@@ -1,3 +1,7 @@
+const user_id = getCookie("user_id");
+const is_admin = isAdmin();
+const is_log_in = isLoggedIn();
+
 (function ($, viewport) {
 	// Bootstrap 4 Divs
 	var bootstrapDivs = {
@@ -24,24 +28,32 @@
 		}
 	};
 
+	var search_offset = 1;
+
 	function render_slide() {
 		var op = false;
 		if (viewport.is('xs')) {
 			if ($("#bd-docs-nav").hasClass("show") === true) $("#bd-docs-nav").removeClass("show");
+			search_offset = 2;
 		}
 		if (viewport.is('>=sm')) {
 			if ($("#bd-docs-nav").hasClass("show") === true) $("#bd-docs-nav").removeClass("show");
+			search_offset = 2;
 		}
 		if (viewport.is('>=md')) {
 			if ($("#bd-docs-nav").hasClass("show") === false) $("#bd-docs-nav").addClass("show");
+			search_offset = 1;
 		}
 		if (viewport.is('>=lg')) {
 			if ($("#bd-docs-nav").hasClass("show") === false) $("#bd-docs-nav").addClass("show");
+			search_offset = 1;
 		}
 
 		if (viewport.is('>=xl')) {
 			if ($("#bd-docs-nav").hasClass("show") === false) $("#bd-docs-nav").addClass("show");
+			search_offset = 1;
 		}
+	
 	}
 	$(document).ready(function () {
 		render_slide();
@@ -80,20 +92,20 @@
 			$("#series_name").attr("placeholder", "Series name 1-255 characters");
 			res = false;
 		}
-		if (($("#video-name").val().length > 255 || $("#video-name").val().length == 0) && ($("#is_series").val() === '0')) {
+		if (($("#video-name").val().length > 255 || $("#video-name").val().length == 0) && ($("#is_series").val() === '1')) {
 			$("#video-name").val("");
 			$("#video-name").attr("placeholder", "Video name 1-255 characters");
 			res = false;
 		}
-		if ($("#thumbnail-upload-label").val() == "") {
-			$("#thumbnail-upload-label").attr("placeholder", "Upload thumbnail");
+		if ($("#series_thumbnail").val() == "") {
+			$("#series_thumbnail").attr("placeholder", "Upload thumbnail");
 			res = false;
 		}
 		if ($("#video-upload-label").val() == "") {
 			$("#video-upload-label").attr("placeholder", "Upload video");
 			res = false;
 		}
-		if ($("#video-episode").val() == "" && $("#is_series").val() === '0') {
+		if ($("#video-episode").val() == "" && $("#is_series").val() === '1') {
 			$("#video-episode").attr("placeholder", "Video episode must not be empty");
 			res = false;
 		}
@@ -115,33 +127,67 @@
 		}
 	})
 
+	function clean(obj) {
+		for (var propName in obj) { 
+		  if (obj[propName] === null || obj[propName] === undefined) {
+			delete obj[propName];
+		  }
+		}
+		return obj
+	  }
+
 	$('#form-upload-button').click(function () {
 		if (checkInput()) {
-			jsonObj = [];
-			item = {};
-			item["video_name"] = $('#video-name').val();
-			item["video_series_id"] = getUrlParameter('id');
-			item["video_uploader_id"] = "1"; //edit later
-			item["video_thumbnail"] = $("#thumbnail-upload-label").val();
-			item["video_source"] = $('#video-upload-label').val();
-			item['video_episode'] = $('#video-episode').val();
-			jsonObj.push(item);
-			jsonString = JSON.stringify(jsonObj);
+			video = {};
+			video["video_name"] = $('#video-name').val();
+			video["video_thumbnail"] = ($('#thumbnail-upload-label').val() !== "" ? $('#thumbnail-upload-label').val(): null);
+			video["video_source"] = ($('#video-upload-label').val() !== "" ? $('#video-upload-label').val(): null);
+			video['video_episode'] = ($('#video-episode').val() !== "" ? $('#video-episode').val(): null);
 
-			// console.log(jsonString);
+			tags = [];
+			tags.push($('#series_tags').val())
+			series = {
+				series_name: $('#series_name').val(),
+				series_uploader_id: user_id,
+				series_thumbnail: ($('#series_thumbnail').val() !== "" ? $('#series_thumbnail').val(): null),
+				series_tags: tags,
+				is_series: $("#is_series").val() === '0' ? "true" : "false",
+				series_expected_ep_count: ($('#series_expected_ep_count').val() !== "" ? $('#series_expected_ep_count').val(): null),
+				series_rating: ($('#series_rating').val() !== "" ? $('#series_rating').val(): null),
+				series_description: ($('#series_description').val() !== "" ? $('#series_description').val(): null),
+				series_year: ($('#series_year').val() !== "" ? $('#series_year').val(): null),
+			}
+			console.log(clean(series));
 
 			$.ajax({
 				type: "POST",
-				url: "",
+				url: "/api/series.php",
 				contentType: 'application/json',
-				data: jsonString,
+				data: JSON.stringify(clean(series)),
 				crossDomain: true,
 				dataType: "json",
-				success: function (response) {
-					console.log(response);
+				success: function (data) {
+					var series_id = data.id;
+					video.video_series_id = series_id;
+					video.video_uploader_id = user_id;
+					$.ajax({
+						type: "POST",
+						url: "/api/video.php",
+						contentType: 'application/json',
+						data: JSON.stringify(clean(video)),
+						crossDomain: true,
+						dataType: "json",
+						success: function (data) {
+							console.log(data)
+						},
+						error: function (err) {
+							console.log(err);
+						}
+					});
+
 				},
-				error: function (response) {
-					console.log(response);
+				error: function (err) {
+					console.log(err);
 				}
 			});
 		}

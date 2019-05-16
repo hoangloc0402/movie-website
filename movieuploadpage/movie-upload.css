@@ -246,3 +246,10 @@ body {
 hr {
     margin: 1.5rem 3rem;
 }
+
+.series_name_search {
+    position: absolute;
+    width: 100%;
+    background: red;
+    z-index: 1000;
+}
