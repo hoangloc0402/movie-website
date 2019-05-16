@@ -38,13 +38,13 @@
 				data = [];
 				response = JSON.parse(response);
 				hasNext = response.has_next;
+				if (!hasNext) $('#next-button').attr('disabled', true);
 				$.each(response.data, function (idx, val) {
 					dataItem = [];
 					dataItem.push(val.user_id);
 					dataItem.push(val.user_name);
 					dataItem.push(val.user_email);
 					dataItem.push(val.user_joining_date);
-					dataItem.push(val.user_last_login);
 					dataItem.push(val.user_type);
 					dataItem.push(val.user_is_active);
 					data.push(dataItem);
@@ -78,11 +78,11 @@
 		$("#user-table-body tr").remove();
 		$.each(data, function (rowIndex, r) {
 			var row = $("<tr/>");
-			for (var i = 0; i < 5; i++) {
+			for (var i = 0; i < 4; i++) {
 				row.append($("<td/>").text(r[i]));
 			}
 			var inHtml = "";
-			switch (r[5]) {
+			switch (r[4]) {
 				case "root":
 					inHtml = "<td><select class='form-control' id='sel" + rowIndex + "' name='sellist1' disabled><option selected='selected'>root</option><option>admin</option><option>user</option></select></td>";
 					break;
@@ -95,7 +95,7 @@
 				default: break;
 			}
 			row.append(inHtml);
-			if (r[6] == 1) {
+			if (r[5] == 1) {
 				inHtml = "<td><input type='checkbox' id='check" + rowIndex + "'  value='' checked disabled></td>"
 			}
 			row.append(inHtml);
@@ -137,7 +137,6 @@
 		getData(page, per_page);
 		hasPrev = true;
 		$('#prev-button').removeAttr("disabled");
-		if (!hasNext) $('#next-button').attr('disabled', true);
 	})
 
 	$('#prev-button').click(function () {
