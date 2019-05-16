@@ -3,11 +3,12 @@
     $password = "";
     $hostname = "localhost";
     $dbname = "asgmt_movie"; 
-    $user_table = "user"; 
+    $table_user = "user"; 
     $db_connection = mysqli_connect($hostname, $username, $password, $dbname)
     or die("Unable to connect to MySQL");
     $selected = mysqli_select_db($db_connection, $dbname)
     or die("Could not select examples");
+    mysqli_set_charset($db_connection, 'UTF8');
 
     function execute($query_command){
         global $db_connection;
@@ -16,8 +17,8 @@
     }
 
     function get_all_user($page, $per_page){
-        global $user_table;
-        $query_result = execute("SELECT * FROM $user_table WHERE user_is_active=true LIMIT $page, $per_page");
+        global $table_user;
+        $query_result = execute("SELECT * FROM $table_user WHERE user_is_active=true LIMIT $page, $per_page");
         if (mysqli_num_rows($query_result) > 0) {
             $return_data = array();
             while($row = mysqli_fetch_assoc($query_result)) {
@@ -33,9 +34,9 @@
     }
 
     function get_user($user_id){
-        global $user_table;
+        global $table_user;
         $return_data = array();
-        $query_result = execute("SELECT * FROM $user_table WHERE user_id = \"$user_id\"");
+        $query_result = execute("SELECT * FROM $table_user WHERE user_id = \"$user_id\"");
         if (mysqli_num_rows($query_result) > 0) {
             $user = mysqli_fetch_assoc($query_result); 
             unset($user['user_password']);
@@ -49,9 +50,9 @@
     }
 
     function update_user_info($user_id, $user_profile_image){
-        global $user_table;
+        global $table_user;
         global $db_connection;
-        $success = execute("UPDATE $user_table SET user_profile_image = \"$user_profile_image\" WHERE user_id = \"$user_id\"");
+        $success = execute("UPDATE $table_user SET user_profile_image = \"$user_profile_image\" WHERE user_id = \"$user_id\"");
         if (!$success){
             http_response_code(500);
             return json_encode(array('is_success' => false, 'message' => 'Error occured while updating!'));
@@ -68,12 +69,12 @@
     }
 
     function deactive_user($user_id){
-        global $user_table;
+        global $table_user;
         global $db_connection;
-        $success = execute("UPDATE $user_table SET user_is_active = false WHERE user_id = \"$user_id\"");
+        $success = execute("UPDATE $table_user SET user_is_active = false WHERE user_id = \"$user_id\"");
         if (!$success){
             http_response_code(500);
-            return json_encode(array('is_success' => false, 'message' => 'Error occured while deleting!'));
+            return json_encode(array('is_success' => false, 'message' => 'Error occured while deleting user!'));
         }
         if (mysqli_affected_rows($db_connection) == 1) {
             http_response_code(200);

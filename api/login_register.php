@@ -3,11 +3,12 @@
     $password = "";
     $hostname = "localhost";
     $dbname = "asgmt_movie"; 
-    $user_table = "user"; 
+    $table_user = "user"; 
     $dbhandler = mysqli_connect($hostname, $username, $password, $dbname)
     or die("Unable to connect to MySQL");
     $selected = mysqli_select_db($dbhandler, $dbname)
     or die("Could not select examples");
+    mysqli_set_charset($db_connection, 'UTF8');
 
     function execute($query_command){
         global $dbhandler;
@@ -16,8 +17,8 @@
     }
 
     function login($email, $password){
-        global $user_table;
-        $query_result = execute("SELECT * FROM $user_table WHERE user_email = \"$email\"");
+        global $table_user;
+        $query_result = execute("SELECT * FROM $table_user WHERE user_email = \"$email\"");
         if (mysqli_num_rows($query_result) > 0) {
             $user = mysqli_fetch_assoc($query_result);
             if ($user{'password'} == $password){
@@ -36,15 +37,15 @@
     }
 
     function register($email, $password){
-        global $user_table;
+        global $table_user;
         global $db_connection;
-        $query_result = execute("SELECT * FROM $user_table WHERE user_email = \"$email\"");
+        $query_result = execute("SELECT * FROM $table_user WHERE user_email = \"$email\"");
         if (mysqli_num_rows($query_result) > 0) {
             http_response_code(409);
             return json_encode(array('is_success' => false, 'message' => "Email already exists"));
         } 
         else {
-            $success = execute("INSERT INTO $user_table (user_email, password) VALUES ('" . $email . "','" . $password . "')");
+            $success = execute("INSERT INTO $table_user (user_email, password) VALUES ('" . $email . "','" . $password . "')");
             if ($success) {
                 http_response_code(400);
                 return json_encode(array('is_success' => true, 'message' => "New account has been created"));
