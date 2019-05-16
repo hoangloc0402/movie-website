@@ -73,7 +73,7 @@ function getVideo($query_array, $only_first)
                         WHERE s.series_id = $id
                             AND v.video_is_active = TRUE 
                             AND s.series_is_active = TRUE 
-                        ORDER BY v.video_upload_time DESC 
+                        ORDER BY v.video_upload_time ASC 
                         LIMIT $offset, $temp_per_page";
     // echo($query_command);
     $result = mysqli_query($dbhandle, $query_command);

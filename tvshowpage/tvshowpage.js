@@ -153,8 +153,8 @@ var img_movie_rendered = false;
 				if (series_data) {
 					ass_per_page = series_data.series_expected_ep_count ? series_data.series_expected_ep_count : 20;
 					$.get(`/api/association.php?series_id=${series_id}&get_all=true&page=0&per_page=${ass_per_page}`, (data) => {
-						console.log(data)
 						data = JSON.parse(data);
+						console.log(data)
 						if (data && data.result && data.result.length) {
 							series_data.list_ep = data.result;
 							resolve(series_data);
