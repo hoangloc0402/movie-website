@@ -15,8 +15,8 @@
     <!-- Bootstrap CSS -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../import/bootstrap.min.css">
-    <link rel="stylesheet" href="movie-player.css">
-    <title>MovieWatch - Movie Player</title>
+    <link rel="stylesheet" href="user-manager.css">
+    <title>MovieUpload - Movie Upload</title>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="../favicon../favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -124,70 +124,43 @@
                             </li>
                             <li class="tag_cloud">
                                 <p>Tag Cloud</p>
-                                <button class="my_nav_tag">#drama</button>
-                                <button class="my_nav_tag">#romance</button>
-                                <button class="my_nav_tag">#thriller</button>
-                                <button class="my_nav_tag">#comedy</button>
-                                <button class="my_nav_tag">#documentary</button>
-                                <button class="my_nav_tag">#horror</button>
-                                <button class="my_nav_tag">#fiction</button>
-                                <button class="my_nav_tag">#adventure</button>
+                                <button class="my_nav_tag">#fmovie</button>
+                                <button class="my_nav_tag">#lover</button>
+                                <button class="my_nav_tag">#123movie</button>
+                                <button class="my_nav_tag">#onwatch</button>
+                                <button class="my_nav_tag">#series</button>
+                                <button class="my_nav_tag">#dramacool</button>
+                                <button class="my_nav_tag">#dramanice</button>
+                                <button class="my_nav_tag">#asian</button>
+                                <button class="my_nav_tag">#box</button>
+                                <button class="my_nav_tag">#animetv</button>
+                                <button class="my_nav_tag">#planet</button>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
             <div class="col-12 col-md-9 col-xl-8">
-                <div class="col-10 center-item upload-form">
-                    <h2 style="text-align: center;">Upload Movie Form</h2><br><br>
-                    <form>
-                        <div class="input-group mb-3">
-                            <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
-                                <span class="input-group-text">Video name</span>
-                            </div>
-                            <input type="text" id="video-name" class="col-sm-8 col-lg-8 col-xl-9 form-control">
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
-                                <span class="input-group-text">Video thumbnail</span>
-                            </div>
-                            <input type="text" id="thumbnail-upload-label"
-                                class="col-sm-8 col-lg-8 col-xl-9 form-control">
-                            <div class="input-group-append">
-                                <input type="file" id="thumbnail-upload" style="display:none" />
-                                <button class="btn btn-success" style="background-color: #db4a3f;"
-                                    id="upload-thumbnail-button" type="button">Browse</button>
-                            </div>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
-                                <span class="input-group-text">Video source</span>
-                            </div>
-                            <input type="text" id="video-upload-label" class="col-sm-8 col-lg-8 col-xl-9 form-control">
-                            <div class="input-group-append">
-                                <input type="file" id="video-upload" accept="video/*" style="display:none" />
-                                <button class="btn btn-success" style="background-color: #db4a3f;"
-                                    id="upload-video-button" type="button">Browse</button>
-                            </div>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
-                                <span class="input-group-text">Video episode</span>
-                            </div>
-                            <input type="number" min="0" step="1" id="video-episode"
-                                class="col-sm-8 col-lg-8 col-xl-9 form-control">
-                        </div>
-                        <div class="input-group mb-3">
-                            <button class="btn btn-success center-item" id="form-upload-button"
-                                style="background-color: #db4a3f;" type="button">Upload</button>
-                        </div>
-                    </form>
-
+                <br><br>
+                <h2 style="text-align: center;">User Management</h2>
+                <br>
+                <div class="table-responsive">
+                    <table class="table table-hover" id="user-table">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>User Name</th>
+                                <th>User Email</th>
+                                <th>Joining Date</th>
+                                <th>Last Login</th>
+                                <th>User Type</th>
+                                <th>Active</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body">
+                        </tbody>
+                    </table>
                 </div>
-
 
                 <div class="footer row">
                     <div class="col-12 col-md-2">
@@ -218,7 +191,7 @@
     <script src="../import/bootstrap.min.js"></script>
     <script src="../import/bootstrap-toolkit.min.js"></script>
 
-    <script src="movie-player.js"></script>
+    <script src="user-manager.js"></script>
     <script src="../import/click_callback.js"></script>
 
 </body>

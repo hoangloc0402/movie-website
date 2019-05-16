@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" itemscope itemtype="http://schema.org/WebPage">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link href="../import/header.css" rel="stylesheet" type="text/css">
+    <link href="../import/menu.css" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../import/bootstrap.min.css">
+    <link rel="stylesheet" href="movie-upload.css">
+    <title>MovieUpload - Movie Upload</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="../favicon../favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+    <link rel="manifest" href="../favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="../favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <div class="header-with-search">
+        <div class="container">
+            <div class="row my_header">
+                <div class="col-2 ml-3 ml-md-0 p-0" id="logo" onclick="return direct2Home()"></div>
+                <div class="d-none d-md-block col-md-5 col-lg-6">
+                    <span class="my_search_bar_icon">
+                        <i class="material-icons">search</i>
+                    </span>
+                    <form onsubmit="return direct2SearchPage()" class="my_form_search_bar">
+                        <input type="text" class="my_search_bar_input"
+                            placeholder="Search Movies, Drama and Anime..." />
+                    </form>
+                </div>
+                <div class="my_header_button_group col-9 col-md-5 col-lg-4 p-0">
+                    <button class="my_header_button col-4" onclick="return direct2Login()">
+                        <i class="material-icons">face</i>
+                        User
+                    </button>
+                    <button class="my_header_button col-4" onclick="return direct2Login()">
+                        <i class="material-icons">account_box</i>
+                        Sign In
+                    </button>
+                    <button class="my_header_button col-4" onclick="return direct2Signup()"><i
+                            class="material-icons">assignment</i>Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row flex-xl-nowrap">
+            <div class="col-12 col-md-3 col-xl-3 p-0 px-md-3">
+                <form class="bd-search d-flex align-items-center" onsubmit="return direct2SearchPage()">
+                    <input type="search" class="d-md-none form-control" id="search-input" placeholder="Search..."
+                        aria-label="Search for..." autocomplete="off" data-docs-version="4.3">
+                    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button"
+                        data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav"
+                        aria-expanded="false" aria-label="Toggle docs navigation"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img"
+                            focusable="false">
+                            <title>Menu</title>
+                            <path stroke="#db4a3f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
+                                d="M4 7h22M4 15h22M4 23h22" />
+                        </svg></button>
+                </form>
+
+                <nav class="bd-links collapse show" id="bd-docs-nav">
+                    <div class="bd-toc-item active">
+                        <a class="bd-toc-link active" href=""></a>
+                        <ul class="my_nav_list">
+                            <li class="my_nav_item">
+                                <a href="">Home
+                                    <i class="material-icons">home</i>
+                                </a>
+                            </li>
+                            <li class="my_nav_item">
+                                <a href="">My Show
+                                    <i class="material-icons">play_circle_filled</i>
+                                </a>
+                            </li>
+                            <li class="my_nav_item">
+                                <a href="">Popular Movie
+                                    <i class="material-icons">thumb_up</i>
+                                </a>
+                            </li>
+                            <li class="my_nav_item">
+                                <a href="">All Movies
+                                    <i class="material-icons">video_library</i>
+                                </a>
+                            </li>
+                            <li class="my_nav_item">
+                                <a href="">Watch Series
+                                    <i class="material-icons">theaters</i>
+                                </a>
+                            </li>
+                            <li class="my_nav_item">
+                                <a href="">Watch Animes
+                                    <i class="material-icons">view_carousel</i>
+                                </a>
+                            </li>
+                            <li class="my_nav_item">
+                                <a href="">Contact Us
+                                    <i class="material-icons">email</i>
+                                </a>
+                            </li>
+                            <li class="tag_cloud">
+                                <p>Tag Cloud</p>
+                                <button class="my_nav_tag">#drama</button>
+                                <button class="my_nav_tag">#romance</button>
+                                <button class="my_nav_tag">#thriller</button>
+                                <button class="my_nav_tag">#comedy</button>
+                                <button class="my_nav_tag">#documentary</button>
+                                <button class="my_nav_tag">#horror</button>
+                                <button class="my_nav_tag">#fiction</button>
+                                <button class="my_nav_tag">#adventure</button>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-12 col-md-9 col-xl-8">
+                <div class="col-10 center-item upload-form">
+                    <h2 style="text-align: center;">Upload Movie Form</h2><br><br>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
+                                <span class="input-group-text">Video name</span>
+                            </div>
+                            <input type="text" id="video-name" class="col-sm-8 col-lg-8 col-xl-9 form-control">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
+                                <span class="input-group-text">Video thumbnail</span>
+                            </div>
+                            <input type="text" id="thumbnail-upload-label"
+                                class="col-sm-8 col-lg-8 col-xl-9 form-control">
+                            <div class="input-group-append">
+                                <input type="file" id="thumbnail-upload" style="display:none" />
+                                <button class="btn btn-success" style="background-color: #db4a3f;"
+                                    id="upload-thumbnail-button" type="button">Browse</button>
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
+                                <span class="input-group-text">Video source</span>
+                            </div>
+                            <input type="text" id="video-upload-label" class="col-sm-8 col-lg-8 col-xl-9 form-control">
+                            <div class="input-group-append">
+                                <input type="file" id="video-upload" accept="video/*" style="display:none" />
+                                <button class="btn btn-success" style="background-color: #db4a3f;"
+                                    id="upload-video-button" type="button">Browse</button>
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="col-sm-4 col-lg-4 col-xl-3 input-group-prepend form-label">
+                                <span class="input-group-text">Video episode</span>
+                            </div>
+                            <input type="number" min="0" step="1" id="video-episode"
+                                class="col-sm-8 col-lg-8 col-xl-9 form-control">
+                        </div>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-success center-item" id="form-upload-button"
+                                style="background-color: #db4a3f;" type="button">Upload</button>
+                        </div>
+                    </form>
+
+                </div>
+
+
+                <div class="footer row">
+                    <div class="col-12 col-md-2">
+                        <a href="#">About Us</a><br>
+                        <span>Information about us</span>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <a href="#">Terms & Conditions</a><br>
+                        <span>What you can do and what not to do</span>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        <a href="#">Contact Us</a><br>
+                        <span>Get in touch with us</span>
+                    </div>
+                    <div class="col-12 col-md-5 ">
+                        <a href="#">LOGO</a><br>
+                        <span>All your favorite TV Shows & Movies in one place</span>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../import/jquery-3.1.1.slim.min.js"></script>
+    <script src="../import/popper.min.js"></script>
+    <script src="../import/bootstrap.min.js"></script>
+    <script src="../import/bootstrap-toolkit.min.js"></script>
+
+    <script src="movie-upload.js"></script>
+    <script src="../import/click_callback.js"></script>
+
+</body>
+
+</html>
