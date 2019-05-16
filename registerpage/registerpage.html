@@ -35,9 +35,6 @@
 <body>
    <div class="header-with-search" id="header-with-search" w3-include-html="../import/header.html">
    </div>
-   <script>
-      includeHTML("header-with-search", 0)
-   </script>
 
    <div class="container-fluid">
       <div class="row flex-xl-nowrap">
@@ -56,9 +53,7 @@
             </form>
 
             <nav class="bd-links collapse show" id="bd-docs-nav" w3-include-html="../import/category.html"></nav>
-            <script>
-               includeHTML("bd-docs-nav", 2)
-            </script>
+
          </div>
          <div class="col-12 col-md-9 col-xl-8">
             <div id="wrapper_bg" class="">
@@ -90,76 +85,14 @@
    <script src="../import/popper.min.js"></script>
    <script src="../import/bootstrap.min.js"></script>
    <script src="../import/bootstrap-toolkit.min.js"></script>
-
    <script src="registerpage.js"></script>
    <script src="../import/click_callback.js"></script>
-   <script>
+   <script> 
       if (isLoggedIn()) {
          includeHTML("header-with-search", 1)
       } else {
          includeHTML("header-with-search", 0)
       }
-   </script>
-   <script>
-      function validateSignUpForm() {
-      var form = document.forms["sign_up"];
-      var email = form["email"].value;
-      var password = form["password"].value;
-      var name = form["name"].value;
-      var cf_password = form["cf_password"].value
-      var res = true;
-      if (name == "") {
-         $('#name').css("background", "rgba(233, 30, 99, .2)");
-         res = false;
-      }
-      if (email == "") {
-         $('#email').css("background", "rgba(233, 30, 99, .2)");
-         res = false;
-      }
-      if (password == "") {
-         $('#password').css("background", "rgba(233, 30, 99, .2)");
-         res = false;
-      }
-      if (cf_password == "") {
-         $('#cf_password').css("background", "rgba(233, 30, 99, .2)");
-         res = false;
-      }
-      if (cf_password != password) {
-         $('#password').css("background", "rgba(233, 30, 99, .2)");
-         $('#cf_password').css("background", "rgba(233, 30, 99, .2)");
-         res = false;
-      }
-      return res;
-   }
-   </script>
-
-   <script>
-      $("#submit").click(function(event){
-         event.preventDefault();
-         if (validateSignUpForm()) {
-            $.ajax({
-               type: "POST",
-               url: '../api/login_register.php',
-               datatype: 'json',
-               data: JSON.stringify({
-                  'type': 'register',
-                  'display_name': $("#name").val(),
-                  'email': $("#email").val(),
-                  'password': $("#password").val()
-               }),
-               success: function (data) {
-                  data = JSON.parse(data)
-                  if (data["is_success"]) {
-                     window.location = "../loginpage/loginpage.html";
-                  }
-               },
-               error: function (e) {
-                  alert("Invalid account!")
-               }
-            });
-         }
-      }
-      );
    </script>
 </body>
 

@@ -126,7 +126,7 @@
             break;
         case 'POST':
             $param = json_decode(file_get_contents("php://input"));
-            if ($param->email && $param->password){
+            if (isset($param->email) && isset($param->password)){
                 if ($param->type=="login"){
                     echo login($param->email, $param->password);
                 } else {
@@ -136,10 +136,10 @@
             break;
         case 'PUT':
             $param = json_decode(file_get_contents("php://input"));
-            if ($param->email && $param->otp && $param->new_password){
+            if (isset($param->email) && isset($param->otp) && isset($param->new_password)){
                 echo reset_password($param->email, $param->otp, $param->new_password);
             }
-            else if ($param->email){
+            else if (isset($param->email)){
                 echo send_reset_password_email($param->email); 
             }
             break;

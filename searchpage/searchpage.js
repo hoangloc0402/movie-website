@@ -102,7 +102,11 @@ var img_movie_rendered = false;
 				}
 			})
 		})
-		$("#search-result").append(` for "${search_key}"`)
+		if (tag_key && tag_key !== "") {
+			$("#search-result").append(` for "${tag_key}"`)
+		} else {
+			$("#search-result").append(` for "${search_key}"`)
+		}
 		p.then((data) => {
 			list_movies = data.result;
 			render_slide();
@@ -129,9 +133,9 @@ var img_movie_rendered = false;
 		})
 
 		$(".my_nav_tag").each((idx, a) => {
-			$(a).click(()=>{
+			$(a).click(() => {
 				let tag = $(a).text().slice(1);
-				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`,"_self");
+				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`, "_self");
 			})
 		})
 	});
