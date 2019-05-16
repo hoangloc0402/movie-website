@@ -47,7 +47,7 @@
         else {
             $success = execute("INSERT INTO $table_user (user_email, password, user_name) VALUES ('" . $email . "','" . $password . "','" . $display_name. "')");
             if ($success) {
-                http_response_code(400);
+                http_response_code(200);
                 return json_encode(array('is_success' => true, 'message' => "New account has been created"));
             }
             else {
