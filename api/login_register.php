@@ -38,8 +38,29 @@
         }
     }
 
+    function check($email, $password, $display_name){
+        $len = strlen($password);
+        if ($len<6 || $len > 255){
+            return "Password length must be between 6 and 255";
+        }
+        $dotpos = strrpos($email, ".");
+        $atpos = strpos($email, "@");
+        if ($atpos < 1 || $dotpos - $atpos < 2) {
+            return "Email is invalid";
+        }
+        if(strlen($display_name) < 1 || strlen($display_name) > 100) {
+            return "Length of display name must be between 1 - 100";
+        }
+        return "ok";
+    }
+
     function register($email, $password, $display_name){
         global $table_user, $db_connection;
+        $mess = check($email, $password, $display_name);
+        if ($mess!="ok"){
+            http_response_code(400);
+            return json_encode(array('is_success' => false, 'message' => $mess));
+        }
         $query_result = execute("SELECT * FROM $table_user WHERE user_email = \"$email\"");
         if (mysqli_num_rows($query_result) > 0) {
             http_response_code(409);
