@@ -100,7 +100,7 @@
 			}
 			else inHtml = "<td><input type='checkbox' id='check" + rowIndex + "'  value='' disabled></td>"
 			row.append(inHtml);
-			row.append("<td><button type='button' uid='" + r[0] + "' class='btn btn-success edit-button'>Edit</button></td>");
+			row.append("<td><button type='button' style='background-color: #db4a3f;' uid='" + r[0] + "' class='btn btn-success edit-button'>Edit</button></td>");
 			$('#user-table-body').append(row);
 		});
 		$('.edit-button').each((idx, button) =>
