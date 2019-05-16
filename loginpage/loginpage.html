@@ -69,12 +69,12 @@
                      <h1>Login</h1>
                      <div class="form-login ilogin">
                         <h1>Log in to MovieWatch</h1> <br/>
-                        <form method='post'><input type='hidden' name='_csrf'
-                           value='5c9c36b6afcbe'>
-                        <input type='email' name='email' placeholder='Email' value=''>
-                        <input type='password' name='password' placeholder='Password'>
-                        <input type='checkbox' name='remember' value='1'> <span class="remmember">Remember me</span>
-                        <input type="submit" value="Sign in" />
+                        <form id="login" onsubmit="return validateLoginForm()" method="POST">
+                           <input type='hidden' name='_csrf' value='5c9c36b6afcbe'>
+                           <input type='email' name='email' id="email" placeholder='Email' value=''>
+                           <input type='password' name='password' id="password" placeholder='Password'>
+                           <input type='checkbox' name='remember' value='1'> <span class="remmember">Remember me</span>
+                           <input type="submit" id="submit" value="Sign in" />
                         </form>
                         <a class="link-forget" href="/forget.html">Forgot password?</a>
                      </div>
@@ -93,6 +93,49 @@
 
    <script src="loginpage.js"></script>
    <script src="../import/click_callback.js"></script>
+
+   <script>
+   function validateLoginForm() {
+     var form = document.forms["login"]
+     console.log(form)
+     var email = form["email"].value;
+     var password = form["password"].value;
+     if (email == "") {
+       alert("Email must not be empty");
+     }else
+     if (password == "") {
+       alert("Password must not be empty");
+     }
+   }
+   </script>
+
+   <script >
+      $("#submit").click(function(event){
+         event.preventDefault();
+         $.ajax({
+              type: "POST",
+              url: '../api/login_register.php',
+              datatype: 'json',
+              data: JSON.stringify({
+                  'type' : 'login',
+                  'email': $("#email").val(),
+                  'password': $("#password").val()
+              }),
+              success: function(data)
+              {   
+                  data = JSON.parse(data)
+                  console.log(data['is_success'])
+                  if (data["is_success"]){
+                     window.location = "../homepage/homepage.html"
+                  }
+               console.log(data)
+              },
+              error: function(e){
+                  console.log("error" + e);
+              }
+          });
+      });
+   </script>
 </body>
 
 </html>

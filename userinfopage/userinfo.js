@@ -23,7 +23,6 @@ $(document).ready(function(){
             user_id: 1
         },
         success: function(data) {
-            console.log(data['data'])
             $("#display_name").val(data['data']['user_name'])
             $("#email").val(data['data']['user_email'])
             $("#profileImage").attr('src', data['data']['user_profile_image'])
