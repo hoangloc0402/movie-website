@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" itemscope itemtype="http://schema.org/WebPage">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="../import/bootstrap.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="../loginpage/loginpage.css" />
+      <link rel="stylesheet" type="text/css" href="../userinfopage/userinfo.css" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link href="../import/header.css" rel="stylesheet" type="text/css">
+      <link href="../import/menu.css" rel="stylesheet" type="text/css">
+      <title>Reset Password</title>
+      <!-- Favicon -->
+      <link rel="apple-touch-icon" sizes="57x57" href="../favicon../favicon/apple-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+      <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+      <link rel="manifest" href="../favicon/manifest.json">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="../favicon/ms-icon-144x144.png">
+      <meta name="theme-color" content="#ffffff">
+      <script src="../import/common.js"></script>
+   </head>
+   <body>
+         <div class="header-with-search" id="header-with-search" w3-include-html="../import/header.html">
+         </div>
+         <script>
+            includeHTML("header-with-search",1)
+         </script>
+      <div class="container-fluid">
+         <div class="row flex-xl-nowrap">
+            <div class="col-12 col-md-3 col-xl-3 p-0 px-md-3">
+               <form class="bd-search d-flex align-items-center" onsubmit="return direct2SearchPage(this)">
+                  <input type="search" class="d-md-none form-control" id="search-input" placeholder="Search..."
+                     aria-label="Search for..." autocomplete="off" data-docs-version="4.3">
+                  <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button"
+                     data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false"
+                     aria-label="Toggle docs navigation">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                        viewBox="0 0 30 30" role="img">
+                        <title>Menu</title>
+                        <path stroke="#db4a3f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
+                           d="M4 7h22M4 15h22M4 23h22" />
+                     </svg>
+                  </button>
+               </form>
+               <nav class="bd-links collapse show" id="bd-docs-nav" w3-include-html="../import/category.html"></nav>
+               <script>
+                  includeHTML("bd-docs-nav", 2)
+               </script>
+            </div>
+            <div class="col-12 col-md-9 col-xl-8">
+               <div id="wrapper_bg" class="">
+                  <section id="wrapper" class="wrapper">
+                     <div id="main_bg" class="main">
+                        <h1>Reset Password</h1>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div class="form-login ilogin">
+                           <form id="reset" name="reset" method="post">
+                              <input type="text" name="code" id="code" placeholder="Verify code" value="">
+                              <input type="password" name="password" id="password" placeholder="New password" value="">
+                              <input type="password" name="newpassword" id="newpassword" placeholder="Retype your new password">
+                              <input type="submit" id="submit" value="Confirm" />
+                           </form>
+                        </div>
+                     </div>
+                  </section>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="../import/jquery-3.1.1.slim.min.js"></script>
+      <script src="../import/popper.min.js"></script>
+      <script src="../import/bootstrap.min.js"></script>
+      <script src="../import/bootstrap-toolkit.min.js"></script>
+      <script src="resetpage.js"></script>
+      <script src="../import/click_callback.js"></script>
+   </body>
+</html>
