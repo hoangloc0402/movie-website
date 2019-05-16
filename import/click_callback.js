@@ -93,3 +93,6 @@ if (isAdmin()) {
 } else {
 	includeHTML("bd-docs-nav", 3)
 }
+if ($("#footer_import").length) {
+	includeHTML("footer_import", 3)
+}
