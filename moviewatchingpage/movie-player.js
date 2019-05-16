@@ -1,4 +1,6 @@
 var comments = [];
+const user_id = "2";
+const is_admin = false;
 
 (function ($, viewport) {
 	// Bootstrap 4 Divs
@@ -36,20 +38,46 @@ var comments = [];
 		for (var i = 0; i < comments.length; i++) {
 			(function (ele) {
 				let img_url = ele.user_profile_image ? ele.user_profile_image : "/images/defaultAvatar.png"
-				let cmt = $(`<div class="comment" v-for="comment in comments">
+				let cmt = $(`<div id="${ele.comment_id}" class="comment" v-for="comment in comments">
 					<img alt="Avatar"  class="comment_profile" src="${img_url}" />
 					<h4>${ele.user_name} says</h4>
 					<p>${ele.comment_detail}</p>
 					<p class="comment-time">${ele.comment_post_time}</p>
 					</div>`);
 				$("#comments_list").append(cmt);
+				if (user_id === ele.user_id || is_admin) {
+					let i = $(`<i class="material-icons">delete</i>`);
+					$(i).attr("link", ele.comment_id);
+					$("#" + ele.comment_id).append(i);
+				}
 			})(comments[i])
 		}
+		$("#comments_list").find("i").each((i, ele)=> {
+			$(ele).off('click').click(()=>{
+				$.ajax({
+					url: `/api/comment.php?video_id=${video_id}`,
+					type: 'DELETE',
+					dataType: "json",
+					data: JSON.stringify({
+						comment_id: $(ele).attr("link")
+					}),
+					success: (data) => {
+						if (data.is_success) {
+							fetch_comment(true);
+						}
+					},
+					error: (err) => {
+						console.log(err)
+					}
+				})
+			})
+		})
 		if (focus) {
 			$([document.documentElement, document.body]).animate({
 				scrollTop: $("#comments_list").first().offset().top
 			}, 500);
 		}
+
 	}
 
 	function fetch_comment(focus) {
@@ -83,11 +111,9 @@ var comments = [];
 
 	$(document).ready(function () {
 		render_slide();
-		$("#prospects_form").submit(function(e) {
+		$("#prospects_form").submit(function (e) {
 			e.preventDefault();
 			let comment_detail = $("#post_comment").val();
-			// if ($param->video_id && $param->user_id && $param->comment_detail){
-			let user_id = "2";
 			$.ajax({
 				url: "/api/comment.php",
 				type: 'POST',
