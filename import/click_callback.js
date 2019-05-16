@@ -86,18 +86,20 @@ function saveObjectToCookie(d) {
 	}
 }
 
-if (isLoggedIn()) {
-	includeHTML("header-with-search", 1)
-} else {
-	includeHTML("header-with-search", 0)
-}
+console.log("islogin", (isLoggedIn()))
+console.log("isadmin", (isAdmin()))
+
 if (isAdmin()) {
+	includeHTML("header-with-search", 5)
 	includeHTML("bd-docs-nav", 4)
 } else if (isLoggedIn()) {
 	includeHTML("bd-docs-nav", 2)
+	includeHTML("header-with-search", 1)
 } else {
 	includeHTML("bd-docs-nav", 3)
+	includeHTML("header-with-search", 0)
 }
+
 if ($("#footer_import").length) {
 	includeHTML("footer_import", 4)
 }

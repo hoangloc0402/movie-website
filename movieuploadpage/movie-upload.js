@@ -139,10 +139,10 @@ const is_log_in = isLoggedIn();
 	$('#form-upload-button').click(function () {
 		if (checkInput()) {
 			video = {};
-			video["video_name"] = $('#video-name').val();
+			video["video_name"] = $("#is_series").val() === '1' ? $('#video-name').val() : $('#series_name').val();
 			video["video_thumbnail"] = ($('#thumbnail-upload-label').val() !== "" ? $('#thumbnail-upload-label').val(): null);
 			video["video_source"] = ($('#video-upload-label').val() !== "" ? $('#video-upload-label').val(): null);
-			video['video_episode'] = ($('#video-episode').val() !== "" ? $('#video-episode').val(): null);
+			video['video_episode'] = ($('#video-episode').val() !== "" ? $('#video-episode').val(): 1);
 
 			tags = [];
 			tags.push($('#series_tags').val())
@@ -151,7 +151,7 @@ const is_log_in = isLoggedIn();
 				series_uploader_id: user_id,
 				series_thumbnail: ($('#series_thumbnail').val() !== "" ? $('#series_thumbnail').val(): null),
 				series_tags: tags,
-				is_series: $("#is_series").val() === '0' ? "true" : "false",
+				is_series: $("#is_series").val() === '1' ? "true" : "false",
 				series_expected_ep_count: ($('#series_expected_ep_count').val() !== "" ? $('#series_expected_ep_count').val(): null),
 				series_rating: ($('#series_rating').val() !== "" ? $('#series_rating').val(): null),
 				series_description: ($('#series_description').val() !== "" ? $('#series_description').val(): null),
@@ -178,7 +178,11 @@ const is_log_in = isLoggedIn();
 						crossDomain: true,
 						dataType: "json",
 						success: function (data) {
-							console.log(data)
+							if ($("#is_series").val() === '1') {
+								window.open(`/tvshowpage/tvshowpage.html?series_id=${series_id}`, "_self");
+							} else {
+								window.open(`/moviewatchingpage/movie-player.html?video_id=${data.id}`, "_self");
+							}
 						},
 						error: function (err) {
 							console.log(err);

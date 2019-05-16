@@ -176,7 +176,6 @@ function insertVideo($data)
                     CURRENT_TIMESTAMP,
                     $video_episode,
                     '1');";
-    echo $sql_command;
     $result = mysqli_query($dbhandle, $sql_command);
 
     if (!$result) {
