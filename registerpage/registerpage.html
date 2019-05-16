@@ -120,21 +120,22 @@
       $("#sign_up").submit(function (event) {
          event.preventDefault();
          $.ajax({
-            type: "POST",
-            url: '../api/login_register.php',
-            datatype: 'json',
-            data: JSON.stringify({
-               'type': 'register',
-               'display_name': $("#name").val(),
-               'email': $("#email").val(),
-               'password': $("#password").val()
-            }),
-            success: function (data) {
-               data = JSON.parse(data)
-               console.log(data)
-               if (data["is_success"]) {
-                  window.location = "../homepage/homepage.html"
-               }
+              type: "POST",
+              url: '../api/login_register.php',
+              datatype: 'json',
+              data: JSON.stringify({
+                  'type' : 'register',
+                  'display_name': $("#name").val(),
+                  'email': $("#email").val(),
+                  'password': $("#password").val()
+              }),
+              success: function(data)
+              {   
+                  data = JSON.parse(data)
+                  console.log(data)
+                  if (data["is_success"]){
+                     window.location = "../homepage/homepage.html"
+                  }
                console.log(data)
             },
             error: function (e) {
