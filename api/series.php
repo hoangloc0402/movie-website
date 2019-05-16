@@ -10,7 +10,7 @@ $dbhandle = mysqli_connect($hostname, $username, $password, $dbname)
 
 $selected = mysqli_select_db($dbhandle, "asgmt_movie")
     or die("Could not select examples");
-
+mysqli_set_charset($dbhandle, 'UTF8');
 function returnSeries($row)
 {
     $obj = new stdClass();
@@ -99,7 +99,7 @@ function getSeries($query_string)
         http_response_code(400);
         exit();
     }
-    
+
     $arr = array();
     while ($row = mysqli_fetch_array($result)) {
         $obj = returnSeries($row);
@@ -239,7 +239,7 @@ function deleteVideo($query_string)
     }
 
     $id = $query_array{
-    "id"};
+        "id"};
 
     $query_command = "DELETE FROM $seriestable
                         WHERE $seriestable.series_id = $id";

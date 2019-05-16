@@ -11,6 +11,8 @@ $dbhandle = mysqli_connect($hostname, $username, $password, $dbname)
 $selected = mysqli_select_db($dbhandle, "asgmt_movie")
     or die("Could not select examples");
 
+mysqli_set_charset($dbhandle, 'UTF8');
+
 function returnVideo($row)
 {
     $obj = new stdClass();
