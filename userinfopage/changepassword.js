@@ -94,8 +94,8 @@
 					datatype: 'json',
 					data: JSON.stringify({
 						'new_password': $("#password").val(),
-						'email': email,
-						'otp': $("#code").val()
+						'user_id': email,
+						'odl_password': $("#code").val()
 					}),
 					success: function (data) {
 						data = JSON.parse(data)

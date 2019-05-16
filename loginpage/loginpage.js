@@ -79,7 +79,6 @@
 								user_id: data.user_id,
 								user_type: data.user_type
 							});
-							$("#inform")["0"].innerHTML = e["message"]
 							window.location = "../homepage/homepage.html";
 						}
 						else{
