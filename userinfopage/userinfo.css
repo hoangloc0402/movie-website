@@ -1,40 +1,84 @@
-.profile-pic {
-    max-width: 200px;
-    max-height: 200px;
+label.header {
+    font-size: 16px;
+    font-weight: 500;
+    width: 215px;
+    color: grey;
+    margin-right:10px;
+    text-align:justify;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: inline-block;
+    font-family: 'Nunito', sans-serif;
+}
+.link-change{
+    color: #db4a3f !important;
+    width: 100%;
     display: block;
+    margin: 20px 5px;
+    font-size: 14px;
+}
+input#image,{
+    padding:0 40px;
+    width:40%;
+    height:55px;
+    border: 1px solid #dadada;
+    color: grey;
+    text-align:justify;
+    outline: none;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight:normal;
+    font-family: 'Muli', sans-serif;
+    border-radius:30px;
+    -webkit-border-radius:30px;
+    -moz-border-radius:30px;
+    -o-border-radius:30px;
+    -ms-border-radius:30px; 
+}
+input#image:focus,input#store_name:focus, input#store_type:focus,input#owner_type:focus, input#website:focus,input#contact_number:focus,input#contact_email:focus  {
+    background-color:#f5f8fa !important;
+    border:1px solid #dadada;
+}
+input::-webkit-input-placeholder {
+color: grey;
+} 
+input:-moz-placeholder { /* Firefox 18- */
+color: grey;  
+} 
+input::-moz-placeholder {  /* Firefox 19+ */
+color: grey;  
+} 
+input:-ms-input-placeholder {  
+color: grey;  
 }
 
-.file-upload {
+.center {
+  margin: auto;
+  width: 50%;
+}
+
+#imageUpload
+{
     display: none;
 }
-.circle {
-    border-radius: 1000px !important;
-    overflow: hidden;
-    width: 128px;
-    height: 128px;
-    border: 8px solid rgba(255, 255, 255, 0.7);
-    position: absolute;
-    top: 72px;
-}
-img {
-    max-width: 100%;
-    height: auto;
-}
-.p-image {
-  position: absolute;
-  top: 167px;
-  right: 30px;
-  color: #666666;
-  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
-}
-.p-image:hover {
-  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
-}
-.upload-button {
-  font-size: 1.2em;
+
+#profileImage
+{
+    cursor: pointer;
 }
 
-.upload-button:hover {
-  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
-  color: #999;
+#profile-container {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+
+#profile-container img {
+    width: 120px;
+    height: 120px;
 }
