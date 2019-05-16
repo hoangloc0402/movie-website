@@ -36,7 +36,7 @@
 		return true;
 	}
 
-	function validateResetForm() {
+	function validateForm() {
 		var form = document.forms["change"];
 		var code = form["code"].value;
 		var password = form["password"].value;
@@ -87,21 +87,27 @@
 		});
 		$("#change").submit((e) => {
 			e.preventDefault();
-			if (validateResetForm()) {
+			var id = getCookie("user_id")
+			console.log(id)
+			if (id == ""){
+				$("#inform")["0"].innerHTML = "You havenot logged in"
+			}else
+			if (validateForm()) {
 				$.ajax({
 					type: "PUT",
-					url: '../api/login_register.php',
+					url: '../api/user.php',
 					datatype: 'json',
 					data: JSON.stringify({
 						'new_password': $("#password").val(),
-						'user_id': email,
-						'odl_password': $("#code").val()
+						'user_id': id,
+						'old_password': $("#code").val()
 					}),
 					success: function (data) {
 						data = JSON.parse(data)
+						console.log(data['is_success'])
 						if (data["is_success"]) {
 							alert(data['message'])
-							window.location = "../loginpage/loginpage.html";
+							window.location = "../userinfopage/userinfo.html";
 						}
 						else{
 							$("#inform")["0"].innerHTML = data['message']
