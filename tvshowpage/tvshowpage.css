@@ -141,6 +141,21 @@ body {
 	max-height: 80px;
 	min-height: 80px;
 }
+.add_btn {
+	display: none;
+	margin-left: 15px;
+	margin-bottom: 25px;
+	padding: 3px 7px;
+	background: rgb(167, 46, 150, 0.8);
+	color: #fff;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	
+}
+.add_btn:hover {
+	opacity: .6;
+	
+}
 
 .row-no-padding > [class*="col-"] {
     padding-left: 0 !important;

@@ -115,6 +115,33 @@ var img_movie_rendered = false;
 		img_movie_rendered = true;
 	}
 
+	function render_series() {
+		
+		if (isAdmin()) {
+			$("#add_btn").show();
+			$("#add_btn").click(()=>{
+				window.open(`/movieuploadpage/movie-upload.html?series_id=${series_data.series_id}`, "_self")
+			})
+		} else {
+			$("#add_btn").hide();
+		}
+		$("#movie-name").text(series_data.series_name);
+		$("#movies_name_div").text(series_data.series_name);
+		$("#movies_name_gallery").text(series_data.series_name + " - Episodes List");
+		$("#movies_poster").attr("src", series_data.series_thumbnail);
+		$("#movies_released_date").append(series_data.series_year);
+		$("#movies_imdb").append(parseFloat(series_data.series_rating / 10));
+		$("#movies_desp").text(series_data.series_description);
+		let tags = JSON.parse(series_data.series_tags);
+		for (var i = 0; i < tags.length; i++) {
+			if (i == 0)
+				$("#movies_tags").append(`<a href="/searchpage/searchpage.html?tag=${tags[i].toLowerCase()}">${tags[i]}</a>`)
+			else
+				$("#movies_tags").append(` / <a href="/searchpage/searchpage.html?tag=${tags[i].toLowerCase()}"> ${tags[i]}</a>`)
+		}
+
+	}
+
 	// 
 	// Execute only after document has fully loaded
 	$(document).ready(function () {
@@ -144,39 +171,13 @@ var img_movie_rendered = false;
 		p.then((data) => {
 			console.log(data);
 			series_data = data;
-			$("#movie-name").text(series_data.series_name);
-			$("#movies_name_div").text(series_data.series_name);
-			$("#movies_name_gallery").text(series_data.series_name + " - Episodes List");
-			$("#movies_poster").attr("src", series_data.series_thumbnail);
-			$("#movies_released_date").append(series_data.series_year);
-			$("#movies_imdb").append(parseFloat(series_data.series_rating / 10));
-			$("#movies_desp").text(series_data.series_description);
-			let tags = JSON.parse(series_data.series_tags);
-			for (var i = 0; i < tags.length; i++) {
-				if (i == 0)
-					$("#movies_tags").append(`<a href="/searchpage/searchpage.html?tag=${tags[i].toLowerCase()}">${tags[i]}</a>`)
-				else
-					$("#movies_tags").append(` / <a href="/searchpage/searchpage.html?tag=${tags[i].toLowerCase()}"> ${tags[i]}</a>`)
-			}
+			render_series();
 			render_slide();
 		}).catch((err) => {
 			console.log(err);
 			if (err.no_ep) {
 				series_data = err.series_data;
-				$("#movie-name").text(series_data.series_name);
-				$("#movies_name_div").text(series_data.series_name);
-				$("#movies_name_gallery").text(series_data.series_name + " - Episodes List");
-				$("#movies_poster").attr("src", series_data.series_thumbnail);
-				$("#movies_released_date").append(series_data.series_year);
-				$("#movies_imdb").append(parseFloat(series_data.series_rating / 10));
-				$("#movies_desp").text(series_data.series_description);
-				let tags = JSON.parse(series_data.series_tags);
-				for (var i = 0; i < tags.length; i++) {
-					if (i == 0)
-						$("#movies_tags").append(`<a href="/searchpage/searchpage.html?tag=${tags[i].toLowerCase()}">${tags[i]}</a>`)
-					else
-						$("#movies_tags").append(` / <a href="/searchpage/searchpage.html?tag=${tags[i].toLowerCase()}"> ${tags[i]}</a>`)
-				}
+				render_series();
 			} else {
 				window.open("/", "_self");
 			}
@@ -188,6 +189,8 @@ var img_movie_rendered = false;
 				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`,"_self");
 			})
 		})
+
+		
 
 		// console.log($('#gallery'))
 	});
