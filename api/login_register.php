@@ -24,6 +24,7 @@
             $user = mysqli_fetch_assoc($query_result);
             if ($user{'password'} == $password){
                 http_response_code(200);
+                execute("UPDATE $table_user SET user_last_login = CURRENT_TIMESTAMP WHERE user_email=\"$email\"");
                 return json_encode(array('is_success' => true, 'message' => "Login successfully!", 'user_type' => $user{'user_type'}, 'user_id' => $user{'user_id'}));
             }
             else {
@@ -144,7 +145,6 @@
             }
             break;
         case 'DELETE':
-            generate_OTP(4);
             // echo reset_password(2, 32935,"hahahaha");
             break;
 
