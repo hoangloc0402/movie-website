@@ -183,13 +183,55 @@ const is_log_in = isLoggedIn();
 			$("#video-name").text(data.video_name);
 			$(".related-video-panel").hide();
 		}
-		else $("#video-name").text(data.series_name + " Episode " + data.video_episode + ": " + data.video_name);
+		else {
+			$("#video-name").text(data.series_name + " Episode " + data.video_episode + ": " + data.video_name);
+			getRaltedVideos(data.video_series_id, data.video_id);
+		}
+		$('#player').attr('src', data.video_source);
 		$('#series-description').text(data.series_description);
 		$('#series-name-title').text(data.series_name);
 	}
 
-	function showSeries(data) {
-		
+	function showRelatedVideos(data, playingVideoId) {
+		data = data.result;
+		console.log(playingVideoId);
+		var count = 0;
+		for (i = 0; i < data.length; i++) {
+			video = data[i];
+			if (video.video_id != playingVideoId) {
+				childHtml =
+					"<div class='col-6 col-sm-3 col-md-12 recommend-panel' src='/moviewatchingpage/movie-player.html?video_id=" + video.video_id + "'>" +
+					"<div class='row related-video-padding'>" +
+					"<div class='col-12 col-md-6 recommend-panel-img'>" +
+					"<span class='movie-play-button'></span>" +
+					"</div>" +
+					"<div class='col-12 col-md-6 recommend-panel-text'>" +
+					video.series_name + " Episode " + video.video_episode + ": " + video.video_name +
+					"</div>" +
+					"</div>" +
+					"</div>";
+				$('.related-video-panel').append(childHtml);
+			}
+			if (i == 4) break;
+		}
+		$('.recommend-panel').each((idx, div) => {
+			$(div).click(function(){
+				window.location.href = $(div).attr('src');
+			})
+		})
+	}
+
+	function getRaltedVideos(id, playingVideoId) {
+		$.ajax({
+			type: "GET",
+			url: "/api/association.php?series_id=" + id + "&get_all",
+			success: function (response) {
+				showRelatedVideos(JSON.parse(response), playingVideoId);
+			},
+			error: function (response) {
+				console.log("err");
+			}
+		});
 	}
 
 	function getVideo(id) {
@@ -208,10 +250,10 @@ const is_log_in = isLoggedIn();
 	function getSeries(id) {
 		$.ajax({
 			type: "GET",
-			url: "/api/series.php?id=" + id,
+			url: "/api/association.php?series_id=" + id + "&get_first",
 			success: function (response) {
-				console.log(response);
-				showSeries(JSON.parse(response));
+				data = JSON.parse(response);
+				window.location.href = "/moviewatchingpage/movie-player.html?video_id=" + data.result[0].video_id;
 			},
 			error: function (response) {
 				console.log("err");
