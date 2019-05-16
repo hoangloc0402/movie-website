@@ -32,7 +32,7 @@
 		var form = document.forms["reset"];
 		var code = form["code"].value;
 		var password = form["password"].value;
-		var re_password = form["newpassword"].value;
+		var newpassword = form["newpassword"].value;
 		var res = true;
 		if (code == "") {
 			$('#code').css("background", "rgba(233, 30, 99, .2)");
@@ -42,7 +42,7 @@
 			$('#password').css("background", "rgba(233, 30, 99, .2)");
 			res = false;
 		}
-		if (re_password == "") {
+		if (newpassword == "") {
 			$('#newpassword').css("background", "rgba(233, 30, 99, .2)");
 			res = false;
 		}
@@ -77,8 +77,8 @@
 					url: '../api/login_register.php',
 					datatype: 'json',
 					data: JSON.stringify({
-						'password': $("#password").val()
-						'user_id': 1,
+						'new_password': $("#password").val()
+						'email': "thanh23497@gmail.com",
 						'otp': $("#code").val()
 					}),
 					success: function (data) {
