@@ -70,7 +70,7 @@
 						}
 					},
 					error: function (e) {
-						window.location = "../resetpage/resetpage.html";
+						alert("Bad request!")
 						console.log("error" + JSON.stringify(e));
 					}
 				});

@@ -51,7 +51,7 @@
 			alert("Password length must be longer than 6")
 			res = false;
 		}
-		if (!validatePassword(newpassword) == "") {
+		if (!validatePassword(newpassword)) {
 			$('#newpassword').css("background", "rgba(233, 30, 99, .2)");
 			alert("Password length must be longer than 6")
 			res = false;
