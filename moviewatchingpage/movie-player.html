@@ -151,10 +151,10 @@
                         <h2>Leave a comment below!</h2>
 
                         <div class="comments-form">
-                            <form @submit.prevent="handleSubmit">
+                            <form @submit.prevent="handleSubmit" id="prospects_form">
                                 <ul>
                                     <li>
-                                        <textarea placeholder="Comment" v-model="comment" required></textarea>
+                                        <textarea id="post_comment"  placeholder="Comment" v-model="comment" required></textarea>
                                     </li>
                                     <li>
                                         <input type="submit" value="Post &#9998;">

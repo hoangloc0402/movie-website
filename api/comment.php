@@ -21,7 +21,7 @@
         global $table_user;
         global $table_comment;
         global $db_connection;
-        $query_result = execute("SELECT * FROM $table_user JOIN $table_comment ON user_id = comment_user_id WHERE comment_video_id = \"$video_id\" AND user_is_active=true AND comment_is_active=true");
+        $query_result = execute("SELECT * FROM $table_user JOIN $table_comment ON user_id = comment_user_id WHERE comment_video_id = \"$video_id\" AND user_is_active=true AND comment_is_active=true ORDER BY comment_post_time DESC ");
         $return_data = array();
         if (mysqli_num_rows($query_result) > 0) {
             while($row = mysqli_fetch_assoc($query_result)) {
@@ -40,7 +40,7 @@
         global $table_comment;
         $success = execute("INSERT INTO $table_comment (comment_video_id, comment_user_id, comment_detail) VALUES ('" . $video_id . "','" . $user_id . "','" . $comment_detail . "')");
         if ($success) {
-            http_response_code(400);
+            http_response_code(201);
             return json_encode(array('is_success' => true, 'message' => "New comment has been saved"));
         }
         else {

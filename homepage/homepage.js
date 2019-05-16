@@ -125,7 +125,6 @@ var img_movie_rendered = false;
 		var gallery_width = $("#movies_content").width();
 
 		var card_width = gallery_width / gallery_col - 2 * gallery_margin;
-		// console.log("HERE", gallery_width, gallery_col, card_width, img_movie_rendered);
 		if (img_movie_rendered === false) {
 			img_movie_rendered = true;
 			$("#gallery").empty();
