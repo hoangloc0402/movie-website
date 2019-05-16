@@ -24,6 +24,11 @@ function direct2Signup() {
 	return false
 }
 
+function direct2Upload() {
+	window.open("../movieuploadpage/movie-upload.html", "_self")
+	return false
+}
+
 function setCookie(cname, cvalue, exdays) {
 	var d = new Date();
 	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
