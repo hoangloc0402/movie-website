@@ -35,6 +35,13 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="../favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const series_id = urlParams.get('series_id');
+    if (!series_id) {
+      window.open("/", "_self");
+    }
+  </script>
 </head>
 
 <body>

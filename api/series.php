@@ -44,7 +44,7 @@ function getOne($id)
     global $dbhandle;
     global $videotable;
     global $seriestable;
-    $query_command = "SELECT * FROM $seriestable s 
+    $query_command = "SELECT * FROM $seriestable s
                         WHERE s.series_id = $id
                             AND s.series_is_active = TRUE";
 
