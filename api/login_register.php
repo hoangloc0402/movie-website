@@ -29,12 +29,12 @@
             }
             else {
                 http_response_code(400);
-                return json_encode(array('is_success' => false, 'message' => "Wrong email or password (password!)"));
+                return json_encode(array('is_success' => false, 'message' => "Wrong email or password!"));
             }
         } 
         else {
             http_response_code(400);
-            return json_encode(array('is_success' => false, 'message' => "Wrong email or password (email!)"));
+            return json_encode(array('is_success' => false, 'message' => "Wrong email or password!"));
         }
     }
 
