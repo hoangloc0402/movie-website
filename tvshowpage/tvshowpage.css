@@ -138,6 +138,8 @@ body {
 	font-size: 18px;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	max-height: 80px;
+	min-height: 80px;
 }
 
 .row-no-padding > [class*="col-"] {
