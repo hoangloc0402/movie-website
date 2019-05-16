@@ -56,8 +56,7 @@
     }
 
     function update_user_info($user_id, $user_profile_image){
-        global $table_user;
-        global $db_connection;
+        global $table_user, $db_connection;
         $success = execute("UPDATE $table_user SET user_profile_image = \"$user_profile_image\" WHERE user_id = \"$user_id\"");
         if (!$success){
             http_response_code(500);
@@ -74,17 +73,18 @@
         }
     }
 
-    function deactive_user($user_id){
-        global $table_user;
-        global $db_connection;
-        $success = execute("UPDATE $table_user SET user_is_active = false WHERE user_id = \"$user_id\"");
+    function set_active_and_role($user_id, $user_is_active, $user_type){
+        global $table_user, $db_connection;
+        $active = true;
+        if ($user_is_active == "false"){$active = false;}
+        $success = execute("UPDATE $table_user SET user_type = \"$user_type\", user_is_active = \"$active\" WHERE user_id = \"$user_id\"");
         if (!$success){
             http_response_code(500);
-            return json_encode(array('is_success' => false, 'message' => 'Error occured while deleting user!'));
+            return json_encode(array('is_success' => false, 'message' => 'Error occured while setting!'));
         }
         if (mysqli_affected_rows($db_connection) == 1) {
             http_response_code(200);
-            return json_encode(array('is_success' => true, 'message' => 'User is deactived!'));
+            return json_encode(array('is_success' => true, 'message' => 'User role and type has been set!'));
         }
         else {
             http_response_code(400);
@@ -105,7 +105,11 @@
             }
             break;
         case 'POST':
-
+            $param = json_decode(file_get_contents("php://input"));
+            if ($param->user_id && $param->user_is_active && $param->user_type){
+                echo set_active_and_role($param->user_id, $param->user_is_active, $param->user_type);
+            }
+            break;
             break;
         case 'PUT':
             $param = json_decode(file_get_contents("php://input"));
@@ -114,11 +118,7 @@
             }
             break;
         case 'DELETE':
-            $param = json_decode(file_get_contents("php://input"));
-            if ($param->user_id){
-                echo deactive_user($param->user_id);
-            }
-            break;
+            
 
         default: echo "404 NOT FOUND!";
     }

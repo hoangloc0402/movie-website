@@ -99,7 +99,7 @@ function getSeries($query_string)
                         WHERE s.series_is_active = TRUE 
                             AND s.series_name LIKE \"%$q%\"
                             AND s.series_tags LIKE \"%$tag%\"
-                        ORDER BY s.series_created_date DESC 
+                        ORDER BY s.series_name ASC 
                         LIMIT $offset, $temp_per_page";
     $result = mysqli_query($dbhandle, $query_command);
 

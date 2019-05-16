@@ -36,6 +36,7 @@
 				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`,"_self");
 			})
 		})
+		
 	});
 	$(window).resize(
 		viewport.changed(function () {
