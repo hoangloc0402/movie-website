@@ -94,5 +94,5 @@ if (isAdmin()) {
 	includeHTML("bd-docs-nav", 3)
 }
 if ($("#footer_import").length) {
-	includeHTML("footer_import", 3)
+	includeHTML("footer_import", 4)
 }
