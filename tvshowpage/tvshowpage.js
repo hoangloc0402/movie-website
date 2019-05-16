@@ -1,164 +1,5 @@
 
 var series_data = {}
-// const movie =  {
-// 	movie_name: "Grey's Anatomy - Season 8",
-// 	src: "images/1.png",
-// 	released_date: "2011",
-// 	imdb: 7.7,
-// 	tag: [
-// 		{ g: "Drama", s: "#" },
-// 		{ g: "Romance", s: "#" }
-// 	],
-// 	description: "In this season, challenges keep coming. Loyalties will be tested, relationships will be strained and everyone’s future will hang in the balance.But no matter how hard life is, the doctors of Seattle Grace know they can always lean on one another.",
-// 	list_ep: [
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 1
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 2
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 3
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 4
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 5
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 6
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 7
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 8
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 9
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 10
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 11
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 12
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 13
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 14
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 15
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 18,
-// 			ep: 16
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 17
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 18
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 19
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 20
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 21
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 22
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 23
-// 		},
-// 		{
-// 			href: "../moviewatchingpage/movie-player.html",
-// 			name: "Flight",
-// 			season: 8,
-// 			ep: 24
-// 		},
-
-// 	]
-// }
-
 
 var img_movie_rendered = false;
 
@@ -291,11 +132,11 @@ var img_movie_rendered = false;
 							series_data.list_ep = data.result;
 							resolve(series_data);
 						} else {
-							reject();
+							reject({no_ep: true, series_data: series_data});
 						}
 					})
 				} else {
-					reject();
+					reject({return_home: true});
 				}
 			})
 		})
@@ -320,6 +161,25 @@ var img_movie_rendered = false;
 			render_slide();
 		}).catch((err) => {
 			console.log(err);
+			if (err.no_ep) {
+				series_data = err.series_data;
+				$("#movie-name").text(series_data.series_name);
+				$("#movies_name_div").text(series_data.series_name);
+				$("#movies_name_gallery").text(series_data.series_name + " - Episodes List");
+				$("#movies_poster").attr("src", series_data.series_thumbnail);
+				$("#movies_released_date").append(series_data.series_year);
+				$("#movies_imdb").append(parseFloat(series_data.series_rating / 10));
+				$("#movies_desp").text(series_data.series_description);
+				let tags = JSON.parse(series_data.series_tags);
+				for (var i = 0; i < tags.length; i++) {
+					if (i == 0)
+						$("#movies_tags").append(`<a href="/searchpage/searchpage.html?tag=${tags[i].toLowerCase()}">${tags[i]}</a>`)
+					else
+						$("#movies_tags").append(` / <a href="/searchpage/searchpage.html?tag=${tags[i].toLowerCase()}"> ${tags[i]}</a>`)
+				}
+			} else {
+				window.open("/", "_self");
+			}
 		})
 
 		$(".my_nav_tag").each((idx, a) => {

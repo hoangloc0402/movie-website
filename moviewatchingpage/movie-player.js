@@ -15,6 +15,7 @@ const is_log_in = isLoggedIn();
 	viewport.use('bs4', bootstrapDivs);
 
 	var video_id;
+	var is_series;
 
 	var getUrlParameter = function getUrlParameter(sParam) {
 		var sPageURL = window.location.search.substring(1),
@@ -168,7 +169,6 @@ const is_log_in = isLoggedIn();
 		})
 		fetch_comment(false);
 		if (!isLoggedIn()) {
-			console.log("not log in")
 			$("#prospects_form :input").prop("disabled", true);
 			$("#prospects_form :input").css("opacity", .3);
 			$("#comment_h2").text("You must sign in to leave a comment");
@@ -177,13 +177,13 @@ const is_log_in = isLoggedIn();
 		$('#delete-confirm-button').click(function(){			
 			$.ajax({
 				type: "DELETE",
-				url: "/api/video.php?id=" + video_id,
+				url: "/api/video.php?id=" + video_id +"&is_series=" + is_series,
 				success: function (response) {
 					console.log(response);
 					window.location.href = "/";
 				},
 				error: function (response) {
-					console.log("err");
+					console.log(response);
 				}
 			});
 		})
@@ -196,6 +196,7 @@ const is_log_in = isLoggedIn();
 
 	function showVideo(data) {
 		video_id = data.video_id;
+		is_series = data.is_series;
 		if (data.is_series == 0) {
 			$("#video-name").text(data.video_name);
 			$(".related-video-panel").hide();

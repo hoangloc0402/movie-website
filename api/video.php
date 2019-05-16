@@ -22,7 +22,10 @@ function returnVideo($row)
         'video_name'};
     $obj->video_series_id = $row{
         'video_series_id'};
-    $obj->video_thumbnail = is_null($row{'video_thumbnail'}) ? $row{'series_thumbnail'} : $row{'video_thumbnail'};
+    $obj->video_thumbnail = is_null($row{
+        'video_thumbnail'}) ? $row{
+        'series_thumbnail'} : $row{
+        'video_thumbnail'};
     $obj->video_source = $row{
         'video_source'};
     $obj->video_uploader_id = $row{
@@ -254,11 +257,19 @@ function deleteVideo($query_string)
         exit();
     }
 
-    $id = $query_array{"id"};
+    if (!array_key_exists("is_series", $query_array)) {
+        http_response_code(400);
+        echo json_encode(array("message" => "You have to provide if this is a movie or series."));
+        exit();
+    }
 
-    $query_command = "DELETE FROM $videotable
-                        WHERE $videotable.video_id = $id"; 
+    $id = $query_array{
+        "id"};
+    $is_series = $query_array{
+        "is_series"};
 
+    $query_command = "UPDATE $videotable SET $videotable.video_is_active = 0
+                        WHERE $videotable.video_id = $id";
     $result = mysqli_query($dbhandle, $query_command);
 
     if (!$result) {
@@ -266,6 +277,15 @@ function deleteVideo($query_string)
         echo json_encode(array("message" => "Something when wrong."));
         exit();
     } else {
+
+        if (!$is_series) {
+            $query_command_1 = "UPDATE $seriestable s
+                            JOIN $videotable v ON s.series_id = v.video_series_id
+                            SET s.series_is_active = 0
+                            WHERE v.video_id = $id";
+            $result_1 = mysqli_query($dbhandle, $query_command_1);
+        }
+
         $resp = new stdClass();
         $resp->id = $id;
         $resp->message = "Deleted";
