@@ -42,39 +42,17 @@
       window.open("/", "_self");
     }
   </script>
+  <script src="../import/common.js"></script>
 </head>
 
 <body>
 
-  <div class="header-with-search">
-    <div class="container">
-      <div class="row my_header">
-        <div class="col-2 ml-3 ml-md-0 p-0" id="logo" onclick="return direct2Home()"></div>
-        <div class="d-none d-md-block col-md-5 col-lg-6">
-          <span class="my_search_bar_icon">
-            <i class="material-icons">search</i>
-          </span>
-          <form onsubmit="return direct2SearchPage(this)" class="my_form_search_bar">
-            <input type="text" class="my_search_bar_input" placeholder="Search Movies, Drama and Anime..." />
-          </form>
-        </div>
-        <div class="my_header_button_group col-9 col-md-5 col-lg-4 p-0">
-          <button class="my_header_button col-4" onclick="return direct2Login()">
-            <i class="material-icons">face</i>
-            User
-          </button>
-          <button class="my_header_button col-4" onclick="return direct2Login()">
-            <i class="material-icons">account_box</i>
-            Sign In
-          </button>
-          <button class="my_header_button col-4" onclick="return direct2Signup()">
-            <i class="material-icons">assignment</i>
-            Sign Up
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="header-with-search" id="header-with-search" w3-include-html="../import/header.html">
+   </div>
+   <script>
+      includeHTML("header-with-search",1)
+   </script>
+
   <div class="container-fluid">
     <div class="row flex-xl-nowrap">
       <div class="col-12 col-md-3 col-xl-3 p-0 px-md-3">
@@ -91,59 +69,10 @@
             </svg></button>
         </form>
 
-        <nav class="bd-links collapse show" id="bd-docs-nav">
-          <div class="bd-toc-item active">
-            <a class="bd-toc-link active" href=""></a>
-            <ul class="my_nav_list">
-              <li class="my_nav_item">
-                <a href="">Home
-                  <i class="material-icons">home</i>
-                </a>
-              </li>
-              <li class="my_nav_item">
-                <a href="">My Show
-                  <i class="material-icons">play_circle_filled</i>
-                </a>
-              </li>
-              <li class="my_nav_item">
-                <a href="">Popular Movie
-                  <i class="material-icons">thumb_up</i>
-                </a>
-              </li>
-              <li class="my_nav_item">
-                <a href="">All Movies
-                  <i class="material-icons">video_library</i>
-                </a>
-              </li>
-              <li class="my_nav_item">
-                <a href="">Watch Series
-                  <i class="material-icons">theaters</i>
-                </a>
-              </li>
-              <li class="my_nav_item">
-                <a href="">Watch Animes
-                  <i class="material-icons">view_carousel</i>
-                </a>
-              </li>
-              <li class="my_nav_item">
-                <a href="">Contact Us
-                  <i class="material-icons">email</i>
-                </a>
-              </li>
-              <li class="tag_cloud">
-                <p>Tag Cloud</p>
-                <button class="my_nav_tag">#drama</button>
-                <button class="my_nav_tag">#romance</button>
-                <button class="my_nav_tag">#thriller</button>
-                <button class="my_nav_tag">#comedy</button>
-                <button class="my_nav_tag">#documentary</button>
-                <button class="my_nav_tag">#horror</button>
-                <button class="my_nav_tag">#fiction</button>
-                <button class="my_nav_tag">#adventure</button>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <nav class="bd-links collapse show" id="category" w3-include-html="../import/category.html"></nav>
+        <script>
+           includeHTML("category", 2)
+        </script>
       </div>
       <div class="col-12 col-md-9 col-xl-8" id="movies_content">
         <div class="big-block" id="movie-name"></div>
