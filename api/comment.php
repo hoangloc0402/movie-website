@@ -70,9 +70,10 @@
     
     switch ($_SERVER['REQUEST_METHOD']){
         case 'GET': 
-            $param = json_decode(file_get_contents("php://input"));
-            if ($param->video_id){
-                echo get_comment($param->video_id);
+            parse_str($_SERVER['QUERY_STRING'], $param );
+            if (array_key_exists("video_id", $param)){
+                echo get_comment($param{
+                    "video_id"});
             }
             break;
         case 'POST':
@@ -92,4 +93,3 @@
 
         default: echo "404 NOT FOUND!";
     }
-?>
