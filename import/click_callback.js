@@ -10,6 +10,10 @@ function direct2Login(){
 	window.open("../loginpage/loginpage.html","_self")
 	return false
 }
+function direct2UserInfo(){     
+	window.open("../userinfopage/userinfo.html","_self")
+	return false
+}
 function direct2Signup(){     
 	window.open("../registerpage/registerpage.html","_self")
 	return false
