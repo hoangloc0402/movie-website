@@ -14,6 +14,8 @@ const is_log_in = isLoggedIn();
 	};
 	viewport.use('bs4', bootstrapDivs);
 
+	var video_id;
+
 	var getUrlParameter = function getUrlParameter(sParam) {
 		var sPageURL = window.location.search.substring(1),
 			sURLVariables = sPageURL.split('&'),
@@ -171,6 +173,20 @@ const is_log_in = isLoggedIn();
 			$("#prospects_form :input").css("opacity", .3);
 			$("#comment_h2").text("You must sign in to leave a comment");
 		}
+
+		$('#delete-confirm-button').click(function(){			
+			$.ajax({
+				type: "DELETE",
+				url: "/api/video.php?id=" + video_id,
+				success: function (response) {
+					console.log(response);
+					window.location.href = "/";
+				},
+				error: function (response) {
+					console.log("err");
+				}
+			});
+		})
 	});
 	$(window).resize(
 		viewport.changed(function () {
@@ -179,6 +195,7 @@ const is_log_in = isLoggedIn();
 	);
 
 	function showVideo(data) {
+		video_id = data.video_id;
 		if (data.is_series == 0) {
 			$("#video-name").text(data.video_name);
 			$(".related-video-panel").hide();
@@ -190,11 +207,11 @@ const is_log_in = isLoggedIn();
 		$('#player').attr('src', data.video_source);
 		$('#series-description').text(data.series_description);
 		$('#series-name-title').text(data.series_name);
+		$('#series-name-title').attr('href', '/tvshowpage/tvshowpage.html?series_id=' + data.video_series_id);
 	}
 
 	function showRelatedVideos(data, playingVideoId) {
 		data = data.result;
-		console.log(playingVideoId);
 		var count = 0;
 		for (i = 0; i < data.length; i++) {
 			video = data[i];
@@ -215,7 +232,7 @@ const is_log_in = isLoggedIn();
 			if (i == 4) break;
 		}
 		$('.recommend-panel').each((idx, div) => {
-			$(div).click(function(){
+			$(div).click(function () {
 				window.location.href = $(div).attr('src');
 			})
 		})
@@ -268,11 +285,8 @@ const is_log_in = isLoggedIn();
 		} else if ($.isNumeric(getUrlParameter('series_id'))) {
 			getSeries(getUrlParameter('series_id'));
 		}
-
 	}
 
 	initSeries();
-
-	$('#player').attr('src', "https://www.youtube.com/embed/SFQntgwXIEQ");
 
 })(jQuery, ResponsiveBootstrapToolkit);
