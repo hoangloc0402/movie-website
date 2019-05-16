@@ -113,7 +113,7 @@
 			jsonObj.push(item);
 			jsonString = JSON.stringify(jsonObj);
 
-			console.log(jsonString);
+			// console.log(jsonString);
 
 			$.ajax({
 				type: "POST",
@@ -122,7 +122,6 @@
 				data: jsonString,
 				crossDomain: true,
 				dataType: "json",
-				//if received a response from the server
 				success: function (response) {
 					console.log(response);
 				},

@@ -144,23 +144,34 @@
                 <br><br>
                 <h2 style="text-align: center;">User Management</h2>
                 <br>
-                <div class="table-responsive">
-                    <table class="table table-hover" id="user-table">
-                        <thead>
-                            <tr>
-                                <th>User ID</th>
-                                <th>User Name</th>
-                                <th>User Email</th>
-                                <th>Joining Date</th>
-                                <th>Last Login</th>
-                                <th>User Type</th>
-                                <th>Active</th>
-                            </tr>
-                        </thead>
-                        <tbody id="user-table-body">
-                        </tbody>
-                    </table>
+                <div>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="user-table">
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>User Name</th>
+                                    <th>User Email</th>
+                                    <div class="d-md-none">
+                                        <th>Joining Date</th>
+                                    </div>
+                                    <div class="d-md-none\">
+                                        <th>Last Login</th>
+                                    </div>
+                                    <th>User Type</th>
+                                    <th>Active</th>
+                                </tr>
+                            </thead>
+                            <tbody id="user-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="input-group mb-3">
+                        <button class="btn btn-success center-item" id="form-upload-button" type="button">Prev</button>
+                        <button class="btn btn-success center-item" id="form-upload-button" type="button">Next</button>
+                    </div>
                 </div>
+
 
                 <div class="footer row">
                     <div class="col-12 col-md-2">
