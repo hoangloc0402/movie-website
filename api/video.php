@@ -35,6 +35,10 @@ function returnVideo($row)
         'series_name'};
     $obj->series_uploader_id = $row{
         'series_uploader_id'};
+    $obj->series_description = $row{
+        'series_description'};
+    $obj->is_series = $row{
+        'is_series'};
 
     return $obj;
 }

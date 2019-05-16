@@ -98,6 +98,7 @@
 			if (r[5] == 1) {
 				inHtml = "<td><input type='checkbox' id='check" + rowIndex + "'  value='' checked disabled></td>"
 			}
+			else inHtml = "<td><input type='checkbox' id='check" + rowIndex + "'  value='' disabled></td>"
 			row.append(inHtml);
 			row.append("<td><button type='button' uid='" + r[0] + "' class='btn btn-success edit-button'>Edit</button></td>");
 			$('#user-table-body').append(row);
