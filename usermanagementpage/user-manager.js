@@ -9,6 +9,11 @@
 	};
 	viewport.use('bs4', bootstrapDivs);
 
+	var hasNext = false;
+	var hasPrev = false;
+	var page = 0;
+	var per_page = 3;
+
 	var getUrlParameter = function getUrlParameter(sParam) {
 		var sPageURL = window.location.search.substring(1),
 			sURLVariables = sPageURL.split('&'),
@@ -24,13 +29,15 @@
 		}
 	};
 
-	function getData() {
+
+	function getData(page, per_page) {
 		$.ajax({
 			type: "GET",
-			url: "/api/user.php?page=0&per_page=5",
+			url: "/api/user.php?page=" + page + "&per_page=" + per_page,
 			success: function (response) {
 				data = [];
 				response = JSON.parse(response);
+				hasNext = response.has_next;
 				$.each(response.data, function (idx, val) {
 					dataItem = [];
 					dataItem.push(val.user_id);
@@ -68,7 +75,7 @@
 	}
 
 	function updateTableContent(data) {
-
+		$("#user-table-body tr").remove();
 		$.each(data, function (rowIndex, r) {
 			var row = $("<tr/>");
 			for (var i = 0; i < 5; i++) {
@@ -107,7 +114,6 @@
 					$('#check' + idx).attr("disabled", true);
 					$(this).text('Edit');
 
-					//ajax post code here
 					item = {};
 
 					item["user_id"] = parseInt($(button).attr('uid'));
@@ -126,6 +132,31 @@
 		);
 	}
 
-	getData();
+	$('#next-button').click(function () {
+		page += 1;
+		getData(page, per_page);
+		hasPrev = true;
+		$('#prev-button').removeAttr("disabled");
+		if (!hasNext) $('#next-button').attr('disabled', true);
+	})
+
+	$('#prev-button').click(function () {
+		page -= 1;
+		getData(page, per_page);
+		if (page == 0) {
+			hasPrev = false;
+			$('#prev-button').attr('disabled', true);
+		}
+		hasNext = true;
+		$('#next-button').removeAttr('disabled');
+	})
+
+	function init() {
+		getData(page, per_page);
+		$('#prev-button').attr('disabled', true);
+		if (!hasNext) $('next-button').attr('disabled', true);
+	}
+
+	init();
 
 })(jQuery, ResponsiveBootstrapToolkit);
