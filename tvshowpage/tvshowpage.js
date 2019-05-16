@@ -310,16 +310,21 @@ var img_movie_rendered = false;
 			let tags = JSON.parse(series_data.series_tags);
 			for (var i = 0; i < tags.length; i++) {
 				if (i == 0)
-					$("#movies_tags").append(`<a href="#">${tags[i]}</a>`)
+					$("#movies_tags").append(`<a href="/searchpage/searchpage.html?tag=${tags[i].toLowerCase()}">${tags[i]}</a>`)
 				else
-					$("#movies_tags").append(` / <a href="#"> ${tags[i]}</a>`)
+					$("#movies_tags").append(` / <a href="/searchpage/searchpage.html?tag=${tags[i].toLowerCase()}"> ${tags[i]}</a>`)
 			}
 			render_slide();
 		}).catch((err) => {
 			console.log(err);
 		})
 
-
+		$(".my_nav_tag").each((idx, a) => {
+			$(a).click(()=>{
+				let tag = $(a).text().slice(1);
+				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`,"_self");
+			})
+		})
 
 		// console.log($('#gallery'))
 	});

@@ -150,12 +150,10 @@ var img_movie_rendered = false;
 				$(arr[i]).width(card_width)
 			}
 		}
-
 	}
 
 	function loadPage() {
 		var p = new Promise((resolve, reject) => {
-			console.log(`/api/video.php?page=${page}&per_page=${per_page}`);
 			$.get(`/api/video.php?page=${page}&per_page=${per_page}`, (data) => {
 				data = JSON.parse(data);
 				console.log(data)
@@ -200,6 +198,13 @@ var img_movie_rendered = false;
 	// Execute only after document has fully loaded
 	$(document).ready(function () {
 		loadPage();
+
+		$(".my_nav_tag").each((idx, a) => {
+			$(a).click(()=>{
+				let tag = $(a).text().slice(1);
+				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`,"_self");
+			})
+		})
 	});
 
 	// Execute code each time window size changes

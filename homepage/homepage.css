@@ -181,6 +181,7 @@ body {
 }
 
 .page-numbers {
+    display: none;
 	box-sizing: border-box;
 	padding: 11px;
 	margin: 0px 5px;

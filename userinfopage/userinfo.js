@@ -30,4 +30,11 @@ $(document).ready(function(){
         }
 
     });
+
+    $(".my_nav_tag").each((idx, a) => {
+        $(a).click(()=>{
+            let tag = $(a).text().slice(1);
+            window.open(`/searchpage/searchpage.html?q=&tag=${tag}`,"_self");
+        })
+    })
 });
