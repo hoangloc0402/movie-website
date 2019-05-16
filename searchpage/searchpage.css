@@ -133,9 +133,11 @@ body {
 .movie-title {
 	display: block;
 	max-width: 135px;
-	white-space: nowrap; 
 	overflow: hidden;
 	text-overflow: ellipsis;
+	min-height: 3rem;
+    line-height: 1.5rem;
+    max-height: 3rem;
 }
 
 .row-no-padding > [class*="col-"] {
