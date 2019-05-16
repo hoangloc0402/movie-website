@@ -46,9 +46,9 @@
 	$(document).ready(function () {
 		render_slide();
 		$(".my_nav_tag").each((idx, a) => {
-			$(a).click(()=>{
+			$(a).click(() => {
 				let tag = $(a).text().slice(1);
-				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`,"_self");
+				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`, "_self");
 			})
 		})
 	});
@@ -74,31 +74,46 @@
 	$('#upload-thumbnail-button').click(function () { $('#thumbnail-upload').click(); });
 
 	function checkInput() {
-		if ($("#video-name").val().length > 255 || $("#video-name").val().length == 0) {
+		let res = true;
+		if ($("#series_name").val().length > 255 || $("#series_name").val().length == 0) {
+			$("#series_name").val("");
+			$("#series_name").attr("placeholder", "Series name 1-255 characters");
+			res = false;
+		}
+		if (($("#video-name").val().length > 255 || $("#video-name").val().length == 0) && ($("#is_series").val() === '0')) {
 			$("#video-name").val("");
 			$("#video-name").attr("placeholder", "Video name 1-255 characters");
-			return false;
+			res = false;
 		}
 		if ($("#thumbnail-upload-label").val() == "") {
 			$("#thumbnail-upload-label").attr("placeholder", "Upload thumbnail");
-			return false;
+			res = false;
 		}
 		if ($("#video-upload-label").val() == "") {
 			$("#video-upload-label").attr("placeholder", "Upload video");
-			return false;
+			res = false;
 		}
-		if ($("#video-episode").val() == "") {
+		if ($("#video-episode").val() == "" && $("#is_series").val() === '0') {
 			$("#video-episode").attr("placeholder", "Video episode must not be empty");
-			return false;
+			res = false;
 		}
 		else
 			if (!/^\d*$/.test($('#video-episode').val())) {
 				$("#video-episode").val("");
 				$("#video-episode").attr("placeholder", "Wrong Integer number format");
-				return false;
+				res = false;
 			}
-		return true;
+		return res;
 	}
+
+	$('#is_series').change(() => {
+		if ($("#is_series").val() === '0') {
+			// Hide all series stuff
+			$(".video_stuff").fadeOut();
+		} else {
+			$(".video_stuff").fadeIn();
+		}
+	})
 
 	$('#form-upload-button').click(function () {
 		if (checkInput()) {
