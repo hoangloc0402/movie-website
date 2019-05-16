@@ -92,6 +92,31 @@
         }
     }
 
+    function change_password($user_id, $old_password, $new_pasword){
+        global $table_user, $db_connection;
+        $query_result = execute("SELECT * FROM $table_user WHERE user_id = \"$user_id\"");
+        if (mysqli_num_rows($query_result) > 0) {
+            $user = mysqli_fetch_assoc($query_result);
+            if ($user{'password'} == $old_password){
+                http_response_code(200);
+                execute("UPDATE $table_user SET password = $new_pasword WHERE user_id=\"$user_id\"");
+                return json_encode(array('is_success' => true, 'message' => "Success"));
+            }
+            else {
+                http_response_code(400);
+                return json_encode(array('is_success' => false, 'message' => "Incorrect password!"));
+            }
+        } 
+        if (mysqli_affected_rows($db_connection) > 0) {
+            http_response_code(200);
+            return json_encode(array('is_success' => true, 'message' => 'Success'));
+        }
+        else {
+            http_response_code(400);
+            return json_encode(array('is_success' => false, 'message' => 'No information is changed!'));
+        }
+    }
+
     function check_password($password){
         $len = strlen($password);
         if ($len>=6 && $len <=255){
@@ -143,8 +168,8 @@
         case 'PUT':
             $param = json_decode(file_get_contents("php://input"));
             if (isset($param->user_id)){
-                if (isset($param->password)){
-                    echo update_password($param->user_id, $param->password);
+                if ($param->old_password && $param->new_password){
+                    echo change_password($param->user_id, $param->old_password, $param->new_password);
                 }
                 else if (isset($param->user_profile_image)){
                     echo update_user_info($param->user_id, $param->user_profile_image);
