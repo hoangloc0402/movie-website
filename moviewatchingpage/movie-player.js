@@ -40,7 +40,7 @@ const is_admin = false;
 				let img_url = ele.user_profile_image ? ele.user_profile_image : "/images/defaultAvatar.png"
 				let cmt = $(`<div id="${ele.comment_id}" class="comment" v-for="comment in comments">
 					<img alt="Avatar"  class="comment_profile" src="${img_url}" />
-					<h4>${ele.user_name} says</h4>
+					<h4>${ele.user_name}</h4>
 					<p>${ele.comment_detail}</p>
 					<p class="comment-time">${ele.comment_post_time}</p>
 					</div>`);

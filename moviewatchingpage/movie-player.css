@@ -281,6 +281,7 @@ body {
     margin-top: 10px;
     margin-left: 75px;
     max-width: calc(75% - 75px);
+    font-size: 20px;
 }
 .comment p {
     margin-left: 75px;
