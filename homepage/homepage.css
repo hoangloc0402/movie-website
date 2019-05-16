@@ -186,6 +186,7 @@ body {
 	margin: 0px 5px;
 	border: solid 1px #a7a79d;
 	transition: 0.2s;
+	cursor: pointer;
 }
 
 .page-numbers:hover {

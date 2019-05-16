@@ -44,7 +44,7 @@
           <span class="my_search_bar_icon">
             <i class="material-icons">search</i>
           </span>
-          <form onsubmit="return direct2SearchPage()" class="my_form_search_bar">
+          <form onsubmit="return direct2SearchPage(this)" class="my_form_search_bar">
             <input type="text" class="my_search_bar_input" placeholder="Search Movies, Drama and Anime..." />
           </form>
         </div>
@@ -84,7 +84,7 @@
   <div class="container-fluid">
     <div class="row flex-xl-nowrap">
       <div class="col-12 col-md-3 col-xl-3 p-0 px-md-3">
-        <form class="bd-search d-flex align-items-center" onsubmit="return direct2SearchPage()">
+        <form class="bd-search d-flex align-items-center" onsubmit="return direct2SearchPage(this)">
           <input type="search" class="d-md-none form-control" id="search-input" placeholder="Search..."
             aria-label="Search for..." autocomplete="off" data-docs-version="4.3">
           <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse"
@@ -158,11 +158,11 @@
         <div class="big-block">Recently Added Episodes</div>
         <div id="gallery"></div>
         <div class="navigation">
-          <span class="page-numbers">
-            <a href="#">« Previous Page</a>
+          <span class="page-numbers" id ="prev_page">
+            <a  href="#">« Previous Page</a>
           </span>
-          <span class="page-numbers">
-            <a href="#">Next Page »</a>
+          <span class="page-numbers" id ="next_page">
+            <a id ="next_page" href="#">Next Page »</a>
           </span>
         </div>
         <div class="footer row">
@@ -189,6 +189,8 @@
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="../import/jquery-3.1.1.slim.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" -->
+    <!-- integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
   <script src="../import/popper.min.js"></script>
   <script src="../import/bootstrap.min.js"></script>
   <script src="../import/bootstrap-toolkit.min.js"></script>

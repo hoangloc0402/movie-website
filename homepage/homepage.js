@@ -1,210 +1,8 @@
-var list_top_movies = [
-	{
-		src: "images/1.png",
-		name: "Alia: Battle Angle", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/2.png",
-		name: "A Madea Family Funeral", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/3.png",
-		name: "Aquaman", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/4.png",
-		name: "Bumblebee", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/5.png",
-		name: "Captain Marvel", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/6.png",
-		name: "Captive State", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/7.png",
-		name: "Dragged Across Concrete", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/8.png",
-		name: "Fantastic Beasts: The Crimes of Grindelwald", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/9.png",
-		name: "Holmes and Watson", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/10.png",
-		name: "How to Train Your Dragon: The Hidden World", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/11.png",
-		name: "Leaving Neverland", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/12.png",
-		name: "Mary Poppins Returns", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/13.png",
-		name: "Marriage", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/14.png",
-		name: "The Hard Way", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/15.png",
-		name: "The Kid Who Would Be King", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/16.png",
-		name: "The Lego Movie 2: The Second Part The Lego Movie 2: The Second Part", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/17.png",
-		name: "The Mule", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/18.png",
-		name: "Triple Frontier", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/19.png",
-		name: "Us", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/20.png",
-		name: "Walk. Ride. Rodeo.", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	}
-];
-
-var list_movies = [
-	{
-		src: "images/0_1.png",
-		name: "Those Who Can't - Season 1", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_2.png",
-		name: "Absentia - Season 2", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_3.png",
-		name: "American Housewife - Season 4", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_4.png",
-		name: "Bar Rescue - Season 3", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_5.png",
-		name: "Dateline: Secrets Uncovered", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_6.png",
-		name: "The Tonight Show Starring Jimmy Fallon", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_7.png",
-		name: "Deadliest Catch", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_8.png",
-		name: "Deadliest Catch", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_9.png",
-		name: "Derry Girls", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_10.png",
-		name: "The Great British Sewing Bee", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_11.png",
-		name: "East Enders", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_12.png",
-		name: "Law & Order", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_13.png",
-		name: "Five Feet Apart", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_14.png",
-		name: "Go!", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_15.png",
-		name: "Good Trouble", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_16.png",
-		name: "Haunted Case Files", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_17.png",
-		name: "The Rookie", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_18.png",
-		name: "Holby City", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_19.png",
-		name: "Indecent", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_20.png",
-		name: "Ice Cold Blood", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_21.png",
-		name: "Kim's Convenience", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_22.png",
-		name: "The Late Show With Stephen Colbert", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_23.png",
-		name: "MasterChef: Kids", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_24.png",
-		name: "MasterChef", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_25.png",
-		name: "PC game", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_26.png",
-		name: "Muiafukaz", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_27.png",
-		name: "NCIS", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_28.png",
-		name: "Schitt$ Creek", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_29.png",
-		name: "THe Story Of God", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/0_30.png",
-		name: "The Village", href : "../moviewatchingpage/movie-player.html", "ep": "Episode 01 Episode 01 Episode 01"
-	}
-];
-
-
+var list_top_movies = [];
+var list_movies = [];
+const urlParams = new URLSearchParams(window.location.search);
+const page = (urlParams.get('page') && parseInt(urlParams.get('page'))) ? parseInt(urlParams.get('page')): 0 ;
+const per_page = 4;
 var img_movie_rendered = false;
 
 (function ($, viewport) {
@@ -218,23 +16,20 @@ var img_movie_rendered = false;
 	};
 	viewport.use('bs4', bootstrapDivs);
 
-	var total_movies = list_top_movies.length;
-	var pages = 2;
-	var rows = 2;
-	var col_per_row = 4;
-	var gallery_col = 4;
-	var gallery_margin = 10;
 	function render_slide() {
+		var total_movies = list_top_movies.length;
+		var pages = 2;
+		var rows = 2;
+		var col_per_row = 4;
+		var gallery_col = 4;
+		var gallery_margin = 10;
 		var op = false;
 		if (viewport.is('xs')) {
 			gallery_col = 2;
 			gallery_margin = 5;
 			if ($("#bd-docs-nav").hasClass("show") === true) $("#bd-docs-nav").removeClass("show");
-			// rows = 1;
-			// col_per_row = 2;
-			// pages = Math.floor(total_movies / (rows * col_per_row));
 			pages = 0;
-			console.log("xs:", pages, rows, col_per_row)
+			// console.log("xs:", pages, rows, col_per_row)
 		}
 		if (viewport.is('>=sm')) {
 			if ($("#bd-docs-nav").hasClass("show") === true) $("#bd-docs-nav").removeClass("show");
@@ -243,7 +38,7 @@ var img_movie_rendered = false;
 			rows = 1;
 			col_per_row = 2;
 			pages = Math.floor(total_movies / (rows * col_per_row));
-			console.log("sm:", pages, rows, col_per_row)
+			// console.log("sm:", pages, rows, col_per_row)
 		}
 		if (viewport.is('>=md')) {
 			if ($("#bd-docs-nav").hasClass("show") === false) $("#bd-docs-nav").addClass("show");
@@ -252,7 +47,7 @@ var img_movie_rendered = false;
 			rows = 2;
 			col_per_row = 3;
 			pages = Math.floor(total_movies / (rows * col_per_row));
-			console.log("md:", pages, rows, col_per_row)
+			// console.log("md:", pages, rows, col_per_row)
 		}
 		if (viewport.is('>=lg')) {
 			if ($("#bd-docs-nav").hasClass("show") === false) $("#bd-docs-nav").addClass("show");
@@ -261,7 +56,7 @@ var img_movie_rendered = false;
 			rows = 2;
 			col_per_row = 3;
 			pages = Math.floor(total_movies / (rows * col_per_row));
-			console.log("lg:", pages, rows, col_per_row)
+			// console.log("lg:", pages, rows, col_per_row)
 		}
 
 		if (viewport.is('>=xl')) {
@@ -272,7 +67,7 @@ var img_movie_rendered = false;
 			rows = 2;
 			col_per_row = 4;
 			pages = Math.floor(total_movies / (rows * col_per_row));
-			console.log("xl:", pages, rows, col_per_row)
+			// console.log("xl:", pages, rows, col_per_row)
 		}
 		var width = $(window).innerWidth();
 		var height = $(window).height();
@@ -281,8 +76,8 @@ var img_movie_rendered = false;
 		var height_per_row = height / 5;
 		var width_per_col = width / col_per_row;
 
-		console.log(width, width_per_col)
-		console.log(height, height_per_row)
+		// console.log(width, width_per_col)
+		// console.log(height, height_per_row)
 		var active = true;
 		pages = Math.floor(list_top_movies.length / (rows * col_per_row))
 		var counter = 0;
@@ -306,7 +101,7 @@ var img_movie_rendered = false;
 						$(`<div class="header-play-button"></div>`),
 					)
 					div.attr('id', `img_${counter}`)
-					$(div).click(()=>{window.location.href = list_top_movies[counter].href;});
+					$(div).click(() => { window.location.href = list_top_movies[counter].href; });
 					row.append(div);
 					counter++;
 				}
@@ -322,22 +117,33 @@ var img_movie_rendered = false;
 		var gallery_width = $("#movies_content").width();
 
 		var card_width = gallery_width / gallery_col - 2 * gallery_margin;
-		console.log("HERE", gallery_width, gallery_col, card_width, img_movie_rendered);
+		// console.log("HERE", gallery_width, gallery_col, card_width, img_movie_rendered);
 		if (img_movie_rendered === false) {
 			img_movie_rendered = true;
+			$("#gallery").empty();
 			for (var i = 0; i < list_movies.length; i++) {
-
-				var div = $(`<div class="movie-thumnail"></div>`)
-				div.css('background-image', 'url(' + list_movies[i].src + ')');
-				div.append(
-					`<span class="movie-title">${list_movies[i].name}</span>`,
-					`<span class="movie-play-button"></span>`,
-					`<span class="movie-ep">${list_movies[i].ep}</span>`,
-				)
-				$(div).click(()=>{window.location.href = list_movies[counter].href;});
-				$(div).width(card_width);
-				$("#gallery").append(div);
+				(function (ele) {
+					var div = $(`<div class="movie-thumnail"></div>`);
+					$(div).attr("id", `video-${ele.video_id}`);
+					if (ele.video_thumbnail) {
+						div.css('background-image', 'url(' + ele.video_thumbnail + ')');
+					} else {
+						div.css('background-image', 'url(' + ele.series_thumbnail + ')');
+					}
+					div.append(
+						`<span class="movie-title">${ele.video_name}</span>`,
+						`<span class="movie-play-button"></span>`,
+						`<span class="movie-ep">Episode ${ele.video_episode}</span>`,
+					)
+					var url = '/moviewatchingpage/movie-player.html?video_id=' + ele.video_id;
+					$(div).attr("url_watching", url);
+					$(div).width(card_width);
+					$("#gallery").append(div);
+				})(list_movies[i])
 			}
+			$(".movie-thumnail").each((idx, div) => {
+				$(div).click(() => { window.location.href = $(div).attr("url_watching") })
+			});
 		} else {
 			var arr = $("#gallery").find("div");
 			for (var i = 0; i < arr.length; i++) {
@@ -347,10 +153,53 @@ var img_movie_rendered = false;
 
 	}
 
+	function loadPage() {
+		var p = new Promise((resolve, reject) => {
+			console.log(`/api/video.php?page=${page}&per_page=${per_page}`);
+			$.get(`/api/video.php?page=${page}&per_page=${per_page}`, (data) => {
+				data = JSON.parse(data);
+				if (data && data.length > 0) {
+					resolve(data);
+				} else {
+					reject();
+				}
+			})
+		})
+		p.then((data) => {
+			list_movies = data;
+			render_slide();
+			if (page > 0) {
+				$("#prev_page").show();
+				$("#prev_page").off('click').click(() => {
+					// img_movie_rendered = false;
+					let new_page = page -1;
+					window.open(`/homepage/homepage.html?page=${new_page}`, "_self")
+					loadPage();
+				})
+			} else {
+				$("#prev_page").hide();
+			}
+			if (list_movies.length < per_page) {
+				$("#next_page").hide();
+			} else {
+				$("#next_page").show();
+				$("#next_page").off('click').click(() => {
+					// img_movie_rendered = false;
+					let new_page = page + 1;
+					window.open(`/homepage/homepage.html?page=${new_page}`, "_self")
+				})
+			}
+		})
+			.catch(() => {
+				console.log("END");
+			});
+
+
+	}
 	// 
 	// Execute only after document has fully loaded
 	$(document).ready(function () {
-		render_slide();
+		loadPage();
 	});
 
 	// Execute code each time window size changes

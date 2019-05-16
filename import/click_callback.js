@@ -1,5 +1,5 @@
-function direct2SearchPage(){     
-	window.open("../searchpage/searchpage.html","_self")
+function direct2SearchPage(d){     
+	window.open(`../searchpage/searchpage.html?q=${$($(d).find("input")[0]).val()}`,"_self")
 	return false
 }
 function direct2Home(){     

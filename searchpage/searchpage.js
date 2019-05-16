@@ -1,89 +1,90 @@
-const search_key = "Grey"
+const urlParams = new URLSearchParams(window.location.search);
+const search_key = (urlParams.get('q')) ? parseInt(urlParams.get('q')): 0 ;
 const list_movies = [
-	{
-		src: "images/1.png",
-		name: "The Small Woman in Grey",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/2.png",
-		name: "Grey Gardens",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/3.png",
-		name: "Fifty Shades Of Grey",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/4.png",
-		name: "Grey's Anatomy - Season 8",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/5.png",
-		name: "Grey's Anatomy - Season 7",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/6.png",
-		name: "Grey's Anatomy - Season 6",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/7.png",
-		name: "Grey's Anatomy - Season 5",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/8.png",
-		name: "Grey's Anatomy - Season 4",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/9.png",
-		name: "Grey's Anatomy - Season 3",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/10.png",
-		name: "Grey's Anatomy - Season 2",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/11.png",
-		name: "Grey's Anatomy - Season 1",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/12.png",
-		name: "Grey's Anatomy - Season 15",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/13.png",
-		name: "Grey's Anatomy - Season 11",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/14.png",
-		name: "Greystoke Tarzan",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/15.png",
-		name: "The Grey",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/16.png",
-		name: "Good Witch Secrects of Grey House",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/17.png",
-		name: "Grey Agenda",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/18.png",
-		name: "Grey Lady",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/19.png",
-		name: "Indecent",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/20.png",
-		name: "Grey's Anatomy - Season 14",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	},
-	{
-		src: "images/21.png",
-		name: "Grey's Anatomy - Season 13",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	}
+	// {
+	// 	src: "images/1.png",
+	// 	name: "The Small Woman in Grey",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/2.png",
+	// 	name: "Grey Gardens",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/3.png",
+	// 	name: "Fifty Shades Of Grey",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/4.png",
+	// 	name: "Grey's Anatomy - Season 8",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/5.png",
+	// 	name: "Grey's Anatomy - Season 7",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/6.png",
+	// 	name: "Grey's Anatomy - Season 6",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/7.png",
+	// 	name: "Grey's Anatomy - Season 5",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/8.png",
+	// 	name: "Grey's Anatomy - Season 4",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/9.png",
+	// 	name: "Grey's Anatomy - Season 3",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/10.png",
+	// 	name: "Grey's Anatomy - Season 2",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/11.png",
+	// 	name: "Grey's Anatomy - Season 1",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/12.png",
+	// 	name: "Grey's Anatomy - Season 15",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/13.png",
+	// 	name: "Grey's Anatomy - Season 11",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/14.png",
+	// 	name: "Greystoke Tarzan",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/15.png",
+	// 	name: "The Grey",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/16.png",
+	// 	name: "Good Witch Secrects of Grey House",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/17.png",
+	// 	name: "Grey Agenda",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/18.png",
+	// 	name: "Grey Lady",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/19.png",
+	// 	name: "Indecent",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/20.png",
+	// 	name: "Grey's Anatomy - Season 14",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// },
+	// {
+	// 	src: "images/21.png",
+	// 	name: "Grey's Anatomy - Season 13",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
+	// }
 ];
 
 
@@ -163,6 +164,17 @@ var img_movie_rendered = false;
 	// 
 	// Execute only after document has fully loaded
 	$(document).ready(function () {
+		var p = new Promise((resolve, reject) => {
+			console.log(`/api/series.php?q=${search_key}&page=${page}&per_page=${per_page}`);
+			$.get(`/api/video.php?page=${page}&per_page=${per_page}`, (data) => {
+				data = JSON.parse(data);
+				if (data && data.length > 0) {
+					resolve(data);
+				} else {
+					reject();
+				}
+			})
+		})
 		$("#search-result").append(` for "${search_key}"`)
 		render_slide();
 		// console.log($('#gallery'))
