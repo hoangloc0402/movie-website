@@ -1,8 +1,8 @@
 var list_top_movies = [];
 var list_movies = [];
 const urlParams = new URLSearchParams(window.location.search);
-const page = (urlParams.get('page') && parseInt(urlParams.get('page'))) ? parseInt(urlParams.get('page')): 0 ;
-const per_page = 4;
+const page = (urlParams.get('page') && parseInt(urlParams.get('page'))) ? parseInt(urlParams.get('page')) : 0;
+const per_page = 10;
 var img_movie_rendered = false;
 
 (function ($, viewport) {
@@ -79,7 +79,7 @@ var img_movie_rendered = false;
 		// console.log(width, width_per_col)
 		// console.log(height, height_per_row)
 		var active = true;
-		pages = Math.floor(list_top_movies.length / (rows * col_per_row))
+		pages = Math.floor(list_top_movies.length / (rows * col_per_row));
 		var counter = 0;
 		for (var i = 0; i < pages; i++) {
 			var carousel_item;
@@ -93,21 +93,30 @@ var img_movie_rendered = false;
 				var row = $(`<div class="row"></div>`);
 				for (var k = 0; k < col_per_row; k++) {
 					var div = $(`<div class="movie"></div>`);
-					div.css('background-image', 'url(' + list_top_movies[counter].src + ')');
+					div.css('background-image', 'url(' + list_top_movies[counter].series_thumbnail + ')');
 					div.width(width_per_col);
 					div.height(height_per_row);
 					div.append(
-						$(`<div class="movie_name">${list_top_movies[counter].name}</div>`),
+						$(`<div class="movie_name">${list_top_movies[counter].series_name}</div>`),
 						$(`<div class="header-play-button"></div>`),
 					)
 					div.attr('id', `img_${counter}`)
-					$(div).click(() => { window.location.href = list_top_movies[counter].href; });
+					let url = "";
+					if (list_top_movies[counter].is_series === "1") {
+						url = `/tvshowpage/tvshowpage.html?series_id=${list_top_movies[counter].series_id}`;
+					} else {
+						url = `/moviewatchingpage/movie-player.html?series_id=${list_top_movies[counter].series_id}`;
+					}
+					div.attr('url_watching', url)
 					row.append(div);
 					counter++;
 				}
 
 				carousel_item.append(row);
 			}
+			$(".movie").each((i, div) => {
+				$(div).click(() => { window.open($(div).attr("url_watching"), "_self") })
+			})
 
 			if (i == 0) active = false;
 
@@ -154,30 +163,42 @@ var img_movie_rendered = false;
 
 	function loadPage() {
 		var p = new Promise((resolve, reject) => {
-			$.get(`/api/video.php?page=${page}&per_page=${per_page}`, (data) => {
-				data = JSON.parse(data);
-				console.log(data)
-				if (data && data.result && data.result.length > 0) {
-					resolve(data);
+			$.get(`/api/series.php`, (series) => {
+				series = JSON.parse(series);
+				// console.log("series", series);
+				if (series && series.result) {
+					$.get(`/api/video.php?page=${page}&per_page=${per_page}`, (data) => {
+						data = JSON.parse(data);
+						// console.log(data)
+						if (data && data.result && data.result.length > 0) {
+							resolve({ videos: data, series: series });
+						} else {
+							reject();
+						}
+					})
 				} else {
 					reject();
 				}
 			})
+
 		})
 		p.then((data) => {
-			list_movies = data.result;
+			list_movies = data.videos.result;
+			list_top_movies = data.series.result;
+			console.log(list_movies);
+			console.log(list_top_movies);
 			render_slide();
 			if (page > 0) {
 				$("#prev_page").show();
 				$("#prev_page").off('click').click(() => {
 					// img_movie_rendered = false;
-					let new_page = page -1;
+					let new_page = page - 1;
 					window.open(`/homepage/homepage.html?page=${new_page}`, "_self");
 				})
 			} else {
 				$("#prev_page").hide();
 			}
-			if (!data.has_more) {
+			if (!data.videos.has_more) {
 				$("#next_page").hide();
 			} else {
 				$("#next_page").show();
@@ -188,8 +209,8 @@ var img_movie_rendered = false;
 				})
 			}
 		})
-			.catch(() => {
-				console.log("END");
+			.catch((e) => {
+				console.log(e);
 			});
 
 
@@ -200,9 +221,9 @@ var img_movie_rendered = false;
 		loadPage();
 
 		$(".my_nav_tag").each((idx, a) => {
-			$(a).click(()=>{
+			$(a).click(() => {
 				let tag = $(a).text().slice(1);
-				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`,"_self");
+				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`, "_self");
 			})
 		})
 	});

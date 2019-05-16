@@ -209,6 +209,7 @@ var img_movie_rendered = false;
 		var card_width = gallery_width / 2 - 2 * gallery_margin;
 		if (img_movie_rendered === false) {
 			for (var i = series_data.list_ep.length - 1; i >= series_data.list_ep.length - 2; i--) {
+				if (i < 0) break;
 				(function (ele) {
 					var div = $(`<div class="movie-thumnail"></div>`);
 					if (ele.video_thumbnail) {
@@ -240,7 +241,6 @@ var img_movie_rendered = false;
 
 		card_width = gallery_width / gallery_col - 2 * gallery_margin;
 		if (img_movie_rendered === false) {
-			img_movie_rendered = true;
 			for (var i = series_data.list_ep.length - 1; i >= 0; i--) {
 				(function (ele) {
 					var div = $(`<div class="movie-thumnail"></div>`)
@@ -271,7 +271,7 @@ var img_movie_rendered = false;
 				$(arr[i]).width(card_width)
 			}
 		}
-
+		img_movie_rendered = true;
 	}
 
 	// 
@@ -303,7 +303,7 @@ var img_movie_rendered = false;
 			$("#movie-name").text(series_data.series_name);
 			$("#movies_name_div").text(series_data.series_name);
 			$("#movies_name_gallery").text(series_data.series_name + " - Episodes List");
-			$("#movies_poster").attr("src", series_data.series_thumnail);
+			$("#movies_poster").attr("src", series_data.series_thumbnail);
 			$("#movies_released_date").append(series_data.series_year);
 			$("#movies_imdb").append(parseFloat(series_data.series_rating / 10));
 			$("#movies_desp").text(series_data.series_description);
