@@ -24,7 +24,7 @@
             $user = mysqli_fetch_assoc($query_result);
             if ($user{'password'} == $password){
                 http_response_code(200);
-                return json_encode(array('is_success' => true, 'message' => "Login successfully!", 'user_type' => $user{'user_type'}));
+                return json_encode(array('is_success' => true, 'message' => "Login successfully!", 'user_type' => $user{'user_type'}, 'user_id' => $user{'user_id'}));
             }
             else {
                 http_response_code(400);
