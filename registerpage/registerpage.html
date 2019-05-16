@@ -10,7 +10,7 @@
    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
    <link href="../import/header.css" rel="stylesheet" type="text/css">
    <link href="../import/menu.css" rel="stylesheet" type="text/css">
-   <title>MovieWatch - Sign Up</title>
+   <title>Sign Up</title>
    <!-- Favicon -->
    <link rel="apple-touch-icon" sizes="57x57" href="../favicon../favicon/apple-icon-57x57.png">
    <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -67,7 +67,7 @@
                      <h1>Register</h1>
                      <div class="form-login ilogin">
                         <h1>Register to MovieWatch</h1><br />
-                        <form method="post" name="sign_up" id="sign_up" onsubmit="return validateSignupForm()">
+                        <form method="post" name="sign_up" id="sign_up">
                            <input type="hidden" name="_csrf" value="5c9c7434993d6">
                            <input type="hidden" name="refer" value="">
                            <input type="text" name="name" id="name" placeholder="Display name" value="">
@@ -76,7 +76,7 @@
                            <input type="password" name="cf_password" id="cf_password" placeholder="Retype password">
                            <input type="submit" id="submit" value="Sign up">
                         </form>
-                        <a class="link-forget" href="#">Forgot password?</a>
+                        <a class="link-forget" href="../forgotpage/forgotpage.html">Forgot password?</a>
                      </div>
                   </div>
                </section>
@@ -93,51 +93,73 @@
 
    <script src="registerpage.js"></script>
    <script src="../import/click_callback.js"></script>
-   
-   <script src="../import/search_helper.js"></script>
    <script>
-      function validateSignupForm() {
-         var form = document.forms["sign_up"]
-         console.log(form)
-         var name = form["name"].value;
-         var email = form["email"].value;
-         var password = form["password"].value;
-         var cf_password = form["cf_password"].value
-         if (email == "" || password == "" || name == "" || cf_password == "") {
-            alert("Input cannot be empty");
-         } else if (password != cf_password) {
-            alert("Password not matched!");
-         }
+      if (isLoggedIn()) {
+         includeHTML("header-with-search", 1)
+      } else {
+         includeHTML("header-with-search", 0)
       }
+   </script>
+   <script>
+      function validateSignUpForm() {
+      var form = document.forms["sign_up"];
+      var email = form["email"].value;
+      var password = form["password"].value;
+      var name = form["name"].value;
+      var cf_password = form["cf_password"].value
+      var res = true;
+      if (name == "") {
+         $('#name').css("background", "rgba(233, 30, 99, .2)");
+         res = false;
+      }
+      if (email == "") {
+         $('#email').css("background", "rgba(233, 30, 99, .2)");
+         res = false;
+      }
+      if (password == "") {
+         $('#password').css("background", "rgba(233, 30, 99, .2)");
+         res = false;
+      }
+      if (cf_password == "") {
+         $('#cf_password').css("background", "rgba(233, 30, 99, .2)");
+         res = false;
+      }
+      if (cf_password != password) {
+         $('#password').css("background", "rgba(233, 30, 99, .2)");
+         $('#cf_password').css("background", "rgba(233, 30, 99, .2)");
+         res = false;
+      }
+      return res;
+   }
    </script>
 
    <script>
-      $("#sign_up").submit(function (event) {
+      $("#submit").click(function(event){
          event.preventDefault();
-         $.ajax({
-              type: "POST",
-              url: '../api/login_register.php',
-              datatype: 'json',
-              data: JSON.stringify({
-                  'type' : 'register',
+         if (validateSignUpForm()) {
+            $.ajax({
+               type: "POST",
+               url: '../api/login_register.php',
+               datatype: 'json',
+               data: JSON.stringify({
+                  'type': 'register',
                   'display_name': $("#name").val(),
                   'email': $("#email").val(),
                   'password': $("#password").val()
-              }),
-              success: function(data)
-              {   
+               }),
+               success: function (data) {
                   data = JSON.parse(data)
-                  console.log(data)
-                  if (data["is_success"]){
-                     window.location = "../homepage/homepage.html"
+                  if (data["is_success"]) {
+                     window.location = "../loginpage/loginpage.html";
                   }
-               console.log(data)
-            },
-            error: function (e) {
-               console.log("error" + e);
-            }
-         });
-      });
+               },
+               error: function (e) {
+                  alert("Invalid account!")
+               }
+            });
+         }
+      }
+      );
    </script>
 </body>
 

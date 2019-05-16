@@ -4,10 +4,10 @@
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <title>Login</title>
+   <title>Forgot Password</title>
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="../import/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" href="loginpage.css" />
+   <link rel="stylesheet" type="text/css" href="/loginpage/loginpage.css" />
 
    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
    <link href="../import/header.css" rel="stylesheet" type="text/css">
@@ -66,17 +66,13 @@
             <div id="wrapper_bg" class="">
                <section id="wrapper" class="wrapper">
                   <div id="main_bg" class="main">
-                     <h1>Login</h1>
+                     <h1>Forgot Password</h1><br/>
                      <div class="form-login ilogin">
-                        <h1>Log in to MovieWatch</h1> <br />
-                        <form id="login" method="POST">
+                        <form id="forgot" name="forgot" method="POST">
                            <input type='hidden' name='_csrf' value='5c9c36b6afcbe'>
-                           <input type='email' name='email' id="email" placeholder='Email' value=''>
-                           <input type='password' name='password' id="password" placeholder='Password'>
-                           <input type='checkbox' name='remember' value='1'> <span class="remmember">Remember me</span>
-                           <input type="submit" id="submit" value="Sign in" />
+                           <input type='email' name='email' id="email" placeholder='Your email' value=''>
+                           <input type="submit" id="submit" value="Send" />
                         </form>
-                        <a class="link-forget" href="../forgotpage/forgetpage.html">Forgot password?</a>
                      </div>
                   </div>
                </section>
@@ -92,7 +88,7 @@
    <script src="../import/bootstrap-toolkit.min.js"></script>
 
    <script src="../import/click_callback.js"></script>
-   <script src="loginpage.js"></script>
+   <script src="forgot.js"></script>
    <script src="../import/search_helper.js"></script>
 </body>
 

@@ -1,6 +1,7 @@
 var comments = [];
-const user_id = "2";
-const is_admin = false;
+const user_id = getCookie("user_id");
+const is_admin = isAdmin();
+const is_log_in = isLoggedIn();
 
 (function ($, viewport) {
 	// Bootstrap 4 Divs
@@ -55,8 +56,8 @@ const is_admin = false;
 				let img_url = ele.user_profile_image ? ele.user_profile_image : "/images/defaultAvatar.png"
 				let cmt = $(`<div id="${ele.comment_id}" class="comment" v-for="comment in comments">
 					<img alt="Avatar"  class="comment_profile" src="${img_url}" />
-					<h4>${ele.user_name}</h4>
-					<p>${ele.comment_detail}</p>
+					<h4 user_type="${ele.user_type}">${ele.user_name}</h4>
+					<p class="comment-content">${ele.comment_detail}</p>
 					<p class="comment-time">${ele.comment_post_time}</p>
 					</div>`);
 				$("#comments_list").append(cmt);
@@ -86,6 +87,13 @@ const is_admin = false;
 					}
 				})
 			})
+		})
+		$("#comments_list").find("h4").each((i, ele) => {
+			let ele_type = $(ele).attr("user_type");
+			if (ele_type === "admin" || ele_type === "root") {
+				var flash = $(`<i class="material-icons" style="color: #448ef6">flash_on</i>`)
+				$(ele).append(flash);
+			}
 		})
 		if (focus) {
 			$([document.documentElement, document.body]).animate({
@@ -157,6 +165,12 @@ const is_admin = false;
 			})
 		})
 		fetch_comment(false);
+		if (!isLoggedIn()) {
+			console.log("not log in")
+			$("#prospects_form :input").prop("disabled", true);
+			$("#prospects_form :input").css("opacity", .3);
+			$("#comment_h2").text("You must sign in to leave a comment");
+		}
 	});
 	$(window).resize(
 		viewport.changed(function () {

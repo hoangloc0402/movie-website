@@ -16,6 +16,8 @@ function includeHTML(element_id, tag) {
                         removeElement.parentNode.removeChild(removeElement)
                         removeElement = document.getElementById("btn_exit")
                         removeElement.parentNode.removeChild(removeElement)
+                        removeElement = document.getElementById("btn_upload")
+                        removeElement.parentNode.removeChild(removeElement)
                     } else if (tag == 1) {
                         removeElement = document.getElementById("btn_sign_in")
                         removeElement.parentNode.removeChild(removeElement)
@@ -29,8 +31,10 @@ function includeHTML(element_id, tag) {
                         removeElement.parentNode.removeChild(removeElement)
                         removeElement = document.getElementById("user_info_btn")
                         removeElement.parentNode.removeChild(removeElement)
+                        removeElement = document.getElementById("upload_btn")
+                        removeElement.parentNode.removeChild(removeElement)
                     } else if (tag == 4) {
-                        
+
                     }
                 }
             }

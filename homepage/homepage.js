@@ -113,14 +113,13 @@ var img_movie_rendered = false;
 
 				carousel_item.append(row);
 			}
-			$(".movie").each((i, div) => {
-				$(div).click(() => { window.open($(div).attr("url_watching"), "_self") })
-			})
-
 			if (i == 0) active = false;
 
 			$("#homepage_popular_movies_inner").append(carousel_item);
 		}
+		$(".movie").each((i, div) => {
+			$(div).click(() => { window.open($(div).attr("url_watching"), "_self") })
+		})
 
 		var gallery_width = $("#movies_content").width();
 
@@ -183,8 +182,6 @@ var img_movie_rendered = false;
 		p.then((data) => {
 			list_movies = data.videos.result;
 			list_top_movies = data.series.result;
-			console.log(list_movies);
-			console.log(list_top_movies);
 			render_slide();
 			if (page > 0) {
 				$("#prev_page").show();

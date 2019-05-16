@@ -272,9 +272,17 @@ body {
 
 .comment .comment-time {
     position: absolute;
-    top: 25px;
+    max-width: 18%;
+    white-space: nowrap; 
+	overflow: hidden;
+	text-overflow: ellipsis;
+    top: 20px;
     right: 20px;
     color: #777;
+}
+
+.comment .comment-content {
+    max-width: calc(90% - 75px);
 }
 
 .comment h4 {
@@ -282,6 +290,7 @@ body {
     margin-left: 75px;
     max-width: calc(75% - 75px);
     font-size: 20px;
+    vertical-align: text-bottom;
 }
 .comment p {
     margin-left: 75px;
@@ -300,7 +309,7 @@ body {
     color: #777;
 }
 
-.comment i {
+.comment>i {
     position: absolute;
     top: 55px;
     right: 20px;
@@ -309,6 +318,6 @@ body {
     cursor: pointer;
 }
 
-.comment i:hover {
+.comment>i:hover {
     opacity: .5;
 }

@@ -24,6 +24,11 @@ function direct2Signup() {
 	return false
 }
 
+function direct2Upload() {
+	window.open("../movieuploadpage/movie-upload.html", "_self")
+	return false
+}
+
 function setCookie(cname, cvalue, exdays) {
 	var d = new Date();
 	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -94,5 +99,5 @@ if (isAdmin()) {
 	includeHTML("bd-docs-nav", 3)
 }
 if ($("#footer_import").length) {
-	includeHTML("footer_import", 3)
+	includeHTML("footer_import", 4)
 }
