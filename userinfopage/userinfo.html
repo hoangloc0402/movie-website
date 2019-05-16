@@ -4,14 +4,14 @@
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <title>MovieWatch - Login</title>
-   <!-- Bootstrap CSS -->
-   <link rel="stylesheet" href="../import/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" href="loginpage.css" />
-
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="../import/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="../loginpage/loginpage.css" />
+   <link rel="stylesheet" type="text/css" href="userinfo.css" />
    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
    <link href="../import/header.css" rel="stylesheet" type="text/css">
    <link href="../import/menu.css" rel="stylesheet" type="text/css">
+   <title>MovieWatch - Sign Up</title>
    <!-- Favicon -->
    <link rel="apple-touch-icon" sizes="57x57" href="../favicon../favicon/apple-icon-57x57.png">
    <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -62,7 +62,6 @@
          </div>
       </div>
    </div>
-
    <div class="container-fluid">
       <div class="row flex-xl-nowrap">
          <div class="col-12 col-md-3 col-xl-3 p-0 px-md-3">
@@ -140,18 +139,28 @@
             <div id="wrapper_bg" class="">
                <section id="wrapper" class="wrapper">
                   <div id="main_bg" class="main">
-                     <h1>Login</h1>
+                     <h1>User Profile</h1>
+                     <div class="row">
+                           <div class="small-12 medium-2 large-2 columns">
+                             <div class="circle">
+                               <!-- User Profile Image -->
+                               <img class="profile-pic" src="https://avatars.servers.getgo.com/2205256774854474505_medium.jpg">
+
+                             </div>
+                             <div class="p-image">
+                               <i class="fa fa-camera upload-button"></i>
+                                <input class="file-upload" type="file" accept="image/*" text='das'/>
+                             </div>
+                          </div>
+                        </div>
                      <div class="form-login ilogin">
-                        <h1>Log in to MovieWatch</h1> <br/
-                        <form method='post'><input type='hidden' name='_csrf' value='5c9c36b6afcbe'>
-                           <input type='email' name='email' placeholder='Email' value=''>
-                           <input type='password' name='password' placeholder='Password'>
-                           <input type='checkbox' name='remember' value='1'> <span class="remmember">Remember me</span>
-                           <input type="submit" value="Sign in" />
+                        <form method="post">
+                           <input type="text" name="name" placeholder="Display name" value="" disabled>
+                           <input type="email" name="email" placeholder="Email" value="" 
+                           disabled>
+                           <input type="password" name="password" placeholder="************">
                         </form>
-                        <a class="link-forget" href="/forget.html">Forgot password?</a>
-                        <a class="link-sign" href="../registerpage/registerpage.html">Sign
-                           up</a>
+                        <a class="link-forget" href="#">Change password</a>
                      </div>
                   </div>
                </section>
@@ -166,7 +175,7 @@
    <script src="../import/bootstrap.min.js"></script>
    <script src="../import/bootstrap-toolkit.min.js"></script>
 
-   <script src="loginpage.js"></script>
+   <script src="userinfo.js"></script>
    <script src="../import/click_callback.js"></script>
 </body>
 
