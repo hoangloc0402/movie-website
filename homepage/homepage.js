@@ -4,7 +4,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const page = (urlParams.get('page') && parseInt(urlParams.get('page'))) ? parseInt(urlParams.get('page')) : 0;
 const per_page = 10;
 var img_movie_rendered = false;
-
 (function ($, viewport) {
 	// Bootstrap 4 Divs
 	var bootstrapDivs = {
@@ -126,7 +125,6 @@ var img_movie_rendered = false;
 		var gallery_width = $("#movies_content").width();
 
 		var card_width = gallery_width / gallery_col - 2 * gallery_margin;
-		// console.log("HERE", gallery_width, gallery_col, card_width, img_movie_rendered);
 		if (img_movie_rendered === false) {
 			img_movie_rendered = true;
 			$("#gallery").empty();
@@ -219,7 +217,7 @@ var img_movie_rendered = false;
 	// Execute only after document has fully loaded
 	$(document).ready(function () {
 		loadPage();
-
+		console.log($("#bd-docs-nav"))
 		$(".my_nav_tag").each((idx, a) => {
 			$(a).click(() => {
 				let tag = $(a).text().slice(1);

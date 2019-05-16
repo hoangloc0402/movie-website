@@ -26,8 +26,8 @@
                 array_push($return_data, $row);
             }
             $has_next = false;
-            $page = $page +1;
-            if (mysqli_num_rows(execute("SELECT * FROM $table_user LIMIT $page, $per_page")) > 0){
+            $next_page = $page + $per_page;
+            if (mysqli_num_rows(execute("SELECT * FROM $table_user LIMIT $next_page, $per_page")) > 0){
                 $has_next = true;
             }
             http_response_code(200);
@@ -95,8 +95,8 @@
     switch ($_SERVER['REQUEST_METHOD']){
         case 'GET': 
             if (!isset($_GET["user_id"])){
-                $page = $_GET["page"] ? $_GET["page"] : 0;
-                $per_page = $_GET["per_page"] ? $_GET["per_page"] : 15;
+                $page = isset($_GET["page"]) ? $_GET["page"] : 0;
+                $per_page = isset($_GET["per_page"]) ? $_GET["per_page"] : 5;
                 echo get_all_user($page, $per_page);
             }
             else {

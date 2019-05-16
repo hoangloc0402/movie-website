@@ -35,14 +35,22 @@
     <meta name="msapplication-TileImage" content="../favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <script src="../import/common.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        var series_id = urlParams.get('series_id');
+        var video_id = urlParams.get('video_id');
+        if (!series_id && !video_id) {
+            window.open("/", "_self");
+        }
+    </script>
 </head>
 
 <body>
     <div class="header-with-search" id="header-with-search" w3-include-html="../import/header.html">
-   </div>
-   <script>
-      includeHTML("header-with-search",1)
-   </script>
+    </div>
+    <script>
+        includeHTML("header-with-search", 1)
+    </script>
 
     <div class="container-fluid">
         <div class="row flex-xl-nowrap">
@@ -61,9 +69,9 @@
                         </svg></button>
                 </form>
 
-                <nav class="bd-links collapse show" id="category" w3-include-html="../import/category.html"></nav>
+                <nav class="bd-links collapse show" id="bd-docs-nav" w3-include-html="../import/category.html"></nav>
                 <script>
-                   includeHTML("category", 2)
+                    includeHTML("bd-docs-nav", 2)
                 </script>
             </div>
             <div class="col-12 col-md-9 col-xl-8">
@@ -143,10 +151,10 @@
                         <h2>Leave a comment below!</h2>
 
                         <div class="comments-form">
-                            <form @submit.prevent="handleSubmit">
+                            <form @submit.prevent="handleSubmit" id="prospects_form">
                                 <ul>
                                     <li>
-                                        <textarea placeholder="Comment" v-model="comment" required></textarea>
+                                        <textarea id="post_comment"  placeholder="Comment" v-model="comment" required></textarea>
                                     </li>
                                     <li>
                                         <input type="submit" value="Post &#9998;">
@@ -155,17 +163,8 @@
                             </form>
                         </div>
 
-                        <div class="comments-list">
-                            <div class="comment" v-for="comment in comments">
-                                <h4>{{ comment.username }} says</h4>
-                                <p>{{ comment.comment }}</p>
-                                <p class="comment-time">{{ comment.time }}</p>
-                            </div>
-                            <div class="comment" v-for="comment in comments">
-                                <h4>{{ comment.username }} says</h4>
-                                <p>{{ comment.comment }}</p>
-                                <p class="comment-time">{{ comment.time }}</p>
-                            </div>
+                        <div class="comments-list" id ="comments_list">
+                            
                         </div>
                         <!-- <iframe
                             src="https://www.powr.io/plugins/comments/view?unique_label=d698266f_1553679215&external_type=iframe">
