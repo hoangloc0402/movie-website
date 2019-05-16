@@ -21,6 +21,16 @@ function includeHTML(element_id, tag) {
                         removeElement.parentNode.removeChild(removeElement)
                         removeElement = document.getElementById("btn_sign_up")
                         removeElement.parentNode.removeChild(removeElement)
+                    } else if (tag == 2) { // logged in but not admin
+                        removeElement = document.getElementById("user_manager_btn")
+                        removeElement.parentNode.removeChild(removeElement)
+                    } else if (tag == 3) {
+                        removeElement = document.getElementById("user_manager_btn")
+                        removeElement.parentNode.removeChild(removeElement)
+                        removeElement = document.getElementById("user_info_btn")
+                        removeElement.parentNode.removeChild(removeElement)
+                    } else if (tag == 4) {
+                        
                     }
                 }
             }

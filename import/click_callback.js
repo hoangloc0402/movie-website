@@ -14,6 +14,11 @@ function direct2UserInfo() {
 	window.open("../userinfopage/userinfo.html", "_self")
 	return false
 }
+function direct2UserManager() {
+	window.open("../usermanagementpage/user-manager.html", "_self")
+	return false
+}
+
 function direct2Signup() {
 	window.open("../registerpage/registerpage.html", "_self")
 	return false
@@ -41,7 +46,7 @@ function getCookie(cname) {
 	return "";
 }
 
-function isLoggedIn(){
+function isLoggedIn() {
 	var user_type = getCookie("user_type");
 	var user_id = getCookie("user_id");
 	if (user_id && user_id !== "" && user_type && user_type !== "") {
@@ -50,7 +55,7 @@ function isLoggedIn(){
 	return false;
 }
 
-function logOut(){
+function logOut() {
 	setCookie("user_type", null, -1);
 	setCookie("user_id", null, -1);
 	direct2Home();
@@ -74,4 +79,17 @@ function saveObjectToCookie(d) {
 		var obj = d[key];
 		setCookie(key, obj, 14);
 	}
+}
+
+if (isLoggedIn()) {
+	includeHTML("header-with-search", 1)
+} else {
+	includeHTML("header-with-search", 0)
+}
+if (isAdmin()) {
+	includeHTML("bd-docs-nav", 4)
+} else if (isLoggedIn()) {
+	includeHTML("bd-docs-nav", 2)
+} else {
+	includeHTML("bd-docs-nav", 3)
 }
