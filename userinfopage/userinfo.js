@@ -14,13 +14,15 @@ $("#imageUpload").change(function(){
 });
 
 $(document).ready(function(){
+    var user_id = getCookie('user_id')
+    console.log(user_id)
     $.ajax({
         type: 'GET',
         url: '../api/user.php',
         dataType: "json",
         async:true,
         data: {
-            user_id: 1
+            'user_id': user_id
         },
         success: function(data) {
             $("#display_name").val(data['data']['user_name'])

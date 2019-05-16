@@ -34,10 +34,12 @@
 		var password = form["password"].value;
 		var res = true;
 		if (email == "") {
+			$("#inform")["0"].innerHTML = "Email must not be empty"
 			$('#email').css("background", "rgba(233, 30, 99, .2)");
 			res = false;
-		}
+		}else
 		if (password == "") {
+			$("#inform")["0"].innerHTML = "Password must not be empty"
 			$('#password').css("background", "rgba(233, 30, 99, .2)");
 			res = false;
 		}
@@ -79,9 +81,14 @@
 							});
 							window.location = "../homepage/homepage.html";
 						}
+						else{
+							$("#inform")["0"].innerHTML = e["message"]
+						}
 					},
 					error: function (e) {
-						console.log("error" + JSON.stringify(e));
+						// e = JSON.parse(e)
+						e = JSON.parse(e.responseText)
+						$("#inform")["0"].innerHTML = e["message"]
 					}
 				});
 			}

@@ -44,25 +44,27 @@
       var cf_password = form["cf_password"].value
       var res = true;
       if (name == "") {
+         $("#inform")["0"].innerHTML = "Name must not be empty"
          $('#name').css("background", "rgba(233, 30, 99, .2)");
          res = false;
-      }
+      }else
       if (email == "") {
+         $("#inform")["0"].innerHTML = "Email must not be empty"
          $('#email').css("background", "rgba(233, 30, 99, .2)");
          res = false;
-      }
+      }else
       if (!validatePassword(password)) {
-      	alert("Password length must be longer than 6")
+      	$("#inform")["0"].innerHTML = "Password length must be longer than 6"
          $('#password').css("background", "rgba(233, 30, 99, .2)");
          res = false;
-      }
+      }else
       if (!validatePassword(cf_password)) {
-      	alert("Password length must be longer than 6")
+      	$("#inform")["0"].innerHTML = "Password length must be longer than 6"
          $('#cf_password').css("background", "rgba(233, 30, 99, .2)");
          res = false;
-      }
+      }else
       if (cf_password != password) {
-      	alert("Password not match!")
+      	$("#inform")["0"].innerHTML = "Password not match"
          $('#password').css("background", "rgba(233, 30, 99, .2)");
          $('#cf_password').css("background", "rgba(233, 30, 99, .2)");
          res = false;
@@ -95,11 +97,15 @@
                success: function (data) {
                   data = JSON.parse(data)
                   if (data["is_success"]) {
+                     alert(data['message'])
                      window.location = "../loginpage/loginpage.html";
+                  }else{
+                     $("#inform")["0"].innerHTML = data['message']
                   }
                },
                error: function (e) {
-                  alert("Invalid account!")
+                  e = JSON.parse(e.responseText)
+                  $("#inform")["0"].innerHTML = e["message"]
                }
             });
          }

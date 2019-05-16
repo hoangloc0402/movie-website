@@ -103,6 +103,7 @@ body {
 .movie-title {
 	display: block;
 	max-height: 30%;
+	min-height: 60px;
 	position: relative;
 	z-index: 100;
 	padding: 18px 18px;
