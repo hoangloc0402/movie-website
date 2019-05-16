@@ -61,8 +61,9 @@
         global $table_otp;
         $otp;
         while (true){
-            $otp = rand(10000, 10005);
-            $success = execute("INSERT INTO $table_otp (otp_value, otp_user_id) VALUES ('" . $otp . "','" . $user_id . "')"); 
+            $otp = rand(10000, 99999);
+            $t = time() + 5*60;
+            $success = execute("INSERT INTO $table_otp (otp_value, otp_user_id, otp_time_out) VALUES ('" . $otp . "','" . $user_id . "','" . $t . "')"); 
             if ($success){
                 break;
             }
@@ -101,7 +102,24 @@
 
     function reset_password($user_id, $otp, $new_password){
         global $table_user, $table_otp;
-        execute("UPDATE $table_otp SET otp_is_active = 0 WHERE DATEDIFF(minute, otp_time, NOW()) > 1");
+        $now = time();
+        $query_result = execute("SELECT otp_value FROM $table_otp WHERE otp_time_out >\"$now\" AND otp_user_id = \"$user_id\" ORDER BY otp_time_out DESC");
+        if (mysqli_num_rows($query_result) > 0) {
+            $saved_otp = mysqli_fetch_assoc($query_result){'otp_value'};
+            if ($saved_otp == $otp){
+                execute("UPDATE $table_user SET password =  \"$new_password\" WHERE user_id=\"$user_id\"");
+                http_response_code(200);
+                return json_encode(array('is_success' => true, 'message' => "New password is updated successfully!"));
+            }
+            else {
+                http_response_code(401);
+                return json_encode(array('is_success' => false, 'message' => "OTP and User are not match!"));
+            }
+        } 
+        else {
+            http_response_code(404);
+            return json_encode(array('is_success' => false, 'message' => "OTP not found!"));
+        }
     }
 
 
@@ -125,11 +143,12 @@
                 echo reset_password($param->user_id, $param->otp, $param->new_password);
             }
             else if ($param->user_id){
-                // echo send_reset_password_email($param->user_id); 
+                echo send_reset_password_email($param->user_id); 
             }
             break;
         case 'DELETE':
-            echo time();
+            // generate_OTP(2);
+            // echo reset_password(2, 32935,"hahahaha");
             break;
 
         default: echo "404 NOT FOUND!";
