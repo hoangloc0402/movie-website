@@ -74,6 +74,7 @@ function getSeries($query_string)
             "id"});
     }
     $q = "";
+    $tag = "";
     $page = 0;
     $per_page = 20;
     if (array_key_exists("page", $query_array)) {
@@ -88,10 +89,16 @@ function getSeries($query_string)
         $q = $query_array{
             "q"};
     }
+    if (array_key_exists("tag", $query_array)) {
+        $tag = $query_array{
+            "tag"};
+    }
     $offset = $page * $per_page;
     $temp_per_page = $per_page + 1;
     $query_command = "SELECT * FROM $seriestable s 
-                        WHERE s.series_is_active = TRUE AND s.series_name LIKE \"%$q%\"
+                        WHERE s.series_is_active = TRUE 
+                            AND s.series_name LIKE \"%$q%\"
+                            AND s.series_tags LIKE \"%$tag%\"
                         ORDER BY s.series_created_date DESC 
                         LIMIT $offset, $temp_per_page";
     $result = mysqli_query($dbhandle, $query_command);

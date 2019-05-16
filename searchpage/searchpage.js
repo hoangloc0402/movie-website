@@ -1,7 +1,8 @@
 const urlParams = new URLSearchParams(window.location.search);
 const search_key = (urlParams.get('q')) ? urlParams.get('q') : "";
+const tag_key = (urlParams.get('tag')) ? urlParams.get('tag') : "";
 const page = (urlParams.get('page') && parseInt(urlParams.get('page'))) ? parseInt(urlParams.get('page')) : 0;
-const per_page = 1;
+const per_page = 30;
 var list_movies = [];
 
 
@@ -91,8 +92,8 @@ var img_movie_rendered = false;
 	// Execute only after document has fully loaded
 	$(document).ready(function () {
 		var p = new Promise((resolve, reject) => {
-			console.log(`/api/series.php?q=${search_key}&page=${page}&per_page=${per_page}`);
-			$.get(`/api/series.php?q=${search_key}&page=${page}&per_page=${per_page}`, (data) => {
+			console.log(`/api/series.php?q=${search_key}&tag=${tag_key}&page=${page}&per_page=${per_page}`);
+			$.get(`/api/series.php?q=${search_key}&tag=${tag_key}&page=${page}&per_page=${per_page}`, (data) => {
 				data = JSON.parse(data);
 				if (data && data.result && data.result.length > 0) {
 					resolve(data);
@@ -109,7 +110,7 @@ var img_movie_rendered = false;
 				$("#prev_page").show();
 				$("#prev_page").off('click').click(() => {
 					let new_page = page - 1;
-					window.open(`/searchpage/searchpage.html?q=${search_key}&page=${new_page}`, "_self");
+					window.open(`/searchpage/searchpage.html?q=${search_key}&tag=${tag_key}&page=${new_page}`, "_self");
 				})
 			} else {
 				$("#prev_page").hide();
@@ -120,11 +121,18 @@ var img_movie_rendered = false;
 				$("#next_page").show();
 				$("#next_page").off('click').click(() => {
 					let new_page = page + 1;
-					window.open(`/searchpage/searchpage.html?q=${search_key}&page=${new_page}`, "_self")
+					window.open(`/searchpage/searchpage.html?q=${search_key}&tag=${tag_key}&page=${new_page}`, "_self")
 				})
 			}
 		}).catch((e) => {
 			console.log(e)
+		})
+
+		$(".my_nav_tag").each((idx, a) => {
+			$(a).click(()=>{
+				let tag = $(a).text().slice(1);
+				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`,"_self");
+			})
 		})
 	});
 
