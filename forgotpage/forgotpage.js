@@ -62,6 +62,7 @@
 					}),
 					success: function (data) {
 						data = JSON.parse(data)
+						console.log(data)
 						if (data["is_success"]) {
 							window.location = "../resetpage/resetpage.html";
 						}
