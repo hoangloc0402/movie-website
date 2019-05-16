@@ -81,7 +81,7 @@ function getSeries($query_string)
             "page"};
     }
     if (array_key_exists("per_page", $query_array)) {
-        $page = $query_array{
+        $per_page = $query_array{
             "per_page"};
     }
     if (array_key_exists("q", $query_array)) {
@@ -89,10 +89,11 @@ function getSeries($query_string)
             "q"};
     }
     $offset = $page * $per_page;
+    $temp_per_page = $per_page + 1;
     $query_command = "SELECT * FROM $seriestable s 
                         WHERE s.series_is_active = TRUE AND s.series_name LIKE \"%$q%\"
                         ORDER BY s.series_created_date DESC 
-                        LIMIT $offset, $per_page";
+                        LIMIT $offset, $temp_per_page";
     $result = mysqli_query($dbhandle, $query_command);
 
     if (!$result) {
@@ -101,12 +102,19 @@ function getSeries($query_string)
     }
 
     $arr = array();
+    $counter = 0;
+    $has_more = false;
     while ($row = mysqli_fetch_array($result)) {
         $obj = returnSeries($row);
-        array_push($arr, $obj);
+        $counter += 1;
+        if ($counter <= $per_page) {
+            array_push($arr, $obj);
+        } else {
+            $has_more = true;
+        }
     }
     http_response_code(200);
-    return json_encode($arr);
+    return json_encode(array("result" => $arr, "has_more" => $has_more));
 }
 
 function insertVideo($data)

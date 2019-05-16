@@ -158,7 +158,8 @@ var img_movie_rendered = false;
 			console.log(`/api/video.php?page=${page}&per_page=${per_page}`);
 			$.get(`/api/video.php?page=${page}&per_page=${per_page}`, (data) => {
 				data = JSON.parse(data);
-				if (data && data.length > 0) {
+				console.log(data)
+				if (data && data.result && data.result.length > 0) {
 					resolve(data);
 				} else {
 					reject();
@@ -166,20 +167,19 @@ var img_movie_rendered = false;
 			})
 		})
 		p.then((data) => {
-			list_movies = data;
+			list_movies = data.result;
 			render_slide();
 			if (page > 0) {
 				$("#prev_page").show();
 				$("#prev_page").off('click').click(() => {
 					// img_movie_rendered = false;
 					let new_page = page -1;
-					window.open(`/homepage/homepage.html?page=${new_page}`, "_self")
-					loadPage();
+					window.open(`/homepage/homepage.html?page=${new_page}`, "_self");
 				})
 			} else {
 				$("#prev_page").hide();
 			}
-			if (list_movies.length < per_page) {
+			if (!data.has_more) {
 				$("#next_page").hide();
 			} else {
 				$("#next_page").show();

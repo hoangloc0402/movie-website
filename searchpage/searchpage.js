@@ -1,93 +1,8 @@
 const urlParams = new URLSearchParams(window.location.search);
-const search_key = (urlParams.get('q')) ? urlParams.get('q'): "";
-const page = (urlParams.get('page') && parseInt(urlParams.get('page'))) ? parseInt(urlParams.get('page')): 0 ;
-const per_page = 4;
-const list_movies = [
-	// {
-	// 	src: "images/1.png",
-	// 	name: "The Small Woman in Grey",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/2.png",
-	// 	name: "Grey Gardens",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/3.png",
-	// 	name: "Fifty Shades Of Grey",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/4.png",
-	// 	name: "Grey's Anatomy - Season 8",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/5.png",
-	// 	name: "Grey's Anatomy - Season 7",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/6.png",
-	// 	name: "Grey's Anatomy - Season 6",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/7.png",
-	// 	name: "Grey's Anatomy - Season 5",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/8.png",
-	// 	name: "Grey's Anatomy - Season 4",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/9.png",
-	// 	name: "Grey's Anatomy - Season 3",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/10.png",
-	// 	name: "Grey's Anatomy - Season 2",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/11.png",
-	// 	name: "Grey's Anatomy - Season 1",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/12.png",
-	// 	name: "Grey's Anatomy - Season 15",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/13.png",
-	// 	name: "Grey's Anatomy - Season 11",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/14.png",
-	// 	name: "Greystoke Tarzan",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/15.png",
-	// 	name: "The Grey",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/16.png",
-	// 	name: "Good Witch Secrects of Grey House",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/17.png",
-	// 	name: "Grey Agenda",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/18.png",
-	// 	name: "Grey Lady",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/19.png",
-	// 	name: "Indecent",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/20.png",
-	// 	name: "Grey's Anatomy - Season 14",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// },
-	// {
-	// 	src: "images/21.png",
-	// 	name: "Grey's Anatomy - Season 13",  href : "../tvshowpage/tvshowpage.html", "ep": "Episode 01"
-	// }
-];
+const search_key = (urlParams.get('q')) ? urlParams.get('q') : "";
+const page = (urlParams.get('page') && parseInt(urlParams.get('page'))) ? parseInt(urlParams.get('page')) : 0;
+const per_page = 1;
+var list_movies = [];
 
 
 var img_movie_rendered = false;
@@ -137,25 +52,34 @@ var img_movie_rendered = false;
 		var gallery_width = $("#movies_content").width();
 
 		var card_width = gallery_width / gallery_col - 2 * gallery_margin;
-		console.log("HERE", gallery_width, gallery_col, card_width, img_movie_rendered);
 		if (img_movie_rendered === false) {
 			img_movie_rendered = true;
 			for (var i = 0; i < list_movies.length; i++) {
-				var div = $(`<div class="movie-thumnail"></div>`)
-				div.css('background-image', 'url(' + list_movies[i].src + ')');
-				div.append(`<span class="movie-play-button"></span>`)
-				$(div).width(card_width);
+				(function (ele) {
+					var div = $(`<div class="movie-thumnail"></div>`)
+					div.css('background-image', 'url(' + ele.series_thumbnail + ')');
+					div.append(`<span class="movie-play-button"></span>`)
+					$(div).width(card_width);
 
-				var wrapper = $(`<div class="movie-thumnail-wrapper"></div>`)
-				wrapper.append(div,
-					`<span class="movie-title">${list_movies[i].name}</span>`)
-				$(wrapper).width(card_width);
-				$(wrapper).click(()=>{window.location.href = list_movies[10].href})
-				$("#gallery").append(wrapper);
+					var wrapper = $(`<div class="movie-thumnail-wrapper"></div>`)
+					wrapper.append(div,
+						`<span class="movie-title">${ele.series_name}</span>`)
+					$(wrapper).width(card_width);
+					let url;
+					if (ele.is_series === "1") {
+						url = "/tvshowpage/tvshowpage.html?series_id=" + ele.series_id;
+					} else {
+						url = "/moviewatchingpage/movie-player.html?series_id=" + ele.series_id;
+					}
+					$(div).attr("url_watching", url);
+					$("#gallery").append(wrapper);
+				})(list_movies[i]);
+				$(".movie-thumnail").each((idx, div) => {
+					$(div).click(() => { window.location.href = $(div).attr("url_watching") })
+				});
 			}
 		} else {
 			var arr = $("#gallery").find("div");
-			console.log(arr)
 			for (var i = 0; i < arr.length; i++) {
 				$(arr[i]).width(card_width)
 			}
@@ -168,9 +92,9 @@ var img_movie_rendered = false;
 	$(document).ready(function () {
 		var p = new Promise((resolve, reject) => {
 			console.log(`/api/series.php?q=${search_key}&page=${page}&per_page=${per_page}`);
-			$.get(`/api/video.php?page=${page}&per_page=${per_page}`, (data) => {
+			$.get(`/api/series.php?q=${search_key}&page=${page}&per_page=${per_page}`, (data) => {
 				data = JSON.parse(data);
-				if (data && data.length > 0) {
+				if (data && data.result && data.result.length > 0) {
 					resolve(data);
 				} else {
 					reject();
@@ -178,8 +102,30 @@ var img_movie_rendered = false;
 			})
 		})
 		$("#search-result").append(` for "${search_key}"`)
-		render_slide();
-		// console.log($('#gallery'))
+		p.then((data) => {
+			list_movies = data.result;
+			render_slide();
+			if (page > 0) {
+				$("#prev_page").show();
+				$("#prev_page").off('click').click(() => {
+					let new_page = page - 1;
+					window.open(`/searchpage/searchpage.html?q=${search_key}&page=${new_page}`, "_self");
+				})
+			} else {
+				$("#prev_page").hide();
+			}
+			if (!data.has_more) {
+				$("#next_page").hide();
+			} else {
+				$("#next_page").show();
+				$("#next_page").off('click').click(() => {
+					let new_page = page + 1;
+					window.open(`/searchpage/searchpage.html?q=${search_key}&page=${new_page}`, "_self")
+				})
+			}
+		}).catch((e) => {
+			console.log(e)
+		})
 	});
 
 	// Execute code each time window size changes

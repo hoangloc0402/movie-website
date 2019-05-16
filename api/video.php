@@ -88,14 +88,15 @@ function getVideo($query_string)
             "per_page"};
     }
     $offset = $page * $per_page;
+    $temp_per_page = $per_page + 1;
     $query_command = "SELECT * FROM $videotable v 
                         JOIN $seriestable s 
                         ON v.video_series_id = s.series_id 
                         WHERE v.video_is_active = TRUE 
                             AND s.series_is_active = TRUE 
                         ORDER BY v.video_upload_time DESC 
-                        LIMIT $offset, $per_page";
-    
+                        LIMIT $offset, $temp_per_page";
+    // echo($query_command);
     $result = mysqli_query($dbhandle, $query_command);
 
     if (!$result) {
@@ -104,12 +105,19 @@ function getVideo($query_string)
     }
 
     $arr = array();
+    $counter = 0;
+    $has_more = false;
     while ($row = mysqli_fetch_array($result)) {
         $obj = returnVideo($row);
-        array_push($arr, $obj);
+        $counter += 1;
+        if ($counter <= $per_page) {
+            array_push($arr, $obj);
+        } else {
+            $has_more = true;
+        }
     }
     http_response_code(200);
-    return json_encode($arr);
+    return json_encode(array("result" => $arr, "has_more" => $has_more));
 }
 
 function insertVideo($data)
