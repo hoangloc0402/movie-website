@@ -280,6 +280,10 @@ const is_log_in = isLoggedIn();
 
 
 	function initSeries() {
+		console.log(is_admin)
+		if (is_admin){
+			$('#delete-button').css('visibility', 'visible')
+		}
 		if ($.isNumeric(getUrlParameter('video_id'))) {
 			getVideo(getUrlParameter('video_id'));
 		} else if ($.isNumeric(getUrlParameter('series_id'))) {
