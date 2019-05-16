@@ -105,7 +105,11 @@
             }
             break;
         case 'POST':
-
+            $param = json_decode(file_get_contents("php://input"));
+            if ($param->user_id && $param->user_is_active && $param->user_type){
+                echo set_active_and_role($param->user_id, $param->user_is_active, $param->user_type);
+            }
+            break;
             break;
         case 'PUT':
             $param = json_decode(file_get_contents("php://input"));
@@ -114,11 +118,7 @@
             }
             break;
         case 'DELETE':
-            $param = json_decode(file_get_contents("php://input"));
-            if ($param->user_id && $param->user_is_active && $param->user_type){
-                echo set_active_and_role($param->user_id, $param->user_is_active, $param->user_type);
-            }
-            break;
+            
 
         default: echo "404 NOT FOUND!";
     }
