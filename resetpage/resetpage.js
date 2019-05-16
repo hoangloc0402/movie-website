@@ -28,6 +28,14 @@
 			if ($("#bd-docs-nav").hasClass("show") === false) $("#bd-docs-nav").addClass("show");
 		}
 	}
+
+	function validatePassword(password){
+		if (password.length < 7){
+			return false;
+		}
+		return true;
+	}
+
 	function validateResetForm() {
 		var form = document.forms["reset"];
 		var code = form["code"].value;
@@ -38,12 +46,14 @@
 			$('#code').css("background", "rgba(233, 30, 99, .2)");
 			res = false;
 		}
-		if (password == "") {
+		if (!validatePassword(password)) {
 			$('#password').css("background", "rgba(233, 30, 99, .2)");
+			alert("Password length must be longer than 6")
 			res = false;
 		}
-		if (newpassword == "") {
+		if (!validatePassword(newpassword) == "") {
 			$('#newpassword').css("background", "rgba(233, 30, 99, .2)");
+			alert("Password length must be longer than 6")
 			res = false;
 		}
 		if(password!=newpassword){
@@ -53,10 +63,12 @@
 	}
 
 	$(document).ready(function () {
+		var email = $(location).attr('href');
+		email = email.split("=")[1]
 		render_slide();
 		$(".my_nav_tag").each((idx, a) => {
 			$(a).click(() => {
-				let tag = $(a).text().slice(1);
+				let tag = $(a).text().							slice(1);
 				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`, "_self");
 			})
 		});
@@ -77,8 +89,8 @@
 					url: '../api/login_register.php',
 					datatype: 'json',
 					data: JSON.stringify({
-						'new_password': $("#password").val()
-						'email': "thanh23497@gmail.com",
+						'new_password': $("#password").val(),
+						'email': email,
 						'otp': $("#code").val()
 					}),
 					success: function (data) {
@@ -86,9 +98,13 @@
 						if (data["is_success"]) {
 							window.location = "../loginpage/loginpage.html";
 						}
+						else{
+							alert(data['message'])
+						}
 					},
 					error: function (e) {
 						console.log("error" + JSON.stringify(e));
+						alert("Bad request!")
 					}
 				});
 			}

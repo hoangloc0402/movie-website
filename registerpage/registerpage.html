@@ -100,67 +100,6 @@
          includeHTML("header-with-search", 0)
       }
    </script>
-   <script>
-      function validateSignUpForm() {
-      var form = document.forms["sign_up"];
-      var email = form["email"].value;
-      var password = form["password"].value;
-      var name = form["name"].value;
-      var cf_password = form["cf_password"].value
-      var res = true;
-      if (name == "") {
-         $('#name').css("background", "rgba(233, 30, 99, .2)");
-         res = false;
-      }
-      if (email == "") {
-         $('#email').css("background", "rgba(233, 30, 99, .2)");
-         res = false;
-      }
-      if (password == "") {
-         $('#password').css("background", "rgba(233, 30, 99, .2)");
-         res = false;
-      }
-      if (cf_password == "") {
-         $('#cf_password').css("background", "rgba(233, 30, 99, .2)");
-         res = false;
-      }
-      if (cf_password != password) {
-         $('#password').css("background", "rgba(233, 30, 99, .2)");
-         $('#cf_password').css("background", "rgba(233, 30, 99, .2)");
-         res = false;
-      }
-      return res;
-   }
-   </script>
-
-   <script>
-      $("#submit").click(function(event){
-         event.preventDefault();
-         if (validateSignUpForm()) {
-            $.ajax({
-               type: "POST",
-               url: '../api/login_register.php',
-               datatype: 'json',
-               data: JSON.stringify({
-                  'type': 'register',
-                  'display_name': $("#name").val(),
-                  'email': $("#email").val(),
-                  'password': $("#password").val()
-               }),
-               success: function (data) {
-                  data = JSON.parse(data)
-                  if (data["is_success"]) {
-                     window.location = "../loginpage/loginpage.html";
-                  }
-               },
-               error: function (e) {
-                  alert("Invalid account!")
-               }
-            });
-         }
-      }
-      );
-   </script>
 </body>
 
 </html>

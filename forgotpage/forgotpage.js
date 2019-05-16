@@ -52,26 +52,30 @@
 		});
 		$("#forgot").submit((e) => {
 			e.preventDefault();
+			console.log($("#email").val())
+			window.location = "../resetpage/resetpage.html?email="+$("#email").val()
 			if (validateForgotForm()) {
-				$.ajax({
-					type: "PUT",
-					url: '../api/login_register.php',
-					datatype: 'json',
-					data: JSON.stringify({
-						'email': $("#email").val()
-					}),
-					success: function (data) {
-						data = JSON.parse(data)
-						console.log(data)
-						if (data["is_success"]) {
-							window.location = "../resetpage/resetpage.html";
-						}
-					},
-					error: function (e) {
-						window.location = "../resetpage/resetpage.html";
-						console.log("error" + JSON.stringify(e));
-					}
-				});
+				// $.ajax({
+				// 	type: "PUT",
+				// 	url: '../api/login_register.php',
+				// 	datatype: 'json',
+				// 	data: JSON.stringify({
+				// 		'email': $("#email").val()
+				// 	}),
+				// 	success: function (data) {
+				// 		data = JSON.parse(data)
+				// 		console.log(data)
+				// 		if (data["is_success"]) {
+				// 			window.location = "../resetpage/resetpage.html";
+				// 		}else{
+				// 			alert(data['message'])
+				// 		}
+				// 	},
+				// 	error: function (e) {
+				// 		window.location = "../resetpage/resetpage.html";
+				// 		console.log("error" + JSON.stringify(e));
+				// 	}
+				// });
 			}
 		}
 		)
