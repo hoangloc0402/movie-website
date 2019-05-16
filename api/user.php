@@ -18,14 +18,20 @@
 
     function get_all_user($page, $per_page){
         global $table_user;
+        $page = $page*$per_page;
         $query_result = execute("SELECT * FROM $table_user WHERE user_is_active=true LIMIT $page, $per_page");
         if (mysqli_num_rows($query_result) > 0) {
             $return_data = array();
             while($row = mysqli_fetch_assoc($query_result)) {
                 array_push($return_data, $row);
             }
+            $has_next = false;
+            $page = $page +1;
+            if (mysqli_num_rows(execute("SELECT * FROM $table_user WHERE user_is_active=true LIMIT $page, $per_page")) > 0){
+                $has_next = true;
+            }
             http_response_code(200);
-            return json_encode(array('is_success' => true, 'data' => $return_data));
+            return json_encode(array('is_success' => true, 'has_next' => $has_next, 'data' => $return_data));
         } 
         else {
             http_response_code(404);
@@ -88,13 +94,13 @@
 
     switch ($_SERVER['REQUEST_METHOD']){
         case 'GET': 
-            $user_id = $_GET["user_id"];
-            if (is_null($user_id)){
+            if (!isset($_GET["user_id"])){
                 $page = $_GET["page"] ? $_GET["page"] : 0;
                 $per_page = $_GET["per_page"] ? $_GET["per_page"] : 15;
                 echo get_all_user($page, $per_page);
             }
             else {
+                $user_id = $_GET["user_id"];
                 echo get_user($user_id);
             }
             break;
