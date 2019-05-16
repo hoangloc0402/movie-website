@@ -71,20 +71,18 @@
         return $otp;
     }
 
-    function send_reset_password_email($user_id){
+    function send_reset_password_email($email){
         global $table_user, $table_otp, $db_connection;
-        $query_result = execute("SELECT * FROM $table_user WHERE user_id = \"$user_id\"");
+        $query_result = execute("SELECT * FROM $table_user WHERE user_email = \"$email\"");
         if (mysqli_num_rows($query_result) > 0) {
-            $otp = generate_OTP($user_id);
-            $to = mysqli_fetch_assoc($query_result)['user_email'];
+            $otp = generate_OTP(mysqli_fetch_assoc($query_result)['user_id']);
             ini_set("SMTP","ssl://smtp.gmail.com");
             ini_set("smtp_port","465");
-            $to = "hoanglocabcxyzilaksnoifhdnaskhcfea@gmailhihi.com";
             $from = "do-not-reply@watchmovie.com";
             $subject = "Reset password!";
             $message = "Your OTP for reset is: " . $otp;      
             $headers = "From:" . $from;
-            $success = mail($to, $subject, $message, $headers);
+            $success = mail($email, $subject, $message, $headers);
             if ($success){
                 http_response_code(200);
                 return json_encode(array('is_success' => true, 'message' => "Email is accepted for delivery!"));
@@ -96,7 +94,7 @@
         } 
         else {
             http_response_code(404);
-            return json_encode(array('is_success' => false, 'message' => "USER Not found!"));
+            return json_encode(array('is_success' => false, 'message' => "Email has not been registered!"));
         }
     }
 
@@ -141,8 +139,8 @@
             if ($param->user_id && $param->otp && $param->new_password){
                 echo reset_password($param->user_id, $param->otp, $param->new_password);
             }
-            else if ($param->user_id){
-                echo send_reset_password_email($param->user_id); 
+            else if ($param->email){
+                echo send_reset_password_email($param->email); 
             }
             break;
         case 'DELETE':
