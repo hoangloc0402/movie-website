@@ -64,11 +64,13 @@
 						data = JSON.parse(data)
 						console.log(data)
 						if (data["is_success"]) {
-							window.location = "../resetpage/resetpage.html";
+							window.location = "../resetpage/resetpage.html?email="+$("#email").val()
+						}else{
+							alert(data['message'])
 						}
 					},
 					error: function (e) {
-						window.location = "../resetpage/resetpage.html";
+						alert("Bad request!")
 						console.log("error" + JSON.stringify(e));
 					}
 				});
