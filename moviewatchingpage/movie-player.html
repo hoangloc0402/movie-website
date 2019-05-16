@@ -155,7 +155,8 @@
                             <form @submit.prevent="handleSubmit" id="prospects_form">
                                 <ul>
                                     <li>
-                                        <textarea id="post_comment"  placeholder="Comment" v-model="comment" required></textarea>
+                                        <textarea id="post_comment" placeholder="Comment" v-model="comment"
+                                            required></textarea>
                                     </li>
                                     <li>
                                         <input type="submit" value="Post &#9998;">
@@ -164,8 +165,8 @@
                             </form>
                         </div>
 
-                        <div class="comments-list" id ="comments_list">
-                            
+                        <div class="comments-list" id="comments_list">
+
                         </div>
                         <!-- <iframe
                             src="https://www.powr.io/plugins/comments/view?unique_label=d698266f_1553679215&external_type=iframe">
@@ -203,8 +204,15 @@
     <script src="../import/bootstrap.min.js"></script>
     <script src="../import/bootstrap-toolkit.min.js"></script>
 
-    <script src="movie-player.js"></script>
     <script src="../import/click_callback.js"></script>
+    <script>
+        if (isLoggedIn()) {
+            includeHTML("header-with-search", 1)
+        } else {
+            includeHTML("header-with-search", 0)
+        }
+    </script>
+    <script src="movie-player.js"></script>
 
 </body>
 

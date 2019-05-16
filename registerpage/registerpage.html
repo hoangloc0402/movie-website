@@ -36,7 +36,7 @@
    <div class="header-with-search" id="header-with-search" w3-include-html="../import/header.html">
    </div>
    <script>
-      includeHTML("header-with-search",0)
+      includeHTML("header-with-search", 0)
    </script>
 
    <div class="container-fluid">
@@ -66,7 +66,7 @@
                   <div id="main_bg" class="main">
                      <h1>Register</h1>
                      <div class="form-login ilogin">
-                        <h1>Register to MovieWatch</h1><br/>
+                        <h1>Register to MovieWatch</h1><br />
                         <form method="post" name="sign_up" id="sign_up" onsubmit="return validateSignupForm()">
                            <input type="hidden" name="_csrf" value="5c9c7434993d6">
                            <input type="hidden" name="refer" value="">
@@ -94,47 +94,53 @@
    <script src="registerpage.js"></script>
    <script src="../import/click_callback.js"></script>
    <script>
-   function validateSignupForm() {
-     var form = document.forms["sign_up"]
-     console.log(form)
-     var name = form["name"].value;
-     var email = form["email"].value;
-     var password = form["password"].value;
-     var cf_password = form["cf_password"].value
-     if (email == "" || password == "" || name == "" || cf_password =="") {
-       alert("Input cannot be empty");
-     }else if (password != cf_password) {
-       alert("Password not matched!");
-     }
-   }
+      if (isLoggedIn()) {
+         includeHTML("header-with-search", 1)
+      } else {
+         includeHTML("header-with-search", 0)
+      }
+   </script>
+   <script>
+      function validateSignupForm() {
+         var form = document.forms["sign_up"]
+         console.log(form)
+         var name = form["name"].value;
+         var email = form["email"].value;
+         var password = form["password"].value;
+         var cf_password = form["cf_password"].value
+         if (email == "" || password == "" || name == "" || cf_password == "") {
+            alert("Input cannot be empty");
+         } else if (password != cf_password) {
+            alert("Password not matched!");
+         }
+      }
    </script>
 
-   <script >
-      $("#sign_up").submit(function(event){
+   <script>
+      $("#sign_up").submit(function (event) {
          event.preventDefault();
          $.ajax({
-              type: "POST",
-              url: '../api/login_register.php',
-              datatype: 'json',
-              data: JSON.stringify({
-                  'type' : 'register',
-                  'display_name' : $("#name").val(),
-                  'email': $("#email").val(),
-                  'password': $("#password").val()
-              }),
-              success: function(data)
-              {   
-                  data = JSON.parse(data)
-                  console.log(data)
-                  if (data["is_success"]){
-                     window.location = "../homepage/homepage.html"
-                  }
+            type: "POST",
+            url: '../api/login_register.php',
+            datatype: 'json',
+            data: JSON.stringify({
+               'type': 'register',
+               'display_name': $("#name").val(),
+               'email': $("#email").val(),
+               'password': $("#password").val()
+            }),
+            success: function (data) {
+               data = JSON.parse(data)
                console.log(data)
-              },
-              error: function(e){
-                  console.log("error" + e);
-              }
-          });
+               if (data["is_success"]) {
+                  window.location = "../homepage/homepage.html"
+               }
+               console.log(data)
+            },
+            error: function (e) {
+               console.log("error" + e);
+            }
+         });
       });
    </script>
 </body>

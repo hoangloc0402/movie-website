@@ -38,10 +38,7 @@
 
 <body>
   <div class="header-with-search" id="header-with-search" w3-include-html="../import/header.html">
-   </div>
-   <script>
-      includeHTML("header-with-search",0)
-   </script>
+  </div>
 
   <div class="header d-none d-md-block">
     <div id="homepage_popular_movies" class="carousel slide" data-ride="carousel">
@@ -76,19 +73,19 @@
 
         <nav class="bd-links collapse show" id="bd-docs-nav" w3-include-html="../import/category.html"></nav>
         <script>
-           includeHTML("bd-docs-nav", 2)
+          includeHTML("bd-docs-nav", 2)
         </script>
-        
+
       </div>
       <div class="col-12 col-md-9 col-xl-8" id="movies_content">
         <div class="big-block">Recently Added Episodes</div>
         <div id="gallery"></div>
         <div class="navigation">
-          <span class="page-numbers" id ="prev_page">
-            <a  href="#">« Previous Page</a>
+          <span class="page-numbers" id="prev_page">
+            <a href="#">« Previous Page</a>
           </span>
-          <span class="page-numbers" id ="next_page">
-            <a id ="next_page" href="#">Next Page »</a>
+          <span class="page-numbers" id="next_page">
+            <a id="next_page" href="#">Next Page »</a>
           </span>
         </div>
         <div class="footer row">
@@ -116,13 +113,21 @@
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="../import/jquery-3.1.1.slim.min.js"></script>
   <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" -->
-    <!-- integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
+  <!-- integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
   <script src="../import/popper.min.js"></script>
   <script src="../import/bootstrap.min.js"></script>
   <script src="../import/bootstrap-toolkit.min.js"></script>
 
-  <script src="homepage.js"></script>
+  
   <script src="../import/click_callback.js"></script>
+  <script>
+    if (isLoggedIn()) {
+      includeHTML("header-with-search", 1)
+    } else {
+      includeHTML("header-with-search", 0)
+    }
+  </script>
+  <script src="homepage.js"></script>
 </body>
 
 </html>
