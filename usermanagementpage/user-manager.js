@@ -9,6 +9,11 @@
 	};
 	viewport.use('bs4', bootstrapDivs);
 
+	var hasNext = false;
+	var hasPrev = false;
+	var page = 0;
+	var per_page = 3;
+
 	var getUrlParameter = function getUrlParameter(sParam) {
 		var sPageURL = window.location.search.substring(1),
 			sURLVariables = sPageURL.split('&'),
@@ -24,20 +29,22 @@
 		}
 	};
 
-	function getData() {
+
+	function getData(page, per_page) {
 		$.ajax({
 			type: "GET",
-			url: "/api/user.php?page=0&per_page=5",
+			url: "/api/user.php?page=" + page + "&per_page=" + per_page,
 			success: function (response) {
 				data = [];
 				response = JSON.parse(response);
+				hasNext = response.has_next;
+				if (!hasNext) $('#next-button').attr('disabled', true);
 				$.each(response.data, function (idx, val) {
 					dataItem = [];
 					dataItem.push(val.user_id);
 					dataItem.push(val.user_name);
 					dataItem.push(val.user_email);
 					dataItem.push(val.user_joining_date);
-					dataItem.push(val.user_last_login);
 					dataItem.push(val.user_type);
 					dataItem.push(val.user_is_active);
 					data.push(dataItem);
@@ -68,14 +75,14 @@
 	}
 
 	function updateTableContent(data) {
-
+		$("#user-table-body tr").remove();
 		$.each(data, function (rowIndex, r) {
 			var row = $("<tr/>");
-			for (var i = 0; i < 5; i++) {
+			for (var i = 0; i < 4; i++) {
 				row.append($("<td/>").text(r[i]));
 			}
 			var inHtml = "";
-			switch (r[5]) {
+			switch (r[4]) {
 				case "root":
 					inHtml = "<td><select class='form-control' id='sel" + rowIndex + "' name='sellist1' disabled><option selected='selected'>root</option><option>admin</option><option>user</option></select></td>";
 					break;
@@ -88,7 +95,7 @@
 				default: break;
 			}
 			row.append(inHtml);
-			if (r[6] == 1) {
+			if (r[5] == 1) {
 				inHtml = "<td><input type='checkbox' id='check" + rowIndex + "'  value='' checked disabled></td>"
 			}
 			row.append(inHtml);
@@ -107,7 +114,6 @@
 					$('#check' + idx).attr("disabled", true);
 					$(this).text('Edit');
 
-					//ajax post code here
 					item = {};
 
 					item["user_id"] = parseInt($(button).attr('uid'));
@@ -126,6 +132,30 @@
 		);
 	}
 
-	getData();
+	$('#next-button').click(function () {
+		page += 1;
+		getData(page, per_page);
+		hasPrev = true;
+		$('#prev-button').removeAttr("disabled");
+	})
+
+	$('#prev-button').click(function () {
+		page -= 1;
+		getData(page, per_page);
+		if (page == 0) {
+			hasPrev = false;
+			$('#prev-button').attr('disabled', true);
+		}
+		hasNext = true;
+		$('#next-button').removeAttr('disabled');
+	})
+
+	function init() {
+		getData(page, per_page);
+		$('#prev-button').attr('disabled', true);
+		if (!hasNext) $('next-button').attr('disabled', true);
+	}
+
+	init();
 
 })(jQuery, ResponsiveBootstrapToolkit);
