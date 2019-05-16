@@ -14,6 +14,21 @@ const is_log_in = isLoggedIn();
 	};
 	viewport.use('bs4', bootstrapDivs);
 
+	var getUrlParameter = function getUrlParameter(sParam) {
+		var sPageURL = window.location.search.substring(1),
+			sURLVariables = sPageURL.split('&'),
+			sParameterName,
+			i;
+
+		for (i = 0; i < sURLVariables.length; i++) {
+			sParameterName = sURLVariables[i].split('=');
+
+			if (sParameterName[0] === sParam) {
+				return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+			}
+		}
+	};
+
 	function render_slide() {
 		var op = false;
 		if (viewport.is('xs')) {
@@ -162,5 +177,60 @@ const is_log_in = isLoggedIn();
 			render_slide();
 		})
 	);
+
+	function showVideo(data) {
+		if (data.is_series == 0) {
+			$("#video-name").text(data.video_name);
+			$(".related-video-panel").hide();
+		}
+		else $("#video-name").text(data.series_name + " Episode " + data.video_episode + ": " + data.video_name);
+		$('#series-description').text(data.series_description);
+		$('#series-name-title').text(data.series_name);
+	}
+
+	function showSeries(data) {
+		
+	}
+
+	function getVideo(id) {
+		$.ajax({
+			type: "GET",
+			url: "/api/video.php?id=" + id,
+			success: function (response) {
+				showVideo(JSON.parse(response));
+			},
+			error: function (response) {
+				console.log("err");
+			}
+		});
+	}
+
+	function getSeries(id) {
+		$.ajax({
+			type: "GET",
+			url: "/api/series.php?id=" + id,
+			success: function (response) {
+				console.log(response);
+				showSeries(JSON.parse(response));
+			},
+			error: function (response) {
+				console.log("err");
+			}
+		});
+	}
+
+
+	function initSeries() {
+		if ($.isNumeric(getUrlParameter('video_id'))) {
+			getVideo(getUrlParameter('video_id'));
+		} else if ($.isNumeric(getUrlParameter('series_id'))) {
+			getSeries(getUrlParameter('series_id'));
+		}
+
+	}
+
+	initSeries();
+
+	$('#player').attr('src', "https://www.youtube.com/embed/SFQntgwXIEQ");
 
 })(jQuery, ResponsiveBootstrapToolkit);

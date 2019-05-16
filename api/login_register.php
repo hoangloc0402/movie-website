@@ -71,20 +71,18 @@
         return $otp;
     }
 
-    function send_reset_password_email($user_id){
+    function send_reset_password_email($email){
         global $table_user, $table_otp, $db_connection;
-        $query_result = execute("SELECT * FROM $table_user WHERE user_id = \"$user_id\"");
+        $query_result = execute("SELECT * FROM $table_user WHERE user_email = \"$email\"");
         if (mysqli_num_rows($query_result) > 0) {
-            $otp = generate_OTP($user_id);
-            $to = mysqli_fetch_assoc($query_result)['user_email'];
+            $otp = generate_OTP(mysqli_fetch_assoc($query_result)['user_id']);
             ini_set("SMTP","ssl://smtp.gmail.com");
             ini_set("smtp_port","465");
-            $to = "hoanglocabcxyzilaksnoifhdnaskhcfea@gmailhihi.com";
             $from = "do-not-reply@watchmovie.com";
             $subject = "Reset password!";
             $message = "Your OTP for reset is: " . $otp;      
             $headers = "From:" . $from;
-            $success = mail($to, $subject, $message, $headers);
+            $success = mail($email, $subject, $message, $headers);
             if ($success){
                 http_response_code(200);
                 return json_encode(array('is_success' => true, 'message' => "Email is accepted for delivery!"));
@@ -96,18 +94,18 @@
         } 
         else {
             http_response_code(404);
-            return json_encode(array('is_success' => false, 'message' => "USER Not found!"));
+            return json_encode(array('is_success' => false, 'message' => "Email has not been registered!"));
         }
     }
 
-    function reset_password($user_id, $otp, $new_password){
+    function reset_password($email, $otp, $new_password){
         global $table_user, $table_otp;
         $now = time();
-        $query_result = execute("SELECT otp_value FROM $table_otp WHERE otp_time_out >\"$now\" AND otp_user_id = \"$user_id\" ORDER BY otp_time_out DESC");
+        $query_result = execute("SELECT otp_value FROM $table_otp JOIN $table_user ON otp_user_id=user_id WHERE otp_time_out >\"$now\" AND user_email = \"$email\" ORDER BY otp_time_out DESC");
         if (mysqli_num_rows($query_result) > 0) {
             $saved_otp = mysqli_fetch_assoc($query_result){'otp_value'};
             if ($saved_otp == $otp){
-                execute("UPDATE $table_user SET password =  \"$new_password\" WHERE user_id=\"$user_id\"");
+                execute("UPDATE $table_user SET password =  \"$new_password\" WHERE user_email=\"$email\"");
                 http_response_code(200);
                 return json_encode(array('is_success' => true, 'message' => "New password is updated successfully!"));
             }
@@ -128,7 +126,7 @@
             break;
         case 'POST':
             $param = json_decode(file_get_contents("php://input"));
-            if ($param->email && $param->password){
+            if (isset($param->email) && isset($param->password)){
                 if ($param->type=="login"){
                     echo login($param->email, $param->password);
                 } else {
@@ -138,15 +136,15 @@
             break;
         case 'PUT':
             $param = json_decode(file_get_contents("php://input"));
-            if ($param->user_id && $param->otp && $param->new_password){
-                echo reset_password($param->user_id, $param->otp, $param->new_password);
+            if (isset($param->email) && isset($param->otp) && isset($param->new_password)){
+                echo reset_password($param->email, $param->otp, $param->new_password);
             }
-            else if ($param->user_id){
-                echo send_reset_password_email($param->user_id); 
+            else if (isset($param->email)){
+                echo send_reset_password_email($param->email); 
             }
             break;
         case 'DELETE':
-            // generate_OTP(2);
+            generate_OTP(4);
             // echo reset_password(2, 32935,"hahahaha");
             break;
 
