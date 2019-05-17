@@ -92,7 +92,7 @@ var img_movie_rendered = false;
 	// Execute only after document has fully loaded
 	$(document).ready(function () {
 		var p = new Promise((resolve, reject) => {
-			console.log(`/api/series.php?q=${search_key}&tag=${tag_key}&page=${page}&per_page=${per_page}`);
+			// console.log(`/api/series.php?q=${search_key}&tag=${tag_key}&page=${page}&per_page=${per_page}`);
 			$.get(`/api/series.php?q=${search_key}&tag=${tag_key}&page=${page}&per_page=${per_page}`, (data) => {
 				data = JSON.parse(data);
 				if (data && data.result && data.result.length > 0) {

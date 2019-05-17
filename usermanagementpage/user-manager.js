@@ -68,7 +68,7 @@ const is_log_in = isLoggedIn();
 			data: jsonString,
 			dataType: "json",
 			success: function (response) {
-				console.log(response);
+				// console.log(response);
 			},
 			error: function (response) {
 				console.log("err");

@@ -72,7 +72,7 @@ var img_movie_rendered = false;
 			}
 		} else {
 			var arr = $("#latest_ep_thumnail").find("div");
-			console.log(arr)
+			// console.log(arr)
 			for (var i = 0; i < arr.length; i++) {
 				$(arr[i]).width(card_width)
 			}
@@ -107,7 +107,7 @@ var img_movie_rendered = false;
 			});
 		} else {
 			var arr = $("#gallery").find("div");
-			console.log(arr)
+			// console.log(arr)
 			for (var i = 0; i < arr.length; i++) {
 				$(arr[i]).width(card_width)
 			}
@@ -146,15 +146,15 @@ var img_movie_rendered = false;
 	// Execute only after document has fully loaded
 	$(document).ready(function () {
 		var p = new Promise((resolve, reject) => {
-			console.log(`/api/series.php?id=${series_id}`);
+			// console.log(`/api/series.php?id=${series_id}`);
 			$.get(`/api/series.php?id=${series_id}`, (series_data) => {
 				series_data = JSON.parse(series_data);
-				console.log(series_data)
+				// console.log(series_data)
 				if (series_data) {
 					ass_per_page = series_data.series_expected_ep_count ? series_data.series_expected_ep_count : 20;
 					$.get(`/api/association.php?series_id=${series_id}&get_all=true&page=0&per_page=${ass_per_page}`, (data) => {
 						data = JSON.parse(data);
-						console.log(data)
+						// console.log(data)
 						if (data && data.result && data.result.length) {
 							series_data.list_ep = data.result;
 							resolve(series_data);
@@ -169,7 +169,7 @@ var img_movie_rendered = false;
 		})
 
 		p.then((data) => {
-			console.log(data);
+			// console.log(data);
 			series_data = data;
 			render_series();
 			render_slide();

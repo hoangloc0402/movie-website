@@ -63,7 +63,7 @@
 					}),
 					success: function (data) {
 						data = JSON.parse(data)
-						console.log(data)
+						// console.log(data)
 						if (data["is_success"]) {
 							alert(data['message'])
 							window.location = "../resetpage/resetpage.html?email="+$("#email").val()

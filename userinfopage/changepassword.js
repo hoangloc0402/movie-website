@@ -88,7 +88,7 @@
 		$("#change").submit((e) => {
 			e.preventDefault();
 			var id = getCookie("user_id")
-			console.log(id)
+			// console.log(id)
 			if (id == ""){
 				$("#inform")["0"].innerHTML = "You havenot logged in"
 			}else
@@ -104,7 +104,7 @@
 					}),
 					success: function (data) {
 						data = JSON.parse(data)
-						console.log(data['is_success'])
+						// console.log(data['is_success'])
 						if (data["is_success"]) {
 							alert(data['message'])
 							window.location = "../userinfopage/userinfo.html";

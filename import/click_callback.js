@@ -86,8 +86,8 @@ function saveObjectToCookie(d) {
 	}
 }
 
-console.log("islogin", (isLoggedIn()))
-console.log("isadmin", (isAdmin()))
+// console.log("islogin", (isLoggedIn()))
+// console.log("isadmin", (isAdmin()))
 
 if (isAdmin()) {
 	includeHTML("header-with-search", 5)

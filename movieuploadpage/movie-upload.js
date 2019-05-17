@@ -62,7 +62,7 @@ var pre_series_data;
 		if (pre_series_id) {
 			$.get(`/api/series.php?id=${pre_series_id}`, (data)=> {
 				pre_series_data = JSON.parse(data);
-				console.log(pre_series_data)
+				// console.log(pre_series_data)
 				if (pre_series_data.series_name) $("#series_name").val(pre_series_data.series_name)
 				if (pre_series_data.is_series === "0") {
 					$("#is_series").val("0");
@@ -178,7 +178,7 @@ var pre_series_data;
 				series_description: ($('#series_description').val() !== "" ? $('#series_description').val() : null),
 				series_year: ($('#series_year').val() !== "" ? $('#series_year').val() : null),
 			}
-			console.log(clean(series));
+			// console.log(clean(series));
 
 			$.ajax({
 				type: pre_series_id ? "PUT" : "POST",

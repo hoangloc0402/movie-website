@@ -11,7 +11,7 @@ function fasterPreview(uploader) {
 
 function upload(){
     var file = document.getElementById("imageUpload");
-    console.log(file.files[0])
+    // console.log(file.files[0])
 }
 
 $("#imageUpload").change(function(){
@@ -32,7 +32,7 @@ function validateForm() {
 
 $(document).ready(function(){
     var user_id = getCookie('user_id')
-    console.log(user_id)
+    // console.log(user_id)
     $.ajax({
         type: 'GET',
         url: '../api/user.php',
@@ -42,7 +42,7 @@ $(document).ready(function(){
             'user_id': user_id
         },
         success: function(data) {
-            console.log(data)
+            // console.log(data)
             $("#display_name").val(data['data']['user_name'])
             $("#email").val(data['data']['user_email'])
             $("#profileImage").attr('src', data['data']['user_profile_image'])
