@@ -182,6 +182,7 @@ var img_movie_rendered = false;
 		p.then((data) => {
 			list_movies = data.videos.result;
 			list_top_movies = data.series.result;
+			console.log(list_top_movies)
 			render_slide();
 			if (page > 0) {
 				$("#prev_page").show();
@@ -214,7 +215,6 @@ var img_movie_rendered = false;
 	// Execute only after document has fully loaded
 	$(document).ready(function () {
 		loadPage();
-		console.log($("#bd-docs-nav"))
 		$(".my_nav_tag").each((idx, a) => {
 			$(a).click(() => {
 				let tag = $(a).text().slice(1);
