@@ -55,6 +55,24 @@
         }
     }
 
+    function update_user_name($user_id, $display_name){
+        global $table_user, $db_connection;
+        $success = execute("UPDATE $table_user SET user_name = \"$display_name\" WHERE user_id = \"$user_id\"");
+        if (!$success){
+            http_response_code(500);
+            return json_encode(array('is_success' => false, 'message' => 'Error occured while updating!'));
+        }
+
+        if (mysqli_affected_rows($db_connection) > 0) {
+            http_response_code(200);
+            return json_encode(array('is_success' => true, 'message' => 'User information is updated successfully!'));
+        }
+        else {
+            http_response_code(400);
+            return json_encode(array('is_success' => false, 'message' => 'No information is changed!'));
+        }
+    }
+
     function update_user_info($user_id, $user_profile_image){
         global $table_user, $db_connection;
         $success = execute("UPDATE $table_user SET user_profile_image = \"$user_profile_image\" WHERE user_id = \"$user_id\"");
@@ -168,11 +186,13 @@
         case 'PUT':
             $param = json_decode(file_get_contents("php://input"));
             if (isset($param->user_id)){
-                if ($param->old_password && $param->new_password){
+                if (isset($param->old_password) && isset($param->new_password)){
                     echo change_password($param->user_id, $param->old_password, $param->new_password);
                 }
                 else if (isset($param->user_profile_image)){
                     echo update_user_info($param->user_id, $param->user_profile_image);
+                }else if(isset($param->display_name)){
+                    echo update_user_name($param->user_id, $param->display_name);
                 }
             } 
             break;

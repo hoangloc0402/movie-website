@@ -9,6 +9,11 @@ function fasterPreview(uploader) {
     }
 }
 
+function upload(){
+    var file = document.getElementById("imageUpload");
+    console.log(file.files[0])
+}
+
 $("#imageUpload").change(function(){
     fasterPreview(this);
 });
@@ -23,7 +28,7 @@ function validateForm() {
             res = false;
         }
         return res;
-    }
+}
 
 $(document).ready(function(){
     var user_id = getCookie('user_id')
@@ -58,19 +63,23 @@ $(document).ready(function(){
 
     $("#change").submit((e) => {
             event.preventDefault();
+            var id = getCookie("user_id");
+            if (id == ""){
+                $("#inform")["0"].innerHTML = "You havenot logged in"
+            }else
             if (validateForm()) {
                 $.ajax({
-                    type: "POST",
+                    type: "PUT",
                     url: '../api/user.php',
                     datatype: 'json',
                     data: JSON.stringify({
-                        'email': $("#email").val(),
-                        'password': $("#password").val()
+                        'user_id': id,
+                        'display_name': $("#display_name").val()
                     }),
                     success: function (data) {
                         data = JSON.parse(data)
                         if (data["is_success"]) {
-                            window.location = "../homepage/homepage.html";
+                            alert(data['message'])
                         }
                         else{
                             $("#inform")["0"].innerHTML = e["message"]

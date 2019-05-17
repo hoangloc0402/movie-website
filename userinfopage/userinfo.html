@@ -69,16 +69,16 @@
                         <br />
                         <div class="error-msg" id="inform">
                         </div>
-                        <form id="change" name="change" method="post">
-                           <div id="profile-container" class="center">
+                        <div id="profile-container" class="center">
                               <img alt="Avatar" id="profileImage" src="images/defaultAvatar.png" />
                            </div> <br />
-                           <input id="imageUpload" type="file" name="profile_photo" required="" accept="image/*">
+                           <input id="imageUpload" type="file" name="profile_photo" required="" accept="image/*" onchange="upload()">
+                        <form id="change" name="change" method="post">
                            <input id="display_name" type="text" name="display_name" placeholder="Nguyen Van Thanh"
-                              value="">
+                              value="" >
                            <input id="email" type="email" name="email" placeholder="thanhdeptrai@gmail.com" value=""
                               disabled>
-                           <input id="password" type="password" name="password" value="**************" disabled>
+                           <input id="password" type="password" name="password" value="**************" disabled >
                            <input type="submit" value="Change" />
                         </form>
                         <a class="link-change" href="changepassword.html">Change password</a>
