@@ -108,13 +108,13 @@ const is_log_in = isLoggedIn();
 
 	function fetch_comment(focus) {
 		var p = new Promise((resolve, reject) => {
-			console.log('herer')
+			
 			$.ajax({
 				url: `/api/comment.php?video_id=${video_id}`,
 				type: 'GET',
 				dataType: "json",
 				success: (comments) => {
-					console.log(comments)
+					// console.log(comments)
 					if (comments) {
 						resolve(comments);
 					} else {
@@ -136,6 +136,8 @@ const is_log_in = isLoggedIn();
 	}
 
 	$(document).ready(function () {
+
+		initSeries();
 		render_slide();
 		$("#prospects_form").submit(function (e) {
 			e.preventDefault();
@@ -167,23 +169,26 @@ const is_log_in = isLoggedIn();
 				window.open(`/searchpage/searchpage.html?q=&tag=${tag}`, "_self");
 			})
 		})
-		fetch_comment(false);
+		setTimeout(()=>{
+
+			fetch_comment(false);
+		}, 1000)
 		if (!isLoggedIn()) {
 			$("#prospects_form :input").prop("disabled", true);
 			$("#prospects_form :input").css("opacity", .3);
 			$("#comment_h2").text("You must sign in to leave a comment");
 		}
 
-		$('#delete-confirm-button').click(function(){			
+		$('#delete-confirm-button').click(function () {
 			$.ajax({
 				type: "DELETE",
-				url: "/api/video.php?id=" + video_id +"&is_series=" + is_series,
+				url: "/api/video.php?id=" + video_id + "&is_series=" + is_series,
 				success: function (response) {
-					console.log(response);
+					// console.log(response);
 					window.location.href = "/";
 				},
 				error: function (response) {
-					console.log(response);
+					// console.log(response);
 				}
 			});
 		})
@@ -281,8 +286,8 @@ const is_log_in = isLoggedIn();
 
 
 	function initSeries() {
-		console.log(is_admin)
-		if (is_admin){
+		// console.log(is_admin)
+		if (is_admin) {
 			$('#delete-button').css('visibility', 'visible')
 		}
 		if ($.isNumeric(getUrlParameter('video_id'))) {
@@ -292,6 +297,5 @@ const is_log_in = isLoggedIn();
 		}
 	}
 
-	initSeries();
 
 })(jQuery, ResponsiveBootstrapToolkit);
